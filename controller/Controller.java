@@ -1,5 +1,6 @@
 package controller;
 
+import view.GameView;
 import view.MenuView;
 import view.View;
 
@@ -30,8 +31,9 @@ public class Controller {
 	}
 
 	public void newGame() {
-		System.out.println("New Game");
-		
+		view.close();
+		view = new GameView(this);
+		view.display();
 	}
 
 	public void about() {
