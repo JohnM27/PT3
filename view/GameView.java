@@ -7,7 +7,7 @@ import controller.Controller;
 public class GameView extends View {
 
 	private JFrame frame;
-	//private GamePanel gamePanel;
+	private GamePanel gamePanel;
 	
 	public GameView(Controller controller) {
 		super(controller);
@@ -18,6 +18,13 @@ public class GameView extends View {
 	
 	private void buildFrame() {
 		frame = new JFrame("Jeu");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		gamePanel = new GamePanel(getController());
+		
+		frame.add(gamePanel);
+		
+		frame.pack();
 	}
 	
 	
