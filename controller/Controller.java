@@ -28,6 +28,16 @@ public class Controller {
 	public void closeView() {
 		view.close();
 	}
+
+	public void newGame() {
+		System.out.println("New Game");
+		
+	}
+
+	public void about() {
+		view.about();
+		
+	}
 	
 	
 }

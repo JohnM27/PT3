@@ -1,6 +1,7 @@
 package view;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import controller.Controller;
 
@@ -17,7 +18,7 @@ public class MenuView extends View{
 	
 	
 	private void buildFrame() {
-		frame = new JFrame("Jeu");
+		frame = new JFrame("");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		menuPanel = new MenuPanel(getController());
@@ -37,4 +38,11 @@ public class MenuView extends View{
 		frame.dispose();
 	}
 
+	
+	public void about() {
+		JOptionPane.showMessageDialog(frame,
+				"Notre jeu blablabla",
+				"A propos",
+				JOptionPane.PLAIN_MESSAGE);
+	}
 }

@@ -16,4 +16,6 @@ public abstract class View {
 	
 	public abstract void display();
 	public abstract void close();
+	
+	public abstract void about();
 }

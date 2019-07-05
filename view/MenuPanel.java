@@ -59,7 +59,7 @@ public class MenuPanel extends JPanel {
 		about.setForeground(textColor);
 		about.setPreferredSize(buttonSize);
 		about.setFocusPainted(false);
-		about.addActionListener(new ButtonL());
+		about.addActionListener(new ButtonL()); 
 		add(about, gbc);
 		
 		exit = new JButton("Quitter");
@@ -84,8 +84,13 @@ public class MenuPanel extends JPanel {
 	
 	class ButtonL implements ActionListener {
 		
-		public void actionPerformed(ActionEvent arg0) {
-						
+		public void actionPerformed(ActionEvent e) {
+			if(e.getSource().equals(game))
+				controller.newGame();
+			else if(e.getSource().equals(about))
+				controller.about();
+			else
+				controller.closeView();
 		}
 	}
 }
