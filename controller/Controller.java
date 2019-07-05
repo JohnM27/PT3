@@ -1,7 +1,9 @@
 package controller;
 
-//import model;
+import view.MenuView;
 import view.View;
+
+//import model;
 
 public class Controller {
 	//private Model model;

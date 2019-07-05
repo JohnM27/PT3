@@ -2,13 +2,15 @@ package view;
 
 import javax.swing.JFrame;
 
-public class MenuView /*extends View*/{
+import controller.Controller;
+
+public class MenuView extends View{
 
 	private JFrame frame;
 	private MenuPanel menuPanel;
 	
-	public MenuView(/*Controller controller*/) {
-		//super(controller);
+	public MenuView(Controller controller) {
+		super(controller);
 		
 		buildFrame();
 	}
@@ -18,7 +20,8 @@ public class MenuView /*extends View*/{
 		frame = new JFrame("Jeu");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		menuPanel = new MenuPanel(/*getController()*/);
+		menuPanel = new MenuPanel(getController());
+		
 		frame.add(menuPanel);
 		
 		frame.pack();
