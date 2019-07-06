@@ -27,7 +27,7 @@ public class AdventurerPanel extends JPanel {
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		gbc.gridheight = 3;
-		icon.setPreferredSize(new Dimension(60,60));
+		icon.setMinimumSize(new Dimension(60,60));
 		icon.setBackground(new Color(255,100,100));
 		add(icon, gbc);
 		
@@ -47,7 +47,7 @@ public class AdventurerPanel extends JPanel {
 		mission = new JLabel("Nb Mission: " + 10);
 		gbc.gridx = 2;
 		gbc.gridy = 1;
-		add(name, gbc);
+		add(mission, gbc);
 		
 		health = new JLabel("PV: " + 100);
 		gbc.gridx = 1;
