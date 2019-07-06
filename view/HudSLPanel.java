@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Dimension;
+import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,7 +12,7 @@ public class HudSLPanel extends JPanel {
 	private int nbPierre = 0, nbBois = 0, nbNourriture = 0;
 	
 	public HudSLPanel() {
-		super();
+		super(new GridLayout(0,1));
 		
 		pierre = new JLabel("Pierre: " + nbPierre);
 		bois = new JLabel("Bois: " + nbBois);

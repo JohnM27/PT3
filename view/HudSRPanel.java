@@ -27,7 +27,7 @@ public class HudSRPanel extends JPanel {
 		this.controller = controller;
 		
 		this.setPreferredSize(new Dimension(230, 240));
-		
+		c.fill = GridBagConstraints.BOTH;
 		jour = new JLabel("Nombre de jour: " + nbJour);
 		c.gridx = 0;
 		c.gridy = 0;
