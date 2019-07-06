@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 import controller.Controller;
 
 public class HudSPanel extends JPanel{
-	private Controller controller;
 	
 	private HudSLPanel gauche;
 	private HudSCPanel centre;
@@ -14,12 +13,10 @@ public class HudSPanel extends JPanel{
 	
 	public HudSPanel(Controller controller) {
 		super();
-		
-		this.controller = controller;
-		
+				
 		gauche = new HudSLPanel();
-		centre = new HudSCPanel();
-		droite = new HudSRPanel(this.controller);
+		centre = new HudSCPanel(controller);
+		droite = new HudSRPanel(controller);
 		
 		
 		
