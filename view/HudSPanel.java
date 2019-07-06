@@ -1,6 +1,8 @@
 package view;
 
-import javax.swing.JLabel;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
 import javax.swing.JPanel;
 
 import controller.Controller;
@@ -12,18 +14,21 @@ public class HudSPanel extends JPanel{
 	private HudSRPanel droite;
 	
 	public HudSPanel(Controller controller) {
-		super();
+		super(new GridBagLayout());
+		
+		GridBagConstraints gbc = new GridBagConstraints(); 
 				
 		gauche = new HudSLPanel();
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		add(gauche, gbc);
+		
 		centre = new HudSCPanel(controller);
+		gbc.gridx = 1;
+		add(centre, gbc);
+		
 		droite = new HudSRPanel(controller);
-		
-		
-		
-		add(gauche);
-		add(centre);
-		add(droite);
-		
-		
+		gbc.gridx = 2;
+		add(droite, gbc);
 	}
 }

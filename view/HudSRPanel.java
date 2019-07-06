@@ -26,7 +26,7 @@ public class HudSRPanel extends JPanel {
 		
 		this.controller = controller;
 		
-		this.setPreferredSize(new Dimension(200, 380));
+		this.setPreferredSize(new Dimension(230, 240));
 		
 		jour = new JLabel("Nombre de jour: " + nbJour);
 		c.gridx = 0;

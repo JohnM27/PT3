@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 import javax.swing.JFrame;
 
@@ -29,16 +30,20 @@ public class GameView extends View {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		HudWPanel = new HudWPanel();
+		HudWPanel.setBackground(Color.BLUE);
 		frame.add(HudWPanel, BorderLayout.WEST);
 		
 		HudSPanel = new HudSPanel(controller);
+		HudSPanel.setBackground(Color.RED);
 		frame.add(HudSPanel, BorderLayout.SOUTH);
 		
 		HudCPanel = new HudCPanel(controller);
+		HudCPanel.setBackground(Color.GREEN);
 		frame.add(HudCPanel, BorderLayout.CENTER);
 		
 		
 		frame.pack();
+		frame.setExtendedState(frame.MAXIMIZED_BOTH);
 	}
 	
 	

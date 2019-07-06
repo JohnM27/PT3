@@ -17,7 +17,7 @@ public class HudSLPanel extends JPanel {
 		bois = new JLabel("Bois: " + nbBois);
 		nourriture = new JLabel("Nourriture: " + nbNourriture);
 		
-		this.setPreferredSize(new Dimension(420, 380));
+		this.setPreferredSize(new Dimension(390, 240));
 		
 		add(pierre);
 		add(bois);

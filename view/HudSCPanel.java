@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JLabel;
@@ -18,7 +19,8 @@ public class HudSCPanel extends JPanel {
 		 
 		 this.controller = controller;
 		 
-		 this.setPreferredSize(new Dimension(1300, 380));
+		 this.setPreferredSize(new Dimension(1300, 240));
+		 this.setBackground(new Color(255,100,100));
 		 
 		 switch(typeCase) {
 		 	default:
