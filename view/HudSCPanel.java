@@ -19,7 +19,8 @@ public class HudSCPanel extends JPanel {
 		 
 		 this.controller = controller;
 		 
-		 this.setPreferredSize(new Dimension(1300, 240));
+		 //this.setPreferredSize(new Dimension(1300, 240));
+		 this.setPreferredSize(new Dimension(932, 158));
 		 this.setBackground(new Color(255,100,100));
 		 
 		 switch(typeCase) {

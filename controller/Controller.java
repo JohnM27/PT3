@@ -4,23 +4,23 @@ import view.GameView;
 import view.MenuView;
 import view.View;
 
-//import model;
+import model.Model;
 
 public class Controller {
-	//private Model model;
+	private Model model;
 	private View view;
 	
-	public Controller(/*Model model*/) {
-		//this.model = model;
+	public Controller(Model model) {
+		this.model = model;
 		
 		view = new MenuView(this);
 		
-		//addListenersToModel();
+		addListenersToModel();
 	}
 	
-	/*private void addListenersToModel() {
-		
-	}*/
+	private void addListenersToModel() {
+		model.addJourListener(view);
+	}
 	
 	public void displayView() {
 		view.display();
@@ -32,7 +32,13 @@ public class Controller {
 
 	public void newGame() {
 		view.close();
-		view = new GameView(this);
+		view = new GameView(this, 0);
+		view.display();
+	}
+	
+	public void menu() {
+		view.close();
+		view = new MenuView(this);
 		view.display();
 	}
 
@@ -41,5 +47,7 @@ public class Controller {
 		
 	}
 	
-	
+	public void notifyVolumeChanged(int nbJour) {
+		model.setNbJour(nbJour);
+	}
 }

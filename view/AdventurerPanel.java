@@ -19,7 +19,7 @@ public class AdventurerPanel extends JPanel {
 		
 		GridBagConstraints gbc = new GridBagConstraints();
 		
-		this.setPreferredSize(new Dimension(270,100));
+		this.setPreferredSize(new Dimension(268,100));
 		
 		gbc.insets = new Insets(5,5,5,5);
 		

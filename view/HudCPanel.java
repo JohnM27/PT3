@@ -14,12 +14,13 @@ public class HudCPanel extends JPanel {
 	private JButton essai;
 	
 	public HudCPanel(Controller controller) {
-		super();
+		super(new GridLayout(1,0));
 		
 		this.controller = controller;
 		
 		essai = new JButton("ça prend toute la zone ?");
-		essai.setPreferredSize(new Dimension(1610,840));
+		//essai.setPreferredSize(new Dimension(1610,840));
+		essai.setPreferredSize(new Dimension(1098,610));
 		essai.setBackground(Color.green);
 		
 		add(essai);

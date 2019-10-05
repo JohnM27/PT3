@@ -2,10 +2,12 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
 import controller.Controller;
+import model.JourChangedEvent;
 
 public class GameView extends View {
 
@@ -16,16 +18,16 @@ public class GameView extends View {
 	private HudSPanel HudSPanel;
 	private HudCPanel HudCPanel;
 	
-	public GameView(Controller controller) {
+	public GameView(Controller controller, int nbJour) {
 		super(controller);
 
 		this.controller = controller;
 		
-		buildFrame();
+		buildFrame(nbJour);
 	}
 
 	
-	private void buildFrame() {
+	private void buildFrame(int nbJour) {
 		frame = new JFrame("Jeu");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -33,7 +35,7 @@ public class GameView extends View {
 		HudWPanel.setBackground(Color.BLUE);
 		frame.add(HudWPanel, BorderLayout.WEST);
 		
-		HudSPanel = new HudSPanel(controller);
+		HudSPanel = new HudSPanel(controller, nbJour);
 		HudSPanel.setBackground(Color.RED);
 		frame.add(HudSPanel, BorderLayout.SOUTH);
 		
@@ -41,9 +43,9 @@ public class GameView extends View {
 		HudCPanel.setBackground(Color.GREEN);
 		frame.add(HudCPanel, BorderLayout.CENTER);
 		
-		
 		frame.pack();
-		frame.setExtendedState(frame.MAXIMIZED_BOTH);
+		frame.setPreferredSize(new Dimension(1366,768));
+		//frame.setExtendedState(frame.MAXIMIZED_BOTH);
 	}
 	
 	
@@ -58,4 +60,10 @@ public class GameView extends View {
 	
 	public void about() {}
 
+
+	@Override
+	public void jourChanged(JourChangedEvent event) {
+		HudSPanel.getDroite().setNbJour(event.getJourChanged());
+		System.out.println("b");
+	}
 }

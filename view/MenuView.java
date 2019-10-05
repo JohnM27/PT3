@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import controller.Controller;
+import model.JourChangedEvent;
 
 public class MenuView extends View{
 
@@ -44,5 +45,12 @@ public class MenuView extends View{
 				"Notre jeu blablabla",
 				"A propos",
 				JOptionPane.PLAIN_MESSAGE);
+	}
+
+
+	@Override
+	public void jourChanged(JourChangedEvent event) {
+		// TODO Auto-generated method stub
+		
 	}
 }

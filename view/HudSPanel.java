@@ -13,7 +13,7 @@ public class HudSPanel extends JPanel{
 	private HudSCPanel centre;
 	private HudSRPanel droite;
 	
-	public HudSPanel(Controller controller) {
+	public HudSPanel(Controller controller, int nbJour) {
 		super(new GridBagLayout());
 		
 		GridBagConstraints gbc = new GridBagConstraints(); 
@@ -27,8 +27,12 @@ public class HudSPanel extends JPanel{
 		gbc.gridx = 1;
 		add(centre, gbc);
 		
-		droite = new HudSRPanel(controller);
+		droite = new HudSRPanel(controller, nbJour);
 		gbc.gridx = 2;
 		add(droite, gbc);
+	}
+	
+	public HudSRPanel getDroite() {
+		return droite;
 	}
 }

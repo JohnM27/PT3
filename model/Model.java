@@ -4,25 +4,40 @@ import javax.swing.event.EventListenerList;
 
 public class Model {
 
-	private EventListenerList listeners = new EventListenerList();
+	private EventListenerList listenersList;
+	private int nbJour;
+
+	public Model() {
+		listenersList = new EventListenerList();
+		
+		nbJour = 0;
+	}
 	
-	public void addMenuListener(MenuListener listener) {
-		listeners.add(MenuListener.class, listener);
+	public void setNbJour(int nbJour) {
+		this.nbJour = nbJour;
+		
+		fireInitializedNbCard();
+	}
+	
+	public int getNbJour() {
+		return nbJour;
+	}
+	
+	public void addJourListener(JourListener listener) {
+		listenersList.add(JourListener.class, listener);
 	}
 	
 	
-	public void removeInitializedNbCardListener(MenuListener listener) {
-		listeners.remove(MenuListener.class, listener);
+	public void removeInitializedNbCardListener(JourListener listener) {
+		listenersList.remove(JourListener.class, listener);
 	}
 	
 	
 	public void fireInitializedNbCard() {
-		MenuListener[] listenerList = 
-				(MenuListener[])listeners.getListeners(MenuListener.class);
+		JourListener[] listenerList = 
+				(JourListener[])listenersList.getListeners(JourListener.class);
 		
-		for(MenuListener listener : listenerList) {
-			listener.Menu(new MenuEvent(this));
-		}
+		for(JourListener listener : listenerList)
+			listener.jourChanged(new JourChangedEvent(this, nbJour));
 	}
-
 }
