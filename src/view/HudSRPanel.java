@@ -74,7 +74,6 @@ public class HudSRPanel extends JPanel {
 	public void setNbJour(int nbJour) {
 		this.nbJour = nbJour;
 		jour.setText("Jour " + nbJour);
-		System.out.println("a");
 	}
 	
 	
@@ -87,7 +86,7 @@ public class HudSRPanel extends JPanel {
 			else if(e.getSource().equals(quitter))
 				controller.closeView();
 			else if (e.getSource().equals(suivant))
-				controller.notifyVolumeChanged(nbJour+1);
+				controller.notifyJourChanged(nbJour+1);
 		}
 	}
 }

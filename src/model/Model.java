@@ -16,7 +16,7 @@ public class Model {
 	public void setNbJour(int nbJour) {
 		this.nbJour = nbJour;
 		
-		fireInitializedNbCard();
+		fireJourChanged();
 	}
 	
 	public int getNbJour() {
@@ -28,12 +28,12 @@ public class Model {
 	}
 	
 	
-	public void removeInitializedNbCardListener(JourListener listener) {
+	public void removeJourListener(JourListener listener) {
 		listenersList.remove(JourListener.class, listener);
 	}
 	
 	
-	public void fireInitializedNbCard() {
+	public void fireJourChanged() {
 		JourListener[] listenerList = 
 				(JourListener[])listenersList.getListeners(JourListener.class);
 		

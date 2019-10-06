@@ -8,8 +8,9 @@ import javax.swing.JFrame;
 
 import controller.Controller;
 import model.JourChangedEvent;
+import model.JourListener;
 
-public class GameView extends View {
+public class GameView extends View implements JourListener{
 
 	private Controller controller;
 	
@@ -64,6 +65,5 @@ public class GameView extends View {
 	@Override
 	public void jourChanged(JourChangedEvent event) {
 		HudSPanel.getDroite().setNbJour(event.getJourChanged());
-		System.out.println("b");
 	}
 }

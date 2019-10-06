@@ -8,46 +8,46 @@ import model.Model;
 
 public class Controller {
 	private Model model;
-	private View view;
+	private MenuView menuView;
+	private GameView gameView;
 	
 	public Controller(Model model) {
 		this.model = model;
 		
-		view = new MenuView(this);
-		
-		addListenersToModel();
+		menuView = new MenuView(this);
 	}
 	
 	private void addListenersToModel() {
-		model.addJourListener(view);
+		model.addJourListener(gameView);
 	}
 	
 	public void displayView() {
-		view.display();
+		menuView.display();
 	}
 	
 	public void closeView() {
-		view.close();
+		menuView.close();
 	}
 
 	public void newGame() {
-		view.close();
-		view = new GameView(this, 0);
-		view.display();
+		menuView.close();
+		gameView = new GameView(this, 0);
+		addListenersToModel();
+		gameView.display();
 	}
 	
 	public void menu() {
-		view.close();
-		view = new MenuView(this);
-		view.display();
+		gameView.close();
+		menuView = new MenuView(this);
+		menuView.display();
 	}
 
 	public void about() {
-		view.about();
+		menuView.about();
 		
 	}
 	
-	public void notifyVolumeChanged(int nbJour) {
+	public void notifyJourChanged(int nbJour) {
 		model.setNbJour(nbJour);
 	}
 }

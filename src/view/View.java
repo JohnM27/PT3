@@ -1,8 +1,7 @@
 package view;
 import controller.Controller;
-import model.JourListener;
 
-public abstract class View implements JourListener{
+public abstract class View{
 	private Controller controller;
 	
 	public View(Controller controller) {

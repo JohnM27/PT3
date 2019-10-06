@@ -46,11 +46,4 @@ public class MenuView extends View{
 				"A propos",
 				JOptionPane.PLAIN_MESSAGE);
 	}
-
-
-	@Override
-	public void jourChanged(JourChangedEvent event) {
-		// TODO Auto-generated method stub
-		
-	}
 }
