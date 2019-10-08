@@ -34,7 +34,7 @@ public class HudSRPanel extends JPanel {
 		this.nbJour = nbJour;
 		
 		//this.setPreferredSize(new Dimension(230, 240));
-		this.setPreferredSize(new Dimension(166, 158));
+		//this.setPreferredSize(new Dimension(166, 158));
 		c.fill = GridBagConstraints.BOTH;
 		jour = new JLabel("Jour " + this.nbJour, SwingConstants.CENTER);
 		jour.setFont(new Font("Sans Serif", Font.PLAIN, 28));
