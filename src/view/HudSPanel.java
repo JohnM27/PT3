@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -9,30 +10,41 @@ import controller.Controller;
 
 public class HudSPanel extends JPanel{
 	
-	private HudSLPanel gauche;
-	private HudSCPanel centre;
-	private HudSRPanel droite;
+	private HudSLPanel left;
+	private HudSCPanel center;
+	private HudSRPanel right;
 	
 	public HudSPanel(Controller controller, int nbJour) {
-		super(new GridBagLayout());
+		/*super(new GridBagLayout());
 		
 		GridBagConstraints gbc = new GridBagConstraints(); 
 				
-		gauche = new HudSLPanel();
+		left = new HudSLPanel();
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		add(gauche, gbc);
+		add(left, gbc);
 		
-		centre = new HudSCPanel(controller);
+		center = new HudSCPanel(controller);
 		gbc.gridx = 1;
-		add(centre, gbc);
+		add(center, gbc);
 		
-		droite = new HudSRPanel(controller, nbJour);
+		right = new HudSRPanel(controller, nbJour);
 		gbc.gridx = 2;
-		add(droite, gbc);
+		add(right, gbc);*/
+		
+		super(new BorderLayout());
+		
+		left = new HudSLPanel();
+		add(left, BorderLayout.WEST);
+		
+		center = new HudSCPanel(controller);
+		add(center, BorderLayout.CENTER);
+		
+		right = new HudSRPanel(controller, nbJour);
+		add(right, BorderLayout.EAST);
 	}
 	
 	public HudSRPanel getDroite() {
-		return droite;
+		return right;
 	}
 }

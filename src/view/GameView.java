@@ -15,9 +15,10 @@ public class GameView extends View implements JourListener{
 	private Controller controller;
 	
 	private JFrame frame;
-	private HudWPanel HudWPanel;
+	private GamePanel gp;
+	/*private HudWPanel HudWPanel;
 	private HudSPanel HudSPanel;
-	private HudCPanel HudCPanel;
+	private HudCPanel HudCPanel;*/
 	
 	public GameView(Controller controller, int nbJour) {
 		super(controller);
@@ -32,7 +33,7 @@ public class GameView extends View implements JourListener{
 		frame = new JFrame("Jeu");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		HudWPanel = new HudWPanel();
+		/*HudWPanel = new HudWPanel();
 		HudWPanel.setBackground(Color.BLUE);
 		frame.add(HudWPanel, BorderLayout.WEST);
 		
@@ -42,10 +43,16 @@ public class GameView extends View implements JourListener{
 		
 		HudCPanel = new HudCPanel(controller);
 		HudCPanel.setBackground(Color.GREEN);
-		frame.add(HudCPanel, BorderLayout.CENTER);
+		frame.add(HudCPanel, BorderLayout.CENTER);*/
+		
+		gp = new GamePanel(controller, nbJour);
+		frame.add(gp);
 		
 		frame.pack();
-		frame.setPreferredSize(new Dimension(1366,768));
+		frame.setResizable(false);
+		//frame.setMaximumSize(new Dimension(1366,768));
+		
+		
 		//frame.setExtendedState(frame.MAXIMIZED_BOTH);
 	}
 	
@@ -64,6 +71,6 @@ public class GameView extends View implements JourListener{
 
 	@Override
 	public void jourChanged(JourChangedEvent event) {
-		HudSPanel.getDroite().setNbJour(event.getJourChanged());
+		gp.getHudSPanel().getDroite().setNbJour(event.getJourChanged());
 	}
 }

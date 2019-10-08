@@ -27,6 +27,7 @@ public class Controller {
 	
 	public void closeView() {
 		menuView.close();
+		gameView.close();
 	}
 
 	public void newGame() {
