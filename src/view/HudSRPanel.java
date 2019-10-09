@@ -33,8 +33,7 @@ public class HudSRPanel extends JPanel {
 		this.controller = controller;
 		this.nbJour = nbJour;
 		
-		//this.setPreferredSize(new Dimension(230, 240));
-		//this.setPreferredSize(new Dimension(166, 158));
+		
 		c.fill = GridBagConstraints.BOTH;
 		jour = new JLabel("Jour " + this.nbJour, SwingConstants.CENTER);
 		jour.setFont(new Font("Sans Serif", Font.PLAIN, 28));
@@ -47,7 +46,7 @@ public class HudSRPanel extends JPanel {
 		suivant = new JButton("Jour suivant");
 		suivant.setPreferredSize(new Dimension(166,55));
 		suivant.setFont(new Font("Sans Serif", Font.PLAIN, 24));
-		suivant.addActionListener(new ButtonL());
+		suivant.addActionListener(controller);
 		c.insets = new Insets(0,0,0,0);
 		c.gridx = 0;
 		c.gridy = 1;
@@ -56,16 +55,16 @@ public class HudSRPanel extends JPanel {
 		menu = new JButton("Menu");
 		menu.setPreferredSize(buttonSize);
 		menu.setFont(new Font("Sans Serif", Font.PLAIN, 16));
-		menu.addActionListener(new ButtonL());
+		menu.addActionListener(controller);
 		c.gridx = 0;
 		c.gridy = 2;
 		c.gridwidth = 1;
 		add(menu, c);
 		
-		quitter = new JButton("Quitter");
+		quitter = new JButton("Exit");
 		quitter.setPreferredSize(buttonSize);
 		quitter.setFont(new Font("Sans Serif", Font.PLAIN, 16));
-		quitter.addActionListener(new ButtonL());
+		quitter.addActionListener(controller);
 		c.gridx = 1;
 		c.gridy = 2;
 		add(quitter, c);
@@ -76,17 +75,7 @@ public class HudSRPanel extends JPanel {
 		jour.setText("Jour " + nbJour);
 	}
 	
-	
-	
-	class ButtonL implements ActionListener {
-		
-		public void actionPerformed(ActionEvent e) {
-			if(e.getSource().equals(menu))
-				controller.menu();
-			else if(e.getSource().equals(quitter))
-				controller.closeView();
-			else if (e.getSource().equals(suivant))
-				controller.notifyJourChanged(nbJour+1);
-		}
+	public int getNbJour() {
+		return nbJour;
 	}
 }

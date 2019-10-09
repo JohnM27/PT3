@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 public class HudWUPanel extends JPanel {
 	
 	private AdventurerPanel[] AdventurerPanel = new AdventurerPanel[4];
-	private Boolean[] active = new Boolean[]{true, true, true, true};
+	private Boolean[] active = new Boolean[]{true, false, true, false};
 	
 	public HudWUPanel() {
 		super(new GridLayout(0,1));

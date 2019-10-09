@@ -60,6 +60,10 @@ public class GameView extends View implements JourListener{
 	}
 	
 	public void about() {}
+	
+	public HudSPanel getHudSPanel() {
+		return HudSPanel;
+	}
 
 
 	@Override

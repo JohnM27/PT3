@@ -40,7 +40,7 @@ public class MenuPanel extends JPanel {
 		
 		gbc.insets = new Insets(10,30,10,30);
 		
-		game = new JButton("Nouvelle Partie");
+		game = new JButton("New Game");
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		game.setFont(font);
@@ -48,10 +48,10 @@ public class MenuPanel extends JPanel {
 		game.setForeground(textColor);
 		game.setPreferredSize(buttonSize);
 		game.setFocusPainted(false);
-		game.addActionListener(new ButtonL());
+		game.addActionListener(controller);
 		add(game, gbc);
 		
-		about = new JButton("A Propos");
+		about = new JButton("About");
 		gbc.gridx = 0;
 		gbc.gridy = 1;
 		about.setFont(font);
@@ -59,10 +59,10 @@ public class MenuPanel extends JPanel {
 		about.setForeground(textColor);
 		about.setPreferredSize(buttonSize);
 		about.setFocusPainted(false);
-		about.addActionListener(new ButtonL()); 
+		about.addActionListener(controller); 
 		add(about, gbc);
 		
-		exit = new JButton("Quitter");
+		exit = new JButton("Exit");
 		gbc.gridx = 0;
 		gbc.gridy = 2;
 		exit.setFont(font);
@@ -70,7 +70,7 @@ public class MenuPanel extends JPanel {
 		exit.setForeground(textColor);
 		exit.setPreferredSize(buttonSize);
 		exit.setFocusPainted(false);
-		exit.addActionListener(new ButtonL());
+		exit.addActionListener(controller);
 		add(exit, gbc);
 		
 		version = new JLabel("Alpha 1.0");
@@ -79,18 +79,5 @@ public class MenuPanel extends JPanel {
 		version.setFont(font);
 		version.setForeground(textColor);
 		add(version, gbc);
-	}
-	
-	
-	class ButtonL implements ActionListener {
-		
-		public void actionPerformed(ActionEvent e) {
-			if(e.getSource().equals(game))
-				controller.newGame();
-			else if(e.getSource().equals(about))
-				controller.about();
-			else
-				controller.closeView();
-		}
 	}
 }

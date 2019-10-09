@@ -31,13 +31,6 @@ public class HudCPanel extends JPanel {
 		super();
 		
 		this.controller = controller;
-		/*
-		essai = new JButton("ça prend toute la zone ?");
-		essai.setPreferredSize(new Dimension(1098,610));
-		essai.setBackground(Color.green);
-		
-		add(essai);
-		*/
 
 		this.addMouseListener(new Mouse());
 		this.setPreferredSize(new Dimension(1098, 610));
