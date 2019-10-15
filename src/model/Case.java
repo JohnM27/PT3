@@ -4,21 +4,21 @@ import java.awt.Image;
 
 public abstract class Case {
 
-	private Image im;
+	private Image img;
 	private int x, y;
 	
-	public Case(int x, int y, Image im) {
+	public Case(int x, int y, Image img) {
 		this.x = x;
 		this.y = y;
-		this.im = im;
+		this.img = img;
 	}
 	
 	public Image getImage() {
-		return im;
+		return img;
 	}
 	
-	public void setImage(Image im) {
-		this.im = im;
+	public void setImage(Image img) {
+		this.img = img;
 	}
 	
 	public int getX() {
