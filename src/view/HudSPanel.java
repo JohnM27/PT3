@@ -15,24 +15,7 @@ public class HudSPanel extends JPanel{
 	private HudSCPanel center;
 	private HudSRPanel right;
 	
-	public HudSPanel(Controller controller, int nbJour) {
-		/*super(new GridBagLayout());
-		
-		GridBagConstraints gbc = new GridBagConstraints(); 
-				
-		left = new HudSLPanel();
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		add(left, gbc);
-		
-		center = new HudSCPanel(controller);
-		gbc.gridx = 1;
-		add(center, gbc);
-		
-		right = new HudSRPanel(controller, nbJour);
-		gbc.gridx = 2;
-		add(right, gbc);*/
-		
+	public HudSPanel(Controller controller) {		
 		super(new BorderLayout());
 		
 		left = new HudSLPanel();
@@ -41,11 +24,19 @@ public class HudSPanel extends JPanel{
 		center = new HudSCPanel(controller);
 		add(center, BorderLayout.CENTER);
 		
-		right = new HudSRPanel(controller, nbJour);
+		right = new HudSRPanel(controller);
 		add(right, BorderLayout.EAST);
 	}
-	
-	public HudSRPanel getDroite() {
+
+	public HudSLPanel getLeft() {
+		return left;
+	}
+
+	public HudSCPanel getCenter() {
+		return center;
+	}
+
+	public HudSRPanel getRight() {
 		return right;
 	}
 }

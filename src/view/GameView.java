@@ -2,15 +2,15 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
 import controller.Controller;
+import model.GlobalListener;
 import model.JourChangedEvent;
-import model.JourListener;
+import model.MapGeneratedEvent;
 
-public class GameView extends View implements JourListener{
+public class GameView extends View implements GlobalListener{
 
 	private Controller controller;
 	
@@ -20,16 +20,16 @@ public class GameView extends View implements JourListener{
 	private HudSPanel HudSPanel;
 	private HudCPanel HudCPanel;
 	
-	public GameView(Controller controller, int nbJour) {
+	public GameView(Controller controller) {
 		super(controller);
 
 		this.controller = controller;
 		
-		buildFrame(nbJour);
+		buildFrame();
 	}
 
 	
-	private void buildFrame(int nbJour) {
+	private void buildFrame() {
 		frame = new JFrame("Jeu");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -37,7 +37,7 @@ public class GameView extends View implements JourListener{
 		HudWPanel.setBackground(Color.BLUE);
 		frame.add(HudWPanel, BorderLayout.WEST);
 		
-		HudSPanel = new HudSPanel(controller, nbJour);
+		HudSPanel = new HudSPanel(controller);
 		HudSPanel.setBackground(Color.RED);
 		frame.add(HudSPanel, BorderLayout.SOUTH);
 		
@@ -54,20 +54,21 @@ public class GameView extends View implements JourListener{
 		frame.setVisible(true);
 	}
 	
-	
 	public void close() {
 		frame.dispose();
 	}
 	
 	public void about() {}
-	
-	public HudSPanel getHudSPanel() {
-		return HudSPanel;
+
+	@Override
+	public void jourChanged(JourChangedEvent event) {
+		HudSPanel.getRight().setNbJour(event.getJourChanged());
 	}
 
 
 	@Override
-	public void jourChanged(JourChangedEvent event) {
-		HudSPanel.getDroite().setNbJour(event.getJourChanged());
+	public void MapGenerated(MapGeneratedEvent event) {
+		HudCPanel.mapGenerated(event.getImg());
+		
 	}
 }

@@ -20,22 +20,19 @@ public class HudSRPanel extends JPanel {
 	
 	private JButton suivant, menu, quitter;
 	private JLabel jour;
-	
-	private int nbJour;
 		
 	private static Dimension buttonSize = new Dimension(83,40);
 	
 	GridBagConstraints c = new GridBagConstraints();
 	
-	public HudSRPanel(Controller controller, int nbJour) {
+	public HudSRPanel(Controller controller) {
 		super(new GridBagLayout());
 		
 		this.controller = controller;
-		this.nbJour = nbJour;
 		
 		
 		c.fill = GridBagConstraints.BOTH;
-		jour = new JLabel("Jour " + this.nbJour, SwingConstants.CENTER);
+		jour = new JLabel("Jour 0", SwingConstants.CENTER);
 		jour.setFont(new Font("Sans Serif", Font.PLAIN, 28));
 		c.insets = new Insets(13,5,13,5);
 		c.gridx = 0;
@@ -71,11 +68,6 @@ public class HudSRPanel extends JPanel {
 	}
 	
 	public void setNbJour(int nbJour) {
-		this.nbJour = nbJour;
 		jour.setText("Jour " + nbJour);
-	}
-	
-	public int getNbJour() {
-		return nbJour;
 	}
 }

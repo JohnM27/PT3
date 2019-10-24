@@ -593,5 +593,16 @@ public class Map {
 			}
 		}
 	}
+
+	public Image[][] getAllImages() {
+		Image[][] img = new Image[10][18];
+		
+		for(int i = 0; i < map.length; i++) {
+			for(int j = 0; j < map[0].length; j++) {
+				img[i][j] = map[i][j].getImage();
+			}
+		}
+		return img;
+	}
 	
 }

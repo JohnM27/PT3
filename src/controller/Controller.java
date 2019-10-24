@@ -2,6 +2,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import model.Model;
 import view.GameView;
@@ -13,7 +15,7 @@ import view.MenuView;
  * a {@link MenuView}
  * and a {@link GameView}
  */
-public class Controller implements ActionListener{
+public class Controller extends MouseAdapter implements ActionListener{
 	private Model model; 
 	private MenuView menuView;
 	private GameView gameView;
@@ -32,7 +34,7 @@ public class Controller implements ActionListener{
 	 * Calls the method {@link addJourListener()} from the {@link Model}
 	 */
 	private void addListenersToModel() {
-		model.addJourListener(gameView);
+		model.addGlobalListener(gameView);
 	}
 	
 	/**
@@ -56,8 +58,9 @@ public class Controller implements ActionListener{
 	 */
 	public void newGame() {
 		closeMenuView();
-		gameView = new GameView(this, 0);
+		gameView = new GameView(this);
 		addListenersToModel();
+		model.fireMapGenerated();
 		gameView.display();
 	}
 	
@@ -78,20 +81,9 @@ public class Controller implements ActionListener{
 	public void about() {
 		menuView.about();
 	}
-	
-	/**
-	 * Calls the method {@link setNbJour(int nbJour)} from
-	 * the {@link Model}
-	 * @param nbJour: Nombre du jour
-	 */
-	public void notifyJourChanged(int nbJour) {
-		model.setNbJour(nbJour);
-	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		
 		if(e.getActionCommand().equals("New Game"))
 			newGame();
 		else if(e.getActionCommand().equals("About"))
@@ -103,6 +95,17 @@ public class Controller implements ActionListener{
 		else if(e.getActionCommand().equals("Menu"))
 			menu();
 		else if(e.getActionCommand().equals("Jour suivant"))
-			notifyJourChanged(gameView.getHudSPanel().getDroite().getNbJour()+1);
+			model.fireJourChanged();
+	}
+	
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		int x = e.getX();
+		int y = e.getY();
+		System.out.println("Coordonnées:");
+		System.out.println(x);
+		System.out.println(x/61);
+		System.out.println(y);
+		System.out.println(y/61);
 	}
 }
