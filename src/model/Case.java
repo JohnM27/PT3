@@ -6,8 +6,10 @@ public abstract class Case {
 
 	private Image img;
 	private int x, y;
+	private Territory territory;
 	
 	public Case(int x, int y, Image img) {
+		territory = new Territory();
 		this.x = x;
 		this.y = y;
 		this.img = img;
@@ -27,5 +29,13 @@ public abstract class Case {
 	
 	public int getY() {
 		return y;
+	}
+
+	public Image getImageOver() {
+		return territory.getOver();
+	}
+	
+	public void setImageOver() {
+		territory.setOver();
 	}
 }

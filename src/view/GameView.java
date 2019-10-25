@@ -68,7 +68,7 @@ public class GameView extends View implements GlobalListener{
 
 	@Override
 	public void MapGenerated(MapGeneratedEvent event) {
-		HudCPanel.mapGenerated(event.getImg());
+		HudCPanel.mapGenerated(event.getImg(), event.getImgOver());
 		
 	}
 }

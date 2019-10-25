@@ -41,6 +41,6 @@ public class Model {
 		m.genererMap();
 		
 		for(GlobalListener listener : listenerList)
-			listener.MapGenerated(new MapGeneratedEvent(this, m.getAllImages()));
+			listener.MapGenerated(new MapGeneratedEvent(this, m.getAllImages(), m.getAllImagesOver()));
 	}
 }

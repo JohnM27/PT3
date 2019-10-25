@@ -140,6 +140,36 @@ public class Map {
 		return map[i][j].getImage();
 	}
 	
+	public Image[][] getAllImages() {
+		Image[][] img = new Image[10][18];
+		
+		for(int i = 0; i < map.length; i++) {
+			for(int j = 0; j < map[0].length; j++) {
+				img[i][j] = map[i][j].getImage();
+			}
+		}
+		return img;
+	}
+	
+	public Image getImageOver(int i, int j) {
+		return map[i][j].getImageOver();
+	}
+	
+	public Image[][] getAllImagesOver() {
+		Image[][] imgOver = new Image[10][18];
+		
+		for(int i = 0; i < map.length; i++) {
+			for(int j = 0; j < map[0].length; j++) {
+				imgOver[i][j] = map[i][j].getImageOver();
+			}
+		}
+		return imgOver;
+	}
+	
+	public void setImageOver(int i, int j) {
+		map[i][j].setImageOver();
+	}
+	
 	public void genererMap() {
 		int valeur;
 		for(int i = 0; i < map.length; i++) {
@@ -189,6 +219,9 @@ public class Map {
 					else {
 						map[i][j] = new Mountain(i, j, mountain_2);
 					}
+				}
+				if(i >= 305/61) {
+					map[i][j].setImageOver();
 				}
 			}
 		}
@@ -594,15 +627,5 @@ public class Map {
 		}
 	}
 
-	public Image[][] getAllImages() {
-		Image[][] img = new Image[10][18];
-		
-		for(int i = 0; i < map.length; i++) {
-			for(int j = 0; j < map[0].length; j++) {
-				img[i][j] = map[i][j].getImage();
-			}
-		}
-		return img;
-	}
 	
 }
