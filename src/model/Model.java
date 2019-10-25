@@ -1,7 +1,5 @@
 package model;
 
-import java.awt.Image;
-
 import javax.swing.event.EventListenerList;
 
 public class Model {
@@ -13,6 +11,10 @@ public class Model {
 	public Model() {
 		listenersList = new EventListenerList();
 		nbJour = 0;
+	}
+	
+	public boolean getPossessed(int i, int j) {
+		return m.getPossessed(i, j);
 	}
 	
 	public void addGlobalListener(GlobalListener listener) {
@@ -42,5 +44,17 @@ public class Model {
 		
 		for(GlobalListener listener : listenerList)
 			listener.MapGenerated(new MapGeneratedEvent(this, m.getAllImages(), m.getAllImagesOver()));
+	}
+	
+	//Enleve le brouillard d'une case
+	public void fireFogOff(int i, int j) {
+		GlobalListener [] listenerList = 
+				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		
+		m.setImageOver(i, j);
+		m.setPossessed(i, j);
+		
+		for(GlobalListener listener : listenerList)
+			listener.FogOff(new FogOffEvent(this, i, j));
 	}
 }

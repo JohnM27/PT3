@@ -35,6 +35,10 @@ public class Territory {
 	public void setOver() {
 		this.over = null;
 	}
+
+	public boolean getPossessed() {
+		return possessed;
+	}
 	
 	
 }

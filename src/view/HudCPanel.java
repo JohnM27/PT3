@@ -3,16 +3,10 @@ package view;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import controller.Controller;
-import model.Map;
 
 public class HudCPanel extends JPanel {
 	private Controller controller;
@@ -46,5 +40,10 @@ public class HudCPanel extends JPanel {
 	public void mapGenerated(Image[][] img, Image[][] imgOver) {
 		this.img = img;
 		this.imgOver = imgOver;
+	}
+	
+	public void fogOff(int i, int j) {
+		this.imgOver[i][j] = null;
+		repaint();
 	}
 }
