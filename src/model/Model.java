@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.Image;
+
 import javax.swing.event.EventListenerList;
 
 public class Model {
@@ -7,10 +9,27 @@ public class Model {
 	private EventListenerList listenersList;
 	private int nbJour;
 	private Map m = new Map();
+	private int[] coord = new int[2];
 
 	public Model() {
 		listenersList = new EventListenerList();
 		nbJour = 0;
+	}
+	
+	public int getNbJour() {
+		return nbJour;
+	}
+	
+	public Image[][] getImg() {
+		return m.getAllImages();
+	}
+
+	public Image[][] getImgOver() {
+		return m.getAllImagesOver();
+	}
+	
+	public int[] getCoord() {
+		return coord;
 	}
 	
 	public boolean getPossessed(int i, int j) {
@@ -33,7 +52,7 @@ public class Model {
 		nbJour++;
 		
 		for(GlobalListener listener : listenerList)
-			listener.jourChanged(new JourChangedEvent(this, nbJour));
+			listener.jourChanged(new MapEvent(this));
 	}
 	
 	public void fireMapGenerated() {
@@ -43,7 +62,7 @@ public class Model {
 		m.genererMap();
 		
 		for(GlobalListener listener : listenerList)
-			listener.MapGenerated(new MapGeneratedEvent(this, m.getAllImages(), m.getAllImagesOver()));
+			listener.MapGenerated(new MapEvent(this));
 	}
 	
 	//Enleve le brouillard d'une case
@@ -53,8 +72,10 @@ public class Model {
 		
 		m.setImageOver(i, j);
 		m.setPossessed(i, j);
+		coord[0] = i;
+		coord[1] = j;
 		
 		for(GlobalListener listener : listenerList)
-			listener.FogOff(new FogOffEvent(this, i, j));
+			listener.FogOff(new MapEvent(this));
 	}
 }

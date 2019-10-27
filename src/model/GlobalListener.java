@@ -4,9 +4,9 @@ import java.util.EventListener;
 
 public interface GlobalListener extends EventListener {
 
-	public void jourChanged(JourChangedEvent event);
+	public void jourChanged(MapEvent event);
 
-	public void MapGenerated(MapGeneratedEvent mapGeneratedEvent);
+	public void MapGenerated(MapEvent mapGeneratedEvent);
 	
-	public void FogOff(FogOffEvent FogOffEvent);
+	public void FogOff(MapEvent FogOffEvent);
 }

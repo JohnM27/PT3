@@ -6,10 +6,8 @@ import java.awt.Color;
 import javax.swing.JFrame;
 
 import controller.Controller;
-import model.FogOffEvent;
 import model.GlobalListener;
-import model.JourChangedEvent;
-import model.MapGeneratedEvent;
+import model.MapEvent;
 
 public class GameView extends View implements GlobalListener{
 
@@ -62,18 +60,17 @@ public class GameView extends View implements GlobalListener{
 	public void about() {}
 
 	@Override
-	public void jourChanged(JourChangedEvent event) {
-		HudSPanel.getRight().setNbJour(event.getJourChanged());
+	public void jourChanged(MapEvent event) {
+		HudSPanel.getRight().setNbJour(event.getNbJour());
 	}
 
 	@Override
-	public void MapGenerated(MapGeneratedEvent event) {
+	public void MapGenerated(MapEvent event) {
 		HudCPanel.mapGenerated(event.getImg(), event.getImgOver());
-		
 	}
 
 	@Override
-	public void FogOff(FogOffEvent event) {
+	public void FogOff(MapEvent event) {
 		int[] coord = event.getCoord();
 		HudCPanel.fogOff(coord[0], coord[1]);
 	}

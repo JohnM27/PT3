@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import controller.Controller;
-import model.JourChangedEvent;
 
 public class MenuView extends View{
 
