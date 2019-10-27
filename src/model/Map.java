@@ -27,10 +27,8 @@ public class Map {
 	
 	public Map() {
 		n = new Noise();
-		int i = 0;
 		try {
 			water = ImageIO.read(new File("Graphismes/Water.png"));
-			System.out.println(i);
 			waterB = ImageIO.read(new File("Graphismes/WaterB.png"));
 			waterCornerAllExt = ImageIO.read(new File("Graphismes/WaterCornerAllExt.png"));
 			waterCornerBDExt = ImageIO.read(new File("Graphismes/WaterCornerBDExt.png"));
@@ -38,86 +36,45 @@ public class Map {
 			waterCornerBDExt_G = ImageIO.read(new File("Graphismes/WaterCornerBDExt_G.png"));
 			waterCornerBDExt_H = ImageIO.read(new File("Graphismes/WaterCornerBDExt_H.png"));
 			waterCornerBDInt = ImageIO.read(new File("Graphismes/WaterCornerBDInt.png"));
-			System.out.println(i+=1);
 			waterCornerBGExt = ImageIO.read(new File("Graphismes/WaterCornerBGExt.png"));
-			System.out.println(i+=1);
 			waterCornerHGExt_B = ImageIO.read(new File("Graphismes/WaterCornerHGExt_B.png"));
-			System.out.println(i+=1);
 			waterCornerBGExt_CornerBDExt = ImageIO.read(new File("Graphismes/WaterCornerBGExt_CornerBDExt.png"));
-			System.out.println(i+=1);
 			waterCornerBGExt_CornerHDInt = ImageIO.read(new File("Graphismes/WaterCornerBGExt_CornerHDInt.png"));
-			System.out.println(i+=1);
 			waterCornerBGExt_D = ImageIO.read(new File("Graphismes/WaterCornerBGExt_D.png"));
-			System.out.println(i+=1);
 			waterCornerBGInt = ImageIO.read(new File("Graphismes/WaterCornerBGInt.png"));
-			System.out.println(i+=1);
 			waterCornerBGExt_H = ImageIO.read(new File("Graphismes/WaterCornerBGExt_H.png"));
-			System.out.println(i+=1);
 			waterCornerHDExt = ImageIO.read(new File("Graphismes/WaterCornerHDExt.png"));
-			System.out.println(i+=1);
 			waterCornerHDExt_B = ImageIO.read(new File("Graphismes/waterCornerHDExt_B.png"));
-			System.out.println(i+=1);
 			waterCornerHDExt_CornerBDExt = ImageIO.read(new File("Graphismes/WaterCornerHDExt_CornerBDExt.png"));
-			System.out.println(i+=1);
 			waterCornerHDExt_CornerBGExt = ImageIO.read(new File("Graphismes/WaterCornerHDExt_CornerBGExt.png"));
-			System.out.println(i+=1);
 			waterCornerHDExt_CornerBGExt_CornerBDExt = ImageIO.read(new File("Graphismes/WaterCornerHDExt_CornerBGExt_CornerBDExt.png"));
-			System.out.println(i+=1);
 			waterCornerHDExt_CornerBGInt = ImageIO.read(new File("Graphismes/WaterCornerHDExt_CornerBGInt.png"));
-			System.out.println(i+=1);
 			waterCornerHDInt = ImageIO.read(new File("Graphismes/WaterCornerHDInt.png"));
-			System.out.println(i+=1);
 			waterCornerHGExt = ImageIO.read(new File("Graphismes/WaterCornerHGExt.png"));
-			System.out.println(i+=1);
 			waterCornerHGExt_CornerBDExt = ImageIO.read(new File("Graphismes/WaterCornerHGExt_CornerBDExt.png"));
-			System.out.println(i+=1);
 			waterCornerHGExt_CornerBDInt = ImageIO.read(new File("Graphismes/WaterCornerHGExt_CornerBDInt.png"));
-			System.out.println(i+=1);
 			waterCornerHGExt_CornerBGExt = ImageIO.read(new File("Graphismes/WaterCornerHGExt_CornerBGExt.png"));
-			System.out.println(i+=1);
 			waterCornerHGExt_CornerBGExt_CornerBDExt = ImageIO.read(new File("Graphismes/WaterCornerHGExt_CornerBGExt_CornerBDExt.png"));
-			System.out.println(i+=1);
 			waterCornerHGExt_CornerHDExt = ImageIO.read(new File("Graphismes/WaterCornerHGExt_CornerHDExt.png"));
-			System.out.println(i+=1);
 			waterCornerHGExt_CornerHDExt_CornerBDExt = ImageIO.read(new File("Graphismes/WaterCornerHGExt_CornerHDExt_CornerBDExt.png"));
-			System.out.println(i+=1);
 			waterCornerHGExt_CornerHDExt_CornerBGExt = ImageIO.read(new File("Graphismes/WaterCornerHGExt_CornerHDExt_CornerBGExt.png"));
-			System.out.println(i+=1);
 			waterCornerHGInt = ImageIO.read(new File("Graphismes/WaterCornerHGInt.png"));
-			System.out.println(i+=1);
 			waterD = ImageIO.read(new File("Graphismes/WaterD.png"));
-			System.out.println(i+=1);
 			waterG = ImageIO.read(new File("Graphismes/WaterG.png"));
-			System.out.println(i+=1);
 			waterGD = ImageIO.read(new File("Graphismes/WaterGD.png"));
-			System.out.println(i+=1);
 			waterH = ImageIO.read(new File("Graphismes/WaterH.png"));
-			System.out.println(i+=1);
 			waterHB = ImageIO.read(new File("Graphismes/WaterHB.png"));
-			System.out.println(i+=1);
 			waterCornerHDExt_G = ImageIO.read(new File("Graphismes/WaterCornerHDExt_G.png"));
-			System.out.println(i+=1);
 			waterCornerHGExt_D = ImageIO.read(new File("Graphismes/WaterCornerHGExt_D.png"));
-			System.out.println(i+=1);
 			waterCornerBGInt_CornerBDInt = ImageIO.read(new File("Graphismes/WaterCornerBGInt_CornerBDInt.png"));
-			System.out.println(i+=1);
 			waterCornerHDInt_CornerBDInt = ImageIO.read(new File("Graphismes/WaterCornerHDInt_CornerBDInt.png"));
-			System.out.println(i+=1);
 			waterCornerAllInt = ImageIO.read(new File("Graphismes/WaterCornerAllInt.png"));
-			System.out.println(i+=1);
 			waterCornerHGInt_CornerBGInt = ImageIO.read(new File("Graphismes/WaterCornerHGInt_CornerBGInt.png"));
-			System.out.println(i+=1);
 			waterCornerHGInt_CornerHDInt = ImageIO.read(new File("Graphismes/WaterCornerHGInt_CornerHDInt.png"));
-			System.out.println(i+=1);
 			waterCornerBGExt_CornerBDExt_H = ImageIO.read(new File("Graphismes/WaterCornerBGExt_CornerBDExt_H.png"));
-			System.out.println(i+=1);
 			waterCornerHGExt_CornerBGExt_D = ImageIO.read(new File("Graphismes/WaterCornerHGExt_CornerBGExt_D.png"));
-			System.out.println(i+=1);
 			waterCornerHGExt_CornerHDExt_B = ImageIO.read(new File("Graphismes/WaterCornerHGExt_CornerHDExt_B.png"));
-			System.out.println(i+=1);
 			waterCornerHDExt_CornerBDExt_G = ImageIO.read(new File("Graphismes/WaterCornerHDExt_CornerBDExt_G.png"));
-			System.out.println(i+=1);
-			
 			mountain_1 = ImageIO.read(new File("Graphismes/Mountain_1.png"));
 			mountain_2 = ImageIO.read(new File("Graphismes/Mountain_2.png"));
 			grass_1 = ImageIO.read(new File("Graphismes/Grass_1.png"));
@@ -133,7 +90,6 @@ public class Map {
 		catch(IOException e) {
 			System.out.println(e);
 		}
-		System.out.println(map.length);
 	}
 	
 	public Image getImage(int i, int j) {
@@ -168,6 +124,15 @@ public class Map {
 	
 	public void setImageOver(int i, int j) {
 		map[i][j].setImageOver();
+	}
+	
+	public void setPossessed(int i, int j) {
+		map[i][j].setPossessed();
+	}
+	
+	public boolean getPossessed(int i, int j) {
+		return map[i][j].getPossessed();
+		
 	}
 	
 	public void genererMap() {
@@ -220,9 +185,6 @@ public class Map {
 						map[i][j] = new Mountain(i, j, mountain_2);
 					}
 				}
-				if(i >= 305/61) {
-					map[i][j].setImageOver();
-				}
 			}
 		}
 		selectionWater();
@@ -231,12 +193,9 @@ public class Map {
 	private void selectionWater() {
 		
 		for(int i = 0; i < map.length; i++) {
-			System.out.println();
 			for(int j = 0; j < map[0].length; j++) {
-				System.out.print(i+";"+j+"|");
 				if(map[i][j] instanceof Water) {
 					if(i == 0 && j == 0) {
-						System.out.println("Coin HG: "+i+";"+j);
 						if(!(map[i][j+1] instanceof Water) && !(map[i+1][j] instanceof Water)){
 							map[i][j].setImage(waterCornerBDInt);
 						}
@@ -254,7 +213,6 @@ public class Map {
 						}
 					}
 					else if(i == 0 && j == map[0].length-1) {
-						System.out.println("Coin HD: "+i+";"+j);
 						if(!(map[i][j-1] instanceof Water) && !(map[i+1][j] instanceof Water)){
 							map[i][j].setImage(waterCornerBGInt);
 						}
@@ -272,7 +230,6 @@ public class Map {
 						}
 					}
 					else if(i == map.length-1 && j == 0) {
-						System.out.println("Coin BG: "+i+";"+j);
 						if(!(map[i][j+1] instanceof Water) && !(map[i-1][j] instanceof Water)){
 							map[i][j].setImage(waterCornerHDInt);
 						}
@@ -290,7 +247,6 @@ public class Map {
 						}
 					}
 					else if(i == map.length-1 && j == map[0].length-1) {
-						System.out.println("Coin BD: "+i+";"+j);
 						if(!(map[i-1][j] instanceof Water) && !(map[i][j-1] instanceof Water)){
 							map[i][j].setImage(waterCornerHGInt);
 						}
@@ -308,7 +264,6 @@ public class Map {
 						}
 					}
 					else if(i == 0) {
-						System.out.println("Côté H: "+i+";"+j);
 						if(!(map[i][j-1] instanceof Water) && !(map[i+1][j] instanceof Water) && !(map[i][j+1] instanceof Water)){
 							map[i][j].setImage(waterCornerBGInt_CornerBDInt);
 						}
@@ -350,7 +305,6 @@ public class Map {
 						}
 					}
 					else if(i == map.length-1) {
-						System.out.println("Côté B: "+i+";"+j);
 						if(!(map[i][j-1] instanceof Water) && !(map[i-1][j] instanceof Water) && !(map[i][j+1] instanceof Water)){
 							map[i][j].setImage(waterCornerHGInt_CornerHDInt);
 						}
@@ -392,7 +346,6 @@ public class Map {
 						}
 					}
 					else if(j == 0) {
-						System.out.println("Côté G: "+i+";"+j);
 						if(!(map[i][j+1] instanceof Water) && !(map[i-1][j] instanceof Water) && !(map[i+1][j] instanceof Water)){
 							map[i][j].setImage(waterCornerHDInt_CornerBDInt);
 						}
@@ -437,7 +390,6 @@ public class Map {
 						}
 					}
 					else if(j == map[0].length-1) {
-						System.out.println("Côté D: "+i+";"+j);
 						if(!(map[i][j-1] instanceof Water) && !(map[i-1][j] instanceof Water) && !(map[i+1][j] instanceof Water)){
 							map[i][j].setImage(waterCornerHGInt_CornerBGInt);
 						}

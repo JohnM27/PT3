@@ -35,10 +35,6 @@ public class Noise {
 				i++;
 			}
 		}
-		
-		for(int k = 0; k < perm.length; k++) {
-			System.out.print(perm[k]+"; ");
-		}
 	}
 		
 	public double creerNoise(float x, float y, float res) {

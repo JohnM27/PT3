@@ -23,6 +23,14 @@ public abstract class Case {
 		this.img = img;
 	}
 	
+	public void setPossessed() {
+		territory.setPossessed(true);
+	}
+	
+	public boolean getPossessed() {
+		return territory.getPossessed();
+	}
+	
 	public int getX() {
 		return x;
 	}

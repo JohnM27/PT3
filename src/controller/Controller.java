@@ -100,12 +100,18 @@ public class Controller extends MouseAdapter implements ActionListener{
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		int x = e.getX();
-		int y = e.getY();
-		System.out.println("Coordonnées:");
-		System.out.println(x);
-		System.out.println(x/61);
-		System.out.println(y);
-		System.out.println(y/61);
+		int i = e.getX();
+		int j = e.getY();
+		
+		//inversion des coordonnées pour correspondre au tableau
+		if(!model.getPossessed(j/61, i/61)) {
+			//on remplacera par l'affichage d'un bouton "acheter" dans le panneau en dessous
+			model.fireFogOff(j/61, i/61);
+		}
+		else {
+			//la case appartient au joueur donc on regarde le type de la case et en fonction du type de la case on affiche
+			
+		}
+		
 	}
 }

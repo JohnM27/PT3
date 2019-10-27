@@ -7,4 +7,6 @@ public interface GlobalListener extends EventListener {
 	public void jourChanged(JourChangedEvent event);
 
 	public void MapGenerated(MapGeneratedEvent mapGeneratedEvent);
+	
+	public void FogOff(FogOffEvent FogOffEvent);
 }
