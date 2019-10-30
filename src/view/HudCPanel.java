@@ -36,7 +36,7 @@ public class HudCPanel extends JPanel {
 			}
 		}
 	}
-
+//
 	public void mapGenerated(Image[][] img, Image[][] imgOver) {
 		this.img = img;
 		this.imgOver = imgOver;
