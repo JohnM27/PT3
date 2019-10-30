@@ -19,6 +19,11 @@ public class GameView extends View implements GlobalListener{
 	private HudSPanel HudSPanel;
 	private HudCPanel HudCPanel;
 	
+	/**
+	 * Constructs a GameView with the specified controller and by
+	 * calling the method <code>buildFrame()</code>.
+	 * @param controller
+	 */
 	public GameView(Controller controller) {
 		super(controller);
 
@@ -27,7 +32,9 @@ public class GameView extends View implements GlobalListener{
 		buildFrame();
 	}
 
-	
+	/**
+	 * Builds the game's frame
+	 */
 	private void buildFrame() {
 		frame = new JFrame("Jeu");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,30 +55,50 @@ public class GameView extends View implements GlobalListener{
 		frame.pack();
 	}
 	
-	
+	/**
+	 * Displays the frame.
+	 */
+	@Override
 	public void display() {
 		frame.setVisible(true);
 	}
 	
+	/**
+	 * Exits the frame.
+	 */
+	@Override
 	public void close() {
 		frame.dispose();
 	}
-	
-	public void about() {}
 
+	/**
+	 * Changes the number of the day in the {@link HudSRPanel}.
+	 */
 	@Override
 	public void jourChanged(MapEvent event) {
 		HudSPanel.getRight().setNbJour(event.getNbJour());
 	}
 
+	/**
+	 * Gives all the images from the generated map to the {@link HudCPanel}.
+	 */
 	@Override
 	public void MapGenerated(MapEvent event) {
 		HudCPanel.mapGenerated(event.getImg(), event.getImgOver());
 	}
 
+	/**
+	 * Disables the fog from the clicked square in the {@link HudCPanel}.
+	 */
 	@Override
 	public void FogOff(MapEvent event) {
 		int[] coord = event.getCoord();
 		HudCPanel.fogOff(coord[0], coord[1]);
+		HudSPanel.getCenter().done();
+	}
+
+	@Override
+	public void ModifySCPanel(MapEvent event) {
+		HudSPanel.getCenter().display(event.getCurrentImage());
 	}
 }

@@ -38,7 +38,10 @@ public class MenuView extends View{
 		frame.dispose();
 	}
 
-	
+	/**
+	 * Displays a dialog box which contains a
+	 * text about the game 
+	 */
 	public void about() {
 		JOptionPane.showMessageDialog(frame,
 				"Notre jeu blablabla",

@@ -6,7 +6,9 @@ public interface GlobalListener extends EventListener {
 
 	public void jourChanged(MapEvent event);
 
-	public void MapGenerated(MapEvent mapGeneratedEvent);
+	public void MapGenerated(MapEvent event);
 	
-	public void FogOff(MapEvent FogOffEvent);
+	public void FogOff(MapEvent event);
+
+	public void ModifySCPanel(MapEvent event);
 }

@@ -19,8 +19,7 @@ public class HudSLPanel extends JPanel {
 	GridBagConstraints c = new GridBagConstraints();
 	
 	public HudSLPanel() {
-		super(new GridBagLayout());	
-		//this.setPreferredSize(new Dimension(390, 240));
+		super(new GridBagLayout());
 		this.setPreferredSize(new Dimension(268, 158));
 		c.insets = new Insets(10, 10, 5, 10);
 		

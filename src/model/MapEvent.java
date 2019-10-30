@@ -38,4 +38,8 @@ public class MapEvent extends EventObject {
 	public int[] getCoord() {
 		return coord;
 	}
+	
+	public Image getCurrentImage() {
+		return img[coord[0]][coord[1]];
+	}
 }

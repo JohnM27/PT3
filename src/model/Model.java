@@ -16,6 +16,10 @@ public class Model {
 		nbJour = 0;
 	}
 	
+	/**
+	 * Returns 
+	 * @return int 
+	 */
 	public int getNbJour() {
 		return nbJour;
 	}
@@ -66,16 +70,25 @@ public class Model {
 	}
 	
 	//Enleve le brouillard d'une case
-	public void fireFogOff(int i, int j) {
+	public void fireFogOff() {
 		GlobalListener [] listenerList = 
 				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
 		
-		m.setImageOver(i, j);
-		m.setPossessed(i, j);
+		m.setImageOver(coord[0], coord[1]);
+		m.setPossessed(coord[0], coord[1]);
+		
+		for(GlobalListener listener : listenerList)
+			listener.FogOff(new MapEvent(this));
+	}
+
+	public void fireModifySCPanel(int i, int j) {
+		GlobalListener[] listenerList = 
+				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		
 		coord[0] = i;
 		coord[1] = j;
 		
 		for(GlobalListener listener : listenerList)
-			listener.FogOff(new MapEvent(this));
+			listener.ModifySCPanel(new MapEvent(this));	
 	}
 }

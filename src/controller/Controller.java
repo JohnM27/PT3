@@ -20,6 +20,8 @@ public class Controller extends MouseAdapter implements ActionListener{
 	private MenuView menuView;
 	private GameView gameView;
 	
+	private int[] mouseCoord = new int[2];
+	
 	/**
 	 * Creates a new Controller with the specified model
 	 */
@@ -75,13 +77,13 @@ public class Controller extends MouseAdapter implements ActionListener{
 	}
 	
 	/**
-	 * Calls the method {@link about()} from
+	 * Calls the method <code>about()</code> from
 	 * the {@link MenuView}
 	 */
 	public void about() {
 		menuView.about();
 	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("New Game"))
@@ -96,22 +98,23 @@ public class Controller extends MouseAdapter implements ActionListener{
 			menu();
 		else if(e.getActionCommand().equals("Jour suivant"))
 			model.fireJourChanged();
+		else if(e.getActionCommand().equals("BUY"))
+			model.fireFogOff();
 	}
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		int i = e.getX();
-		int j = e.getY();
+		mouseCoord[0] = e.getX()/61;
+		mouseCoord[1] = e.getY()/61;
 		
 		//inversion des coordonnées pour correspondre au tableau
-		if(!model.getPossessed(j/61, i/61)) {
+		if(!model.getPossessed(mouseCoord[1], mouseCoord[0])) {
 			//on remplacera par l'affichage d'un bouton "acheter" dans le panneau en dessous
-			model.fireFogOff(j/61, i/61);
+			model.fireModifySCPanel(mouseCoord[1], mouseCoord[0]);
 		}
 		else {
 			//la case appartient au joueur donc on regarde le type de la case et en fonction du type de la case on affiche
 			
 		}
-		
 	}
 }
