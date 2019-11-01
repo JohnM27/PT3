@@ -100,6 +100,14 @@ public class Controller extends MouseAdapter implements ActionListener{
 			model.fireJourChanged();
 		else if(e.getActionCommand().equals("BUY"))
 			model.fireFogOff();
+		else if(e.getActionCommand().equals("BUILD House"))
+			model.fireHouseOn();
+		else if(e.getActionCommand().equals("BUILD Fishing"))
+			model.fireFishingOn();
+		else if(e.getActionCommand().equals("BUILD Logging"))
+			model.fireLoggingOn();
+		else if(e.getActionCommand().equals("BUILD Mine"))
+			model.fireMineOn();
 	}
 	
 	@Override
@@ -114,7 +122,18 @@ public class Controller extends MouseAdapter implements ActionListener{
 		}
 		else {
 			//la case appartient au joueur donc on regarde le type de la case et en fonction du type de la case on affiche
-			
+			if(model.getTypeCase(mouseCoord[1], mouseCoord[0]).equals("model.Plain")) {
+				model.fireModifyPlainSCPanel(mouseCoord[1], mouseCoord[0]);
+			}
+			else if(model.getTypeCase(mouseCoord[1], mouseCoord[0]).equals("model.Forest")) {
+				model.fireModifyForestSCPanel(mouseCoord[1], mouseCoord[0]);
+			}
+			else if(model.getTypeCase(mouseCoord[1], mouseCoord[0]).equals("model.Mountain")) {
+				model.fireModifyMountainSCPanel(mouseCoord[1], mouseCoord[0]);
+			}
+			else if(model.getTypeCase(mouseCoord[1], mouseCoord[0]).equals("model.Water")) {
+				model.fireModifyWaterSCPanel(mouseCoord[1], mouseCoord[0]);
+			}
 		}
 	}
 }

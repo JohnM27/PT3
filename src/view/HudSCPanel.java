@@ -24,7 +24,7 @@ public class HudSCPanel extends JPanel {
 	int typeCase = 1000;
 	 
 	private JLabel label1;
-	private JButton buy, selected, test;
+	private JButton buy, selected, test, buildH, buildF, buildL, buildM;
 	
 	 
 	public HudSCPanel(Controller controller) {
@@ -61,6 +61,46 @@ public class HudSCPanel extends JPanel {
  		gbc.gridheight = 2;
  		add(buy, gbc);
  		
+ 		buildH = new JButton("BUILD House");
+ 		buildH.setPreferredSize(new Dimension(831,158));
+ 		buildH.addActionListener(controller);
+ 		buildH.setVisible(false);
+ 		gbc.insets = new Insets(0,0,0,0);
+ 		gbc.gridx = 1;
+ 		gbc.gridy = 0;
+ 		gbc.gridheight = 2;
+ 		add(buildH, gbc);
+ 		
+ 		buildF = new JButton("BUILD Fishing");
+ 		buildF.setPreferredSize(new Dimension(831,158));
+ 		buildF.addActionListener(controller);
+ 		buildF.setVisible(false);
+ 		gbc.insets = new Insets(0,0,0,0);
+ 		gbc.gridx = 1;
+ 		gbc.gridy = 0;
+ 		gbc.gridheight = 2;
+ 		add(buildF, gbc);
+ 		
+ 		buildL = new JButton("BUILD Logging");
+ 		buildL.setPreferredSize(new Dimension(831,158));
+ 		buildL.addActionListener(controller);
+ 		buildL.setVisible(false);
+ 		gbc.insets = new Insets(0,0,0,0);
+ 		gbc.gridx = 1;
+ 		gbc.gridy = 0;
+ 		gbc.gridheight = 2;
+ 		add(buildL, gbc);
+ 		
+ 		buildM = new JButton("BUILD Mine");
+ 		buildM.setPreferredSize(new Dimension(831,158));
+ 		buildM.addActionListener(controller);
+ 		buildM.setVisible(false);
+ 		gbc.insets = new Insets(0,0,0,0);
+ 		gbc.gridx = 1;
+ 		gbc.gridy = 0;
+ 		gbc.gridheight = 2;
+ 		add(buildM, gbc);
+ 		
  		test = new JButton("CE BOUTON EST A CHANGER");
  		test.setPreferredSize(new Dimension(831,158));
  		gbc.gridx = 1;
@@ -82,6 +122,11 @@ public class HudSCPanel extends JPanel {
 	public void display(Image img) {
 		test.setVisible(false);
 		
+		buildH.setVisible(false);
+		buildF.setVisible(false);
+		buildL.setVisible(false);
+		buildM.setVisible(false);
+		
 		buy.setVisible(true);
 		
 		selected.setEnabled(true);
@@ -96,9 +141,86 @@ public class HudSCPanel extends JPanel {
 		
 		buy.setVisible(false);
 		
+		buildH.setVisible(false);
+		buildF.setVisible(false);
+		buildL.setVisible(false);
+		buildM.setVisible(false);
+		
 		selected.setEnabled(false);
 		
 		selected.setIcon(null);
+		
+		repaint();
+	}
+
+	public void displayPlain(Image img) {
+		test.setVisible(false);
+		
+		buy.setVisible(false);
+		
+		buildF.setVisible(false);
+		buildL.setVisible(false);
+		buildM.setVisible(false);
+		
+		buildH.setVisible(true);
+		
+		selected.setEnabled(true);
+		
+		selected.setIcon(new ImageIcon(img));
+		
+		repaint();
+	}
+
+	public void displayForest(Image img) {
+		test.setVisible(false);
+		
+		buy.setVisible(false);
+		
+		buildH.setVisible(false);
+		buildF.setVisible(false);
+		buildM.setVisible(false);
+		
+		buildL.setVisible(true);
+		
+		selected.setEnabled(true);
+		
+		selected.setIcon(new ImageIcon(img));
+		
+		repaint();
+	}
+
+	public void displayMountain(Image img) {
+		test.setVisible(false);
+		
+		buy.setVisible(false);
+		
+		buildH.setVisible(false);
+		buildF.setVisible(false);
+		buildL.setVisible(false);
+		
+		buildM.setVisible(true);
+		
+		selected.setEnabled(true);
+		
+		selected.setIcon(new ImageIcon(img));
+		
+		repaint();
+	}
+
+	public void displayWater(Image img) {
+		test.setVisible(false);
+		
+		buy.setVisible(false);
+		
+		buildH.setVisible(false);
+		buildL.setVisible(false);
+		buildM.setVisible(false);
+		
+		buildF.setVisible(true);
+		
+		selected.setEnabled(true);
+		
+		selected.setIcon(new ImageIcon(img));
 		
 		repaint();
 	}

@@ -46,4 +46,20 @@ public abstract class Case {
 	public void setImageOver() {
 		territory.setOver();
 	}
+
+	public void setHouseImageOver() {
+		territory.setHouseImageOver();
+	}
+
+	public void setFishingImageOver() {
+		territory.setFishingImageOver();
+	}
+
+	public void setLoggingImageOver() {
+		territory.setLoggingImageOver();
+	}
+
+	public void setMineImageOver() {
+		territory.setMineImageOver();
+	}
 }
