@@ -36,7 +36,7 @@ public class HudCPanel extends JPanel {
 			}
 		}
 	}
-//
+	
 	public void mapGenerated(Image[][] img, Image[][] imgOver) {
 		this.img = img;
 		this.imgOver = imgOver;
@@ -44,6 +44,26 @@ public class HudCPanel extends JPanel {
 	
 	public void fogOff(int i, int j) {
 		this.imgOver[i][j] = null;
+		repaint();
+	}
+
+	public void houseOn(int i, int j, Image image) {
+		this.imgOver[i][j] = image;
+		repaint();
+	}
+
+	public void fishingOn(int i, int j, Image image) {
+		this.imgOver[i][j] = image;
+		repaint();
+	}
+	
+	public void loggingOn(int i, int j, Image image) {
+		this.imgOver[i][j] = image;
+		repaint();
+	}
+	
+	public void mineOn(int i, int j, Image image) {
+		this.imgOver[i][j] = image;
 		repaint();
 	}
 }

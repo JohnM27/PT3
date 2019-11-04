@@ -96,9 +96,57 @@ public class GameView extends View implements GlobalListener{
 		HudCPanel.fogOff(coord[0], coord[1]);
 		HudSPanel.getCenter().done();
 	}
+	
+	@Override
+	public void HouseOn(MapEvent event) {
+		int[] coord = event.getCoord();
+		HudCPanel.houseOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
+		HudSPanel.getCenter().done();
+	}
+	
+	@Override
+	public void FishingOn(MapEvent event) {
+		int[] coord = event.getCoord();
+		HudCPanel.fishingOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
+		HudSPanel.getCenter().done();
+	}
+
+	@Override
+	public void LoggingOn(MapEvent event) {
+		int[] coord = event.getCoord();
+		HudCPanel.loggingOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
+		HudSPanel.getCenter().done();
+	}
+
+	@Override
+	public void MineOn(MapEvent event) {
+		int[] coord = event.getCoord();
+		HudCPanel.mineOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
+		HudSPanel.getCenter().done();
+	}
 
 	@Override
 	public void ModifySCPanel(MapEvent event) {
 		HudSPanel.getCenter().display(event.getCurrentImage());
+	}
+
+	@Override
+	public void ModifyPlainSCPanel(MapEvent event) {
+		HudSPanel.getCenter().displayPlain(event.getCurrentImage());
+	}
+
+	@Override
+	public void ModifyForestSCPanel(MapEvent event) {
+		HudSPanel.getCenter().displayForest(event.getCurrentImage());
+	}
+
+	@Override
+	public void ModifyMountainSCPanel(MapEvent event) {
+		HudSPanel.getCenter().displayMountain(event.getCurrentImage());
+	}
+
+	@Override
+	public void ModifyWaterSCPanel(MapEvent event) {
+		HudSPanel.getCenter().displayWater(event.getCurrentImage());
 	}
 }

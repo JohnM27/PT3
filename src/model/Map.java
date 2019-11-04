@@ -92,6 +92,10 @@ public class Map {
 		}
 	}
 	
+	public String getTypeCase(int i, int j) {
+		return map[i][j].getClass().getName();
+	}
+	
 	public Image getImage(int i, int j) {
 		return map[i][j].getImage();
 	}
@@ -132,7 +136,22 @@ public class Map {
 	
 	public boolean getPossessed(int i, int j) {
 		return map[i][j].getPossessed();
-		
+	}
+	
+	public void setHouseImageOver(int i, int j) {
+		map[i][j].setHouseImageOver();
+	}
+	
+	public void setFishingImageOver(int i, int j) {
+		map[i][j].setFishingImageOver();
+	}
+
+	public void setLoggingImageOver(int i, int j) {
+		map[i][j].setLoggingImageOver();
+	}
+
+	public void setMineImageOver(int i, int j) {
+		map[i][j].setMineImageOver();
 	}
 	
 	public void genererMap() {
@@ -578,6 +597,4 @@ public class Map {
 			}
 		}
 	}
-
-	
 }
