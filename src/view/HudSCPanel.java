@@ -34,13 +34,13 @@ public class HudSCPanel extends JPanel {
 		 
 		this.controller = controller;
 		
-		setBackground(new Color(120,120,120));
+		setBackground(new Color(100,100,100));
 
  		label1 = new JLabel("SELECTED");
  		gbc.insets = new Insets(20,0,0,0);
  		gbc.gridx = 0;
  		gbc.gridy = 0;
- 		add(label1, gbc);
+ 		//add(label1, gbc);
  		
  		selected = new JButton();
 		selected.setPreferredSize(new Dimension(61,61));
@@ -112,11 +112,13 @@ public class HudSCPanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		Image borderL = null;
+		Image borderL = null, textTest = null;
 		try {
 			borderL = ImageIO.read(new File("Graphismes/BorderSL.png"));
+			textTest = ImageIO.read(new File("Graphismes/textTest.png"));
 		} catch (Exception e) {}
-		g.drawImage(borderL, 0, 0, this);		
+		g.drawImage(borderL, 0, 0, this);
+		g.drawImage(textTest, 10, 20, this);
 	}
 		
 	public void display(Image img) {

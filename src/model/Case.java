@@ -28,7 +28,7 @@ public abstract class Case {
 	}
 	
 	public boolean getPossessed() {
-		return territory.getPossessed();
+		return territory.isPossessed();
 	}
 	
 	public int getX() {

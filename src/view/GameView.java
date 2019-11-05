@@ -127,6 +127,8 @@ public class GameView extends View implements GlobalListener{
 
 	@Override
 	public void ModifySCPanel(MapEvent event) {
+		HudCPanel.selected(event.getCoord());
+		
 		HudSPanel.getCenter().display(event.getCurrentImage());
 	}
 

@@ -3,7 +3,9 @@ package view;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.io.File;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import controller.Controller;
@@ -13,6 +15,9 @@ public class HudCPanel extends JPanel {
 
 	private Image[][] img;
 	private Image[][] imgOver;
+	private static Image imgSelected = null;
+	private static Image imgDeselected = null;
+	private int[] oldCoord = {0,0};
 	
 	public HudCPanel(Controller controller) {
 		super();
@@ -21,6 +26,11 @@ public class HudCPanel extends JPanel {
 		
 		this.addMouseListener(controller);
 		this.setPreferredSize(new Dimension(1098, 610));
+		
+		try {
+			imgSelected = ImageIO.read(new File("Graphismes/Selected.png"));
+			imgDeselected = ImageIO.read(new File("Graphismes/Territory.png"));
+		} catch (Exception e) {}
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -64,6 +74,17 @@ public class HudCPanel extends JPanel {
 	
 	public void mineOn(int i, int j, Image image) {
 		this.imgOver[i][j] = image;
+		repaint();
+	}
+
+	public void selected(int[] coord) {
+		if(imgOver[oldCoord[0]][oldCoord[1]] != null) {
+			this.imgOver[oldCoord[0]][oldCoord[1]] = imgDeselected;
+		}
+		
+		this.imgOver[coord[0]][coord[1]] = imgSelected;
+		oldCoord[0] = coord[0];
+		oldCoord[1] = coord[1];
 		repaint();
 	}
 }

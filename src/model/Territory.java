@@ -24,10 +24,6 @@ public class Territory {
 		}
 	}
 
-	public boolean isPossessed() {
-		return possessed;
-	}
-
 	public void setPossessed(boolean possessed) {
 		this.possessed = possessed;
 	}
@@ -40,7 +36,7 @@ public class Territory {
 		this.over = null;
 	}
 
-	public boolean getPossessed() {
+	public boolean isPossessed() {
 		return possessed;
 	}
 
