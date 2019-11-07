@@ -20,6 +20,8 @@ public class Controller extends MouseAdapter implements ActionListener{
 	private MenuView menuView;
 	private GameView gameView;
 	
+	private boolean firstBuy = true;
+	
 	private int[] mouseCoord = new int[2];
 	
 	/**
@@ -100,8 +102,10 @@ public class Controller extends MouseAdapter implements ActionListener{
 			model.fireJourChanged();
 		else if(e.getActionCommand().equals("BUY"))
 			model.fireFogOff();
-		else if(e.getActionCommand().equals("BUILD House"))
-			model.fireHouseOn();
+		else if(e.getActionCommand().equals("BUILD House")) {
+			firstBuy = false;
+			model.fireFogOff();
+		}
 		else if(e.getActionCommand().equals("BUILD Fishing"))
 			model.fireFishingOn();
 		else if(e.getActionCommand().equals("BUILD Logging"))
@@ -135,5 +139,13 @@ public class Controller extends MouseAdapter implements ActionListener{
 				model.fireModifyWaterSCPanel(mouseCoord[1], mouseCoord[0]);
 			}
 		}
+	}
+	
+	public boolean isFirstBuy() {
+		return firstBuy;
+	}
+
+	public void setFirstBuy(boolean firstBuy) {
+		this.firstBuy = firstBuy;
 	}
 }

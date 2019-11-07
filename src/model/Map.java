@@ -135,7 +135,7 @@ public class Map {
 	}
 	
 	public boolean getPossessed(int i, int j) {
-		return map[i][j].getPossessed();
+		return map[i][j].isPossessed();
 	}
 	
 	public void setHouseImageOver(int i, int j) {
@@ -152,6 +152,68 @@ public class Map {
 
 	public void setMineImageOver(int i, int j) {
 		map[i][j].setMineImageOver();
+	}
+	
+	public boolean isAdjacent(int[] coord) {
+		if(coord[0] > 0) {
+			if(coord[1] > 0) {
+				if(coord[0] < map.length-1) {
+					if(coord[1] < map[0].length-1) {
+						if(map[coord[0]-1][coord[1]].isPossessed() || map[coord[0]+1][coord[1]].isPossessed() ||
+							map[coord[0]][coord[1]-1].isPossessed() || map[coord[0]][coord[1]+1].isPossessed()) {
+							return true;
+						}
+					}
+				}
+			}
+		}
+		if(coord[0] == 0) {
+			if(coord[1] == 0) {
+				if(map[coord[0]+1][coord[1]].isPossessed() || map[coord[0]][coord[1]+1].isPossessed()) {
+					return true;
+				}
+			}
+			else if(coord[1] == map[0].length-1){
+				if(map[coord[0]+1][coord[1]].isPossessed() || map[coord[0]][coord[1]-1].isPossessed()) {
+					return true;
+				}
+			}
+			else {
+				if(map[coord[0]+1][coord[1]].isPossessed() || map[coord[0]][coord[1]+1].isPossessed() || map[coord[0]][coord[1]-1].isPossessed()) {
+					return true;
+				}
+			}
+		}
+		else if(coord[0] == map.length-1) {
+			if(coord[1] == 0) {
+				if(map[coord[0]-1][coord[1]].isPossessed() || map[coord[0]][coord[1]+1].isPossessed()) {
+					return true;
+				}
+			}
+			else if(coord[1] == map[0].length-1){
+				if(map[coord[0]-1][coord[1]].isPossessed() || map[coord[0]][coord[1]-1].isPossessed()) {
+					return true;
+				}
+			}
+			else {
+				if(map[coord[0]-1][coord[1]].isPossessed() || map[coord[0]][coord[1]+1].isPossessed() || map[coord[0]][coord[1]-1].isPossessed()) {
+					return true;
+				}
+			}
+		}
+		else {
+			if(coord[1] == 0) {
+				if(map[coord[0]+1][coord[1]].isPossessed() || map[coord[0]-1][coord[1]].isPossessed() || map[coord[0]][coord[1]+1].isPossessed()) {
+					return true;
+				}
+			}
+			else if(coord[1] == map[0].length-1) {
+				if(map[coord[0]+1][coord[1]].isPossessed() || map[coord[0]-1][coord[1]].isPossessed() || map[coord[0]][coord[1]-1].isPossessed()) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	public void genererMap() {
