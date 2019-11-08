@@ -100,12 +100,12 @@ public class Controller extends MouseAdapter implements ActionListener{
 			menu();
 		else if(e.getActionCommand().equals("Jour suivant"))
 			model.fireJourChanged();
-		else if(e.getActionCommand().equals("BUY"))
-			model.fireFogOff();
-		else if(e.getActionCommand().equals("BUILD House")) {
+		else if(e.getActionCommand().equals("BUY")){
 			firstBuy = false;
 			model.fireFogOff();
 		}
+		else if(e.getActionCommand().equals("BUILD House"))
+			model.fireHouseOn();
 		else if(e.getActionCommand().equals("BUILD Fishing"))
 			model.fireFishingOn();
 		else if(e.getActionCommand().equals("BUILD Logging"))
@@ -119,7 +119,6 @@ public class Controller extends MouseAdapter implements ActionListener{
 		mouseCoord[0] = e.getX()/61;
 		mouseCoord[1] = e.getY()/61;
 		
-		model.fireSelected(mouseCoord[1], mouseCoord[0]);
 		//inversion des coordonnées pour correspondre au tableau
 		if(!model.getPossessed(mouseCoord[1], mouseCoord[0])) {
 			//on remplacera par l'affichage d'un bouton "acheter" dans le panneau en dessous

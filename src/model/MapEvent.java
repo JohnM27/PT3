@@ -12,6 +12,8 @@ public class MapEvent extends EventObject {
 	
 	private int[] coord; 
 	
+	private boolean adjacent;
+  
 	private String typeCase;
 	
 	public MapEvent(Object source) {
@@ -23,7 +25,9 @@ public class MapEvent extends EventObject {
 		imgOver = ((Model)source).getImgOver();
 		
 		coord = ((Model)source).getCoord();
-		
+
+		adjacent = ((Model)source).getAdjacent();
+
 		typeCase = ((Model)source).getTypeCase();
 	}
 	
@@ -47,6 +51,10 @@ public class MapEvent extends EventObject {
 		return img[coord[0]][coord[1]];
 	}
 	
+	public boolean getAdjacent() {
+		return adjacent;
+  }
+  
 	public String getTypeCase() {
 		return typeCase;
 	}

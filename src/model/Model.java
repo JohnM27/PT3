@@ -10,6 +10,7 @@ public class Model {
 	private int nbJour;
 	private Map m = new Map();
 	private int[] coord = new int[2];
+	private boolean adjacent;
 	private String typeCase;
 
 	public Model() {
@@ -35,6 +36,10 @@ public class Model {
 	
 	public int[] getCoord() {
 		return coord;
+	}
+	
+	public boolean getAdjacent() {
+		return adjacent;
 	}
 	
 	public boolean getPossessed(int i, int j) {
@@ -138,6 +143,8 @@ public class Model {
 		coord[0] = i;
 		coord[1] = j;
 		typeCase = getTypeCase(i, j);
+		
+		adjacent = m.isAdjacent(coord);
 		
 		for(GlobalListener listener : listenerList)
 			listener.ModifySCPanel(new MapEvent(this));	

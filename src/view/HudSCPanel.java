@@ -8,10 +8,8 @@ import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import java.io.File;
-import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -121,13 +119,20 @@ public class HudSCPanel extends JPanel {
 		g.drawImage(textTest, 10, 20, this);
 	}
 		
-	public void display(Image img) {
+	public void display(Image img, boolean adjacent) {
 		test.setVisible(false);
 		
 		buildH.setVisible(false);
 		buildF.setVisible(false);
 		buildL.setVisible(false);
 		buildM.setVisible(false);
+		
+		if(controller.isFirstBuy() || adjacent) {
+			buy.setEnabled(true);
+		}
+		else {
+			buy.setEnabled(false);
+		}
 		
 		buy.setVisible(true);
 		
