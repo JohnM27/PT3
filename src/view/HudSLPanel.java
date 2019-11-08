@@ -1,16 +1,15 @@
 package view;
 
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.GridLayout;
 
-import javax.swing.JLabel;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class HudSLPanel extends JPanel {
-	
+	/*
 	private JLabel or, pierre, bois, nourriture;
 	private int nbOr = 0, nbPierre = 0, nbBois = 0, nbNourriture = 0;
 	
@@ -50,5 +49,23 @@ public class HudSLPanel extends JPanel {
 		c.gridx = 0;
 		c.gridy = 3;
 		add(nourriture, c);
+	}*/
+	
+	GridBagConstraints c = new GridBagConstraints();
+	
+	public HudSLPanel() {
+		super(new GridBagLayout());
+		this.setPreferredSize(new Dimension(268, 158));
+		
+		JButton changeView = new JButton("Change View");
+		changeView.setPreferredSize(new Dimension(268,100));
+		c.gridx = 0;
+		c.gridy = 0;
+		add(changeView, c);
+		
+		JButton help = new JButton("Help");
+		help.setPreferredSize(new Dimension(268,58));
+		c.gridy = 1;
+		add(help, c);
 	}
 }

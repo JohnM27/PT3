@@ -119,6 +119,7 @@ public class Controller extends MouseAdapter implements ActionListener{
 		mouseCoord[0] = e.getX()/61;
 		mouseCoord[1] = e.getY()/61;
 		
+		model.fireSelected(mouseCoord[1], mouseCoord[0]);
 		//inversion des coordonnées pour correspondre au tableau
 		if(!model.getPossessed(mouseCoord[1], mouseCoord[0])) {
 			//on remplacera par l'affichage d'un bouton "acheter" dans le panneau en dessous

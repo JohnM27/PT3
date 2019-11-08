@@ -11,6 +11,7 @@ public class Model {
 	private Map m = new Map();
 	private int[] coord = new int[2];
 	private boolean adjacent;
+	private String typeCase;
 
 	public Model() {
 		listenersList = new EventListenerList();
@@ -47,6 +48,10 @@ public class Model {
 	
 	public String getTypeCase(int i, int j){
 		return m.getTypeCase(i, j);
+	}
+	
+	public String getTypeCase() {
+		return typeCase;
 	}
 	
 	public void addGlobalListener(GlobalListener listener) {
@@ -137,6 +142,7 @@ public class Model {
 		
 		coord[0] = i;
 		coord[1] = j;
+		typeCase = getTypeCase(i, j);
 		
 		adjacent = m.isAdjacent(coord);
 		
@@ -186,5 +192,16 @@ public class Model {
 		
 		for(GlobalListener listener : listenerList)
 			listener.ModifyWaterSCPanel(new MapEvent(this));
+	}
+
+	public void fireSelected(int i, int j) {
+		GlobalListener[] listenerList = 
+				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		
+		coord[0] = i;
+		coord[1] = j;
+		
+		for(GlobalListener listener : listenerList)
+			listener.selected(new MapEvent(this));
 	}
 }

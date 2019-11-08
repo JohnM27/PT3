@@ -94,41 +94,51 @@ public class GameView extends View implements GlobalListener{
 	public void FogOff(MapEvent event) {
 		int[] coord = event.getCoord();
 		HudCPanel.fogOff(coord[0], coord[1]);
-		HudSPanel.getCenter().done();
+		switch(event.getTypeCase()) {
+			case "model.Plain":
+				ModifyPlainSCPanel(event);
+				break;
+				
+			case "model.Forest":
+				ModifyForestSCPanel(event);
+				break;
+			
+			case "model.Mountain":
+				ModifyMountainSCPanel(event);
+				break;
+		
+			case "model.Water":
+				ModifyWaterSCPanel(event);
+				break;
+		}
 	}
 	
 	@Override
 	public void HouseOn(MapEvent event) {
 		int[] coord = event.getCoord();
 		HudCPanel.houseOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
-		HudSPanel.getCenter().done();
 	}
 	
 	@Override
 	public void FishingOn(MapEvent event) {
 		int[] coord = event.getCoord();
 		HudCPanel.fishingOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
-		HudSPanel.getCenter().done();
 	}
 
 	@Override
 	public void LoggingOn(MapEvent event) {
 		int[] coord = event.getCoord();
 		HudCPanel.loggingOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
-		HudSPanel.getCenter().done();
 	}
 
 	@Override
 	public void MineOn(MapEvent event) {
 		int[] coord = event.getCoord();
 		HudCPanel.mineOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
-		HudSPanel.getCenter().done();
 	}
 
 	@Override
 	public void ModifySCPanel(MapEvent event) {
-		HudCPanel.selected(event.getCoord());
-		
 		HudSPanel.getCenter().display(event.getCurrentImage(), event.getAdjacent());
 	}
 
@@ -150,5 +160,10 @@ public class GameView extends View implements GlobalListener{
 	@Override
 	public void ModifyWaterSCPanel(MapEvent event) {
 		HudSPanel.getCenter().displayWater(event.getCurrentImage());
+	}
+
+	@Override
+	public void selected(MapEvent event) {
+		HudCPanel.selected(event.getCoord());
 	}
 }
