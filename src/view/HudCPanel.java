@@ -15,8 +15,8 @@ public class HudCPanel extends JPanel {
 
 	private Image[][] img;
 	private Image[][] imgOver;
+	private boolean[][] selected = new boolean[10][18];
 	private static Image imgSelected = null;
-	private static Image imgDeselected = null;
 	private int[] oldCoord = {0,0};
 	
 	public HudCPanel(Controller controller) {
@@ -29,8 +29,11 @@ public class HudCPanel extends JPanel {
 		
 		try {
 			imgSelected = ImageIO.read(new File("Graphismes/Selected.png"));
-			imgDeselected = ImageIO.read(new File("Graphismes/Territory.png"));
 		} catch (Exception e) {}
+
+		for(int i = 0; i < 10; i++)
+			for(int j = 0; j < 18; j++)
+				selected[i][j] = false;
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -42,6 +45,10 @@ public class HudCPanel extends JPanel {
 				
 				if(imgOver[i/61][j/61] != null) {
 					g.drawImage(imgOver[i/61][j/61], j, i, this);
+				}
+				
+				if(selected[i/61][j/61] == true) {
+					g.drawImage(imgSelected, j, i, this);
 				}
 			}
 		}
@@ -77,14 +84,12 @@ public class HudCPanel extends JPanel {
 		repaint();
 	}
 
-	public void selected(int[] coord) {
-		if(imgOver[oldCoord[0]][oldCoord[1]] != null) {
-			this.imgOver[oldCoord[0]][oldCoord[1]] = imgDeselected;
-		}
+	public void selected(int[] coord) {		
+		for(int i = 0; i < 10; i++)
+			for(int j = 0; j < 18; j++)
+				selected[i][j] = false;
 		
-		this.imgOver[coord[0]][coord[1]] = imgSelected;
-		oldCoord[0] = coord[0];
-		oldCoord[1] = coord[1];
+		selected[coord[0]][coord[1]] = true;
 		repaint();
 	}
 }

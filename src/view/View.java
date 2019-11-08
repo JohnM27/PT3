@@ -1,5 +1,6 @@
 package view;
 import controller.Controller;
+import model.MapEvent;
 
 public abstract class View{
 	private Controller controller;

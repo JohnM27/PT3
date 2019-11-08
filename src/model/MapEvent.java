@@ -12,6 +12,8 @@ public class MapEvent extends EventObject {
 	
 	private int[] coord; 
 	
+	private String typeCase;
+	
 	public MapEvent(Object source) {
 		super(source);
 		
@@ -21,6 +23,8 @@ public class MapEvent extends EventObject {
 		imgOver = ((Model)source).getImgOver();
 		
 		coord = ((Model)source).getCoord();
+		
+		typeCase = ((Model)source).getTypeCase();
 	}
 	
 	public int getNbJour() {
@@ -41,5 +45,9 @@ public class MapEvent extends EventObject {
 	
 	public Image getCurrentImage() {
 		return img[coord[0]][coord[1]];
+	}
+	
+	public String getTypeCase() {
+		return typeCase;
 	}
 }
