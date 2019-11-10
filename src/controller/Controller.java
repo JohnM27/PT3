@@ -100,12 +100,12 @@ public class Controller extends MouseAdapter implements ActionListener{
 			menu();
 		else if(e.getActionCommand().equals("Jour suivant"))
 			model.fireJourChanged();
-		else if(e.getActionCommand().equals("BUY"))
-			model.fireFogOff();
-		else if(e.getActionCommand().equals("BUILD House")) {
+		else if(e.getActionCommand().equals("BUY")) {
 			firstBuy = false;
 			model.fireFogOff();
 		}
+		else if(e.getActionCommand().equals("BUILD House"))
+			model.fireHouseOn();
 		else if(e.getActionCommand().equals("BUILD Fishing"))
 			model.fireFishingOn();
 		else if(e.getActionCommand().equals("BUILD Logging"))

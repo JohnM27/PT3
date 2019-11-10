@@ -94,6 +94,7 @@ public class GameView extends View implements GlobalListener{
 	public void FogOff(MapEvent event) {
 		int[] coord = event.getCoord();
 		HudCPanel.fogOff(coord[0], coord[1]);
+		System.out.println(event.getTypeCase());
 		switch(event.getTypeCase()) {
 			case "model.Plain":
 				ModifyPlainSCPanel(event);
