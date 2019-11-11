@@ -40,15 +40,12 @@ public class GameView extends View implements GlobalListener{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		HudWPanel = new HudWPanel();
-		HudWPanel.setBackground(Color.BLUE);
 		frame.add(HudWPanel, BorderLayout.WEST);
 		
 		HudSPanel = new HudSPanel(controller);
-		HudSPanel.setBackground(Color.RED);
 		frame.add(HudSPanel, BorderLayout.SOUTH);
 		
 		HudCPanel = new HudCPanel(controller);
-		HudCPanel.setBackground(Color.GREEN);
 		frame.add(HudCPanel, BorderLayout.CENTER);
 		
 		frame.setResizable(false);
@@ -94,7 +91,6 @@ public class GameView extends View implements GlobalListener{
 	public void FogOff(MapEvent event) {
 		int[] coord = event.getCoord();
 		HudCPanel.fogOff(coord[0], coord[1]);
-		System.out.println(event.getTypeCase());
 		switch(event.getTypeCase()) {
 			case "model.Plain":
 				ModifyPlainSCPanel(event);
@@ -141,6 +137,7 @@ public class GameView extends View implements GlobalListener{
 	@Override
 	public void ModifySCPanel(MapEvent event) {
 		HudSPanel.getCenter().display(event.getCurrentImage(), event.getAdjacent());
+		HudWPanel.display(event.getCurrentImage());
 	}
 
 	@Override

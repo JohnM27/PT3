@@ -8,17 +8,13 @@ import javax.imageio.ImageIO;
 
 public class Territory {
 	private boolean possessed;
-	private Image over, house, fishing, logging, mine;
+	private Building building;
+	private Image over;
 	
 	public Territory() {
 		possessed = false;
 		try {
 			over = ImageIO.read(new File("Graphismes/Territory.png"));
-			house = ImageIO.read(new File("Graphismes/H.png"));
-			fishing = ImageIO.read(new File("Graphismes/F.png"));
-			logging = ImageIO.read(new File("Graphismes/L.png"));
-			mine = ImageIO.read(new File("Graphismes/M.png"));
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -41,19 +37,23 @@ public class Territory {
 	}
 
 	public void setHouseImageOver() {
-		this.over = house;
+		building = new House();
+		this.over = building.getImg();
 	}
 
 	public void setFishingImageOver() {
-		this.over = fishing;
+		building = new Harbor();
+		this.over = building.getImg();
 	}
 
 	public void setLoggingImageOver() {
-		this.over = logging;
+		building = new LumberMill();
+		this.over = building.getImg();
 	}
 
 	public void setMineImageOver() {
-		this.over = mine;
+		building = new Mine();
+		this.over = building.getImg();
 	}
 	
 	

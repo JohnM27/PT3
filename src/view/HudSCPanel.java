@@ -20,8 +20,7 @@ import controller.Controller;
 public class HudSCPanel extends JPanel {
 	private Controller controller;
 	int typeCase = 1000;
-	 
-	private JLabel label1;
+
 	private JButton buy, selected, test, buildH, buildF, buildL, buildM;
 	
 	 
@@ -34,11 +33,6 @@ public class HudSCPanel extends JPanel {
 		
 		setBackground(new Color(100,100,100));
 
- 		label1 = new JLabel("SELECTED");
- 		gbc.insets = new Insets(20,0,0,0);
- 		gbc.gridx = 0;
- 		gbc.gridy = 0;
- 		//add(label1, gbc);
  		
  		selected = new JButton();
 		selected.setPreferredSize(new Dimension(61,61));
@@ -142,7 +136,8 @@ public class HudSCPanel extends JPanel {
 		
 		repaint();
 	}
-	
+	//Pas utilisé mais plus peut-être oui
+	/*
 	public void done() {
 		test.setVisible(true);
 		
@@ -158,7 +153,7 @@ public class HudSCPanel extends JPanel {
 		selected.setIcon(null);
 		
 		repaint();
-	}
+	}*/
 
 	public void displayPlain(Image img) {
 		test.setVisible(false);
