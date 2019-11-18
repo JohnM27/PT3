@@ -14,11 +14,15 @@ public class Model {
 	private int[] coord = new int[2];
 	private boolean adjacent;
 	private String typeCase;
+  
 	private boolean cityHall;
 	
 	private List<Case> building;
 	private int nbGold , nbStone, nbWood, nbFood;
-
+  
+	private int populationMax = 0;
+	private int population = 0;
+  
 	public Model() {
 		listenersList = new EventListenerList();
 		nbJour = 0;
@@ -63,6 +67,14 @@ public class Model {
 	
 	public String getTypeCase() {
 		return typeCase;
+	}
+
+	public int getPopulationMax() {
+		return populationMax;
+	}
+
+	public int getPopulation() {
+		return population;
 	}
 	
 	public boolean getCityHall() {
@@ -144,7 +156,8 @@ public class Model {
 		GlobalListener [] listenerList = 
 				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
 		
-		m.setHouseImageOver(coord[0], coord[1]);
+		Building b = m.buildHouse(coord[0], coord[1]);
+		populationMax += b.getPopulation();
 		
 		building.add(m.getCase(coord[0], coord[1]));
 		
@@ -168,7 +181,8 @@ public class Model {
 		GlobalListener [] listenerList = 
 				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
 		
-		m.setLoggingImageOver(coord[0], coord[1]);
+		Building b = m.buildLumberMill(coord[0], coord[1]);
+		population += b.getPopulation();
 		
 		building.add(m.getCase(coord[0], coord[1]));
 		

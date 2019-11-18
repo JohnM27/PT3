@@ -36,9 +36,10 @@ public class Territory {
 		return possessed;
 	}
 
-	public void setHouseImageOver() {
+	public Building buildHouse() {
 		building = new House();
 		this.over = building.getImg();
+		return building;
 	}
 
 	public void setFishingImageOver() {
@@ -46,9 +47,10 @@ public class Territory {
 		this.over = building.getImg();
 	}
 
-	public void setLoggingImageOver() {
+	public Building buildLumberMill() {
 		building = new LumberMill();
 		this.over = building.getImg();
+		return building;
 	}
 
 	public void setMineImageOver() {

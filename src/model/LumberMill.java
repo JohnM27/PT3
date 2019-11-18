@@ -12,8 +12,10 @@ public class LumberMill extends Building {
 		
 		try {
 			setImg(ImageIO.read(new File("Graphismes/L.png")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		} catch (IOException e) {}
+		
+		setPopulation(2);
+		
+		System.out.println(getLevel());
 	}
 }

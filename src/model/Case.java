@@ -65,8 +65,9 @@ public abstract class Case {
 		imageOver = building.getImg();
 	}
 
-	public void setHouseImageOver() {
-		building = new House();
+	public Building buildHouse() {
+		//return territory.buildHouse();
+    building = new House();
 		imageOver = building.getImg();
 	}
 
@@ -74,9 +75,10 @@ public abstract class Case {
 		building = new Harbor();
 		imageOver = building.getImg();
 	}
-
-	public void setLoggingImageOver() {
-		building = new LumberMill();
+  
+	public Building buildLumberMill() {
+		//return territory.buildLumberMill();
+    building = new LumberMill();
 		imageOver = building.getImg();
 	}
 
