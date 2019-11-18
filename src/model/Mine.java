@@ -15,7 +15,5 @@ public class Mine extends Building {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		System.out.println(getLevel());
 	}
 }

@@ -21,7 +21,7 @@ public class HudSCPanel extends JPanel {
 	private Controller controller;
 	int typeCase = 1000;
 
-	private JButton buy, selected, test, buildH, buildF, buildL, buildM;
+	private JButton buy, selected, test, buildH, buildF, buildL, buildM, buildC;
 	
 	 
 	public HudSCPanel(Controller controller) {
@@ -62,6 +62,16 @@ public class HudSCPanel extends JPanel {
  		gbc.gridy = 0;
  		gbc.gridheight = 2;
  		add(buildH, gbc);
+ 		
+ 		buildC = new JButton("BUILD City Hall");
+ 		buildC.setPreferredSize(new Dimension(831,158));
+ 		buildC.addActionListener(controller);
+ 		buildC.setVisible(false);
+ 		gbc.insets = new Insets(0,0,0,0);
+ 		gbc.gridx = 1;
+ 		gbc.gridy = 0;
+ 		gbc.gridheight = 2;
+ 		add(buildC, gbc);
  		
  		buildF = new JButton("BUILD Fishing");
  		buildF.setPreferredSize(new Dimension(831,158));
@@ -113,15 +123,16 @@ public class HudSCPanel extends JPanel {
 		g.drawImage(textTest, 10, 20, this);
 	}
 		
-	public void display(Image img, boolean adjacent) {
+	public void display(Image img, boolean adjacent, String typeCase, boolean cityHall) {
 		test.setVisible(false);
 		
 		buildH.setVisible(false);
 		buildF.setVisible(false);
 		buildL.setVisible(false);
 		buildM.setVisible(false);
+		buildC.setVisible(false);
 		
-		if(controller.isFirstBuy() || adjacent) {
+		if((controller.isFirstBuy() && typeCase.equals("model.Plain")) || (adjacent && cityHall)) {
 			buy.setEnabled(true);
 		}
 		else {
@@ -154,6 +165,25 @@ public class HudSCPanel extends JPanel {
 		
 		repaint();
 	}*/
+	
+	public void displayPlainCityHall(Image img) {
+		test.setVisible(false);
+		
+		buy.setVisible(false);
+		
+		buildF.setVisible(false);
+		buildL.setVisible(false);
+		buildM.setVisible(false);
+		buildH.setVisible(false);
+		
+		buildC.setVisible(true);
+		
+		selected.setEnabled(true);
+		
+		selected.setIcon(new ImageIcon(img));
+		
+		repaint();
+	}
 
 	public void displayPlain(Image img) {
 		test.setVisible(false);
@@ -163,6 +193,7 @@ public class HudSCPanel extends JPanel {
 		buildF.setVisible(false);
 		buildL.setVisible(false);
 		buildM.setVisible(false);
+		buildC.setVisible(false);
 		
 		buildH.setVisible(true);
 		
@@ -181,6 +212,7 @@ public class HudSCPanel extends JPanel {
 		buildH.setVisible(false);
 		buildF.setVisible(false);
 		buildM.setVisible(false);
+		buildC.setVisible(false);
 		
 		buildL.setVisible(true);
 		
@@ -199,6 +231,7 @@ public class HudSCPanel extends JPanel {
 		buildH.setVisible(false);
 		buildF.setVisible(false);
 		buildL.setVisible(false);
+		buildC.setVisible(false);
 		
 		buildM.setVisible(true);
 		
@@ -217,6 +250,7 @@ public class HudSCPanel extends JPanel {
 		buildH.setVisible(false);
 		buildL.setVisible(false);
 		buildM.setVisible(false);
+		buildC.setVisible(false);
 		
 		buildF.setVisible(true);
 		

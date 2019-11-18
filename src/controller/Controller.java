@@ -21,6 +21,7 @@ public class Controller extends MouseAdapter implements ActionListener{
 	private GameView gameView;
 	
 	private boolean firstBuy = true;
+	private boolean cityHall = false;
 	
 	private int[] mouseCoord = new int[2];
 	
@@ -104,6 +105,10 @@ public class Controller extends MouseAdapter implements ActionListener{
 			firstBuy = false;
 			model.fireFogOff();
 		}
+		else if(e.getActionCommand().equals("BUILD City Hall")) {
+			cityHall = true;
+			model.fireCityHallOn();
+		}
 		else if(e.getActionCommand().equals("BUILD House"))
 			model.fireHouseOn();
 		else if(e.getActionCommand().equals("BUILD Fishing"))
@@ -122,22 +127,26 @@ public class Controller extends MouseAdapter implements ActionListener{
 		model.fireSelected(mouseCoord[1], mouseCoord[0]);
 		//inversion des coordonnées pour correspondre au tableau
 		if(!model.getPossessed(mouseCoord[1], mouseCoord[0])) {
-			//on remplacera par l'affichage d'un bouton "acheter" dans le panneau en dessous
 			model.fireModifySCPanel(mouseCoord[1], mouseCoord[0]);
 		}
 		else {
 			//la case appartient au joueur donc on regarde le type de la case et en fonction du type de la case on affiche
-			if(model.getTypeCase(mouseCoord[1], mouseCoord[0]).equals("model.Plain")) {
-				model.fireModifyPlainSCPanel(mouseCoord[1], mouseCoord[0]);
+			if(cityHall) {
+				if(model.getTypeCase(mouseCoord[1], mouseCoord[0]).equals("model.Plain")) {
+					model.fireModifyPlainSCPanel(mouseCoord[1], mouseCoord[0]);
+				}
+				else if(model.getTypeCase(mouseCoord[1], mouseCoord[0]).equals("model.Forest")) {
+					model.fireModifyForestSCPanel(mouseCoord[1], mouseCoord[0]);
+				}
+				else if(model.getTypeCase(mouseCoord[1], mouseCoord[0]).equals("model.Mountain")) {
+					model.fireModifyMountainSCPanel(mouseCoord[1], mouseCoord[0]);
+				}
+				else if(model.getTypeCase(mouseCoord[1], mouseCoord[0]).equals("model.Water")) {
+					model.fireModifyWaterSCPanel(mouseCoord[1], mouseCoord[0]);
+				}
 			}
-			else if(model.getTypeCase(mouseCoord[1], mouseCoord[0]).equals("model.Forest")) {
-				model.fireModifyForestSCPanel(mouseCoord[1], mouseCoord[0]);
-			}
-			else if(model.getTypeCase(mouseCoord[1], mouseCoord[0]).equals("model.Mountain")) {
-				model.fireModifyMountainSCPanel(mouseCoord[1], mouseCoord[0]);
-			}
-			else if(model.getTypeCase(mouseCoord[1], mouseCoord[0]).equals("model.Water")) {
-				model.fireModifyWaterSCPanel(mouseCoord[1], mouseCoord[0]);
+			else {
+				model.fireModifyPlainCHSCPanel(mouseCoord[1], mouseCoord[0]);
 			}
 		}
 	}

@@ -90,10 +90,16 @@ public class GameView extends View implements GlobalListener{
 	@Override
 	public void FogOff(MapEvent event) {
 		int[] coord = event.getCoord();
+		boolean cityHall = event.getCityHall();
 		HudCPanel.fogOff(coord[0], coord[1]);
 		switch(event.getTypeCase()) {
 			case "model.Plain":
-				ModifyPlainSCPanel(event);
+				if(cityHall) {
+					ModifyPlainSCPanel(event);
+				}
+				else {
+					ModifyPlainCHSCPanel(event);
+				}
 				break;
 				
 			case "model.Forest":
@@ -136,10 +142,15 @@ public class GameView extends View implements GlobalListener{
 
 	@Override
 	public void ModifySCPanel(MapEvent event) {
-		HudSPanel.getCenter().display(event.getCurrentImage(), event.getAdjacent());
+		HudSPanel.getCenter().display(event.getCurrentImage(), event.getAdjacent(), event.getTypeCase(), event.getCityHall());
 		HudWPanel.display(event.getCurrentImage());
 	}
 
+	@Override
+	public void ModifyPlainCHSCPanel(MapEvent event) {
+		HudSPanel.getCenter().displayPlainCityHall(event.getCurrentImage());
+	}
+	
 	@Override
 	public void ModifyPlainSCPanel(MapEvent event) {
 		HudSPanel.getCenter().displayPlain(event.getCurrentImage());

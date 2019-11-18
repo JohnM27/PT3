@@ -138,6 +138,10 @@ public class Map {
 		return map[i][j].isPossessed();
 	}
 	
+	public void setCityHallImageOver(int i, int j) {
+		map[i][j].setCityHallImageOver();
+	}
+	
 	public void setHouseImageOver(int i, int j) {
 		map[i][j].setHouseImageOver();
 	}
@@ -152,6 +156,10 @@ public class Map {
 
 	public void setMineImageOver(int i, int j) {
 		map[i][j].setMineImageOver();
+	}
+	
+	public Case getCase(int i, int j) {
+		return map[i][j];
 	}
 	
 	public boolean isAdjacent(int[] coord) {

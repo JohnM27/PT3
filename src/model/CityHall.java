@@ -5,15 +5,16 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class LumberMill extends Building {
-
-	public LumberMill() {
+public class CityHall extends Building {
+	
+	public CityHall() {
 		super();
 		
 		try {
-			setImg(ImageIO.read(new File("Graphismes/L.png")));
+			setImg(ImageIO.read(new File("Graphismes/H.png")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+
 }
