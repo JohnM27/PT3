@@ -9,7 +9,6 @@ public abstract class Building {
 	
 	public Building() {
 		level = 0;
-		
 	}
 
 	public Image getImg() {

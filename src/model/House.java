@@ -16,7 +16,6 @@ public class House extends Building {
 		
 		setPopulation(5);
 		
-		
 		System.out.println(getLevel());
 	}
 	

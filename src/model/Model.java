@@ -1,6 +1,8 @@
 package model;
 
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.event.EventListenerList;
 
@@ -12,12 +14,23 @@ public class Model {
 	private int[] coord = new int[2];
 	private boolean adjacent;
 	private String typeCase;
+  
+	private boolean cityHall;
+	
+	private List<Case> building;
+	private int nbGold , nbStone, nbWood, nbFood;
+  
 	private int populationMax = 0;
 	private int population = 0;
-
+  
 	public Model() {
 		listenersList = new EventListenerList();
 		nbJour = 0;
+		building = new ArrayList<Case>();
+		nbGold = 0;
+		nbStone = 0;
+		nbWood = 0;
+		nbFood = 0;
 	}
 	
 	/**
@@ -64,6 +77,10 @@ public class Model {
 		return population;
 	}
 	
+	public boolean getCityHall() {
+		return cityHall;
+	}
+	
 	public void addGlobalListener(GlobalListener listener) {
 		listenersList.add(GlobalListener.class, listener);
 	}
@@ -79,6 +96,25 @@ public class Model {
 		
 		nbJour++;
 		
+		for(Case b : building) {
+			if(b.getBuildingType().equals("model.House")) {
+				
+			}
+			else if(b.getBuildingType().equals("model.LumberMill")) {
+				nbWood += 5;
+			}
+			else if(b.getBuildingType().equals("model.Harbor")) {
+				nbFood += 5;
+			}
+			else if(b.getBuildingType().equals("model.Mine")) {
+				nbStone += 5;
+				nbGold += 1;
+			}
+		}
+		System.out.println("Wood:" + nbWood);
+		System.out.println("Food:" + nbFood);
+		System.out.println("Stone:" + nbStone);
+		System.out.println("Gold:" + nbGold);
 		for(GlobalListener listener : listenerList)
 			listener.jourChanged(new MapEvent(this));
 	}
@@ -105,6 +141,16 @@ public class Model {
 			listener.FogOff(new MapEvent(this));
 	}
 
+	public void fireCityHallOn() {
+		GlobalListener [] listenerList = 
+				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		
+		m.setCityHallImageOver(coord[0], coord[1]);
+		cityHall = true;
+		
+		for(GlobalListener listener : listenerList)
+			listener.HouseOn(new MapEvent(this));
+	}
 
 	public void fireHouseOn() {
 		GlobalListener [] listenerList = 
@@ -112,6 +158,8 @@ public class Model {
 		
 		Building b = m.buildHouse(coord[0], coord[1]);
 		populationMax += b.getPopulation();
+		
+		building.add(m.getCase(coord[0], coord[1]));
 		
 		for(GlobalListener listener : listenerList)
 			listener.HouseOn(new MapEvent(this));
@@ -122,6 +170,8 @@ public class Model {
 				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
 		
 		m.setFishingImageOver(coord[0], coord[1]);
+		
+		building.add(m.getCase(coord[0], coord[1]));
 		
 		for(GlobalListener listener : listenerList)
 			listener.FishingOn(new MapEvent(this));
@@ -134,6 +184,8 @@ public class Model {
 		Building b = m.buildLumberMill(coord[0], coord[1]);
 		population += b.getPopulation();
 		
+		building.add(m.getCase(coord[0], coord[1]));
+		
 		for(GlobalListener listener : listenerList)
 			listener.LoggingOn(new MapEvent(this));
 	}
@@ -143,6 +195,8 @@ public class Model {
 				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
 		
 		m.setMineImageOver(coord[0], coord[1]);
+		
+		building.add(m.getCase(coord[0], coord[1]));
 		
 		for(GlobalListener listener : listenerList)
 			listener.MineOn(new MapEvent(this));
@@ -160,6 +214,18 @@ public class Model {
 		
 		for(GlobalListener listener : listenerList)
 			listener.ModifySCPanel(new MapEvent(this));	
+	}
+	
+
+	public void fireModifyPlainCHSCPanel(int i, int j) {
+		GlobalListener[] listenerList = 
+				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		
+		coord[0] = i;
+		coord[1] = j;
+		
+		for(GlobalListener listener : listenerList)
+			listener.ModifyPlainCHSCPanel(new MapEvent(this));
 	}
 
 	public void fireModifyPlainSCPanel(int i, int j) {

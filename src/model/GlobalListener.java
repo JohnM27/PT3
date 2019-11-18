@@ -28,5 +28,7 @@ public interface GlobalListener extends EventListener {
 
 	public void ModifyWaterSCPanel(MapEvent event);
 
-	public void selected(MapEvent mapEvent);
+	public void selected(MapEvent event);
+
+	public void ModifyPlainCHSCPanel(MapEvent event);
 }

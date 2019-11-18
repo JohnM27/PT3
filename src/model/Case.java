@@ -1,18 +1,31 @@
 package model;
 
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public abstract class Case {
 
 	private Image img;
 	private int x, y;
-	private Territory territory;
+	
+	private boolean possessed;
+	private Building building;
+	private Image imageOver;
 	
 	public Case(int x, int y, Image img) {
-		territory = new Territory();
 		this.x = x;
 		this.y = y;
 		this.img = img;
+		
+		possessed = false;
+		try {
+			imageOver = ImageIO.read(new File("Graphismes/Territory.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public Image getImage() {
@@ -24,11 +37,11 @@ public abstract class Case {
 	}
 	
 	public void setPossessed() {
-		territory.setPossessed(true);
+		possessed = true;
 	}
 	
 	public boolean isPossessed() {
-		return territory.isPossessed();
+		return possessed;
 	}
 	
 	public int getX() {
@@ -40,26 +53,41 @@ public abstract class Case {
 	}
 
 	public Image getImageOver() {
-		return territory.getOver();
+		return imageOver;
 	}
 	
 	public void setImageOver() {
-		territory.setOver();
+		imageOver = null;
+	}
+	
+	public void setCityHallImageOver() {
+		building = new CityHall();
+		imageOver = building.getImg();
 	}
 
 	public Building buildHouse() {
-		return territory.buildHouse();
+		//return territory.buildHouse();
+    building = new House();
+		imageOver = building.getImg();
 	}
 
 	public void setFishingImageOver() {
-		territory.setFishingImageOver();
+		building = new Harbor();
+		imageOver = building.getImg();
 	}
-
+  
 	public Building buildLumberMill() {
-		return territory.buildLumberMill();
+		//return territory.buildLumberMill();
+    building = new LumberMill();
+		imageOver = building.getImg();
 	}
 
 	public void setMineImageOver() {
-		territory.setMineImageOver();
+		building = new Mine();
+		imageOver = building.getImg();
+	}
+
+	public String getBuildingType() {
+		return building.getClass().getName();
 	}
 }
