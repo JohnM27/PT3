@@ -60,29 +60,30 @@ public abstract class Case {
 		imageOver = null;
 	}
 	
-	public void setCityHallImageOver() {
+	public void buildCityHall() {
 		building = new CityHall();
 		imageOver = building.getImg();
 	}
 
 	public Building buildHouse() {
-		//return territory.buildHouse();
-    building = new House();
+		building = new House();
 		imageOver = building.getImg();
+		return building;
 	}
 
-	public void setFishingImageOver() {
+	public void buildHarbor() {
 		building = new Harbor();
 		imageOver = building.getImg();
+		//return building;
 	}
   
 	public Building buildLumberMill() {
-		//return territory.buildLumberMill();
-    building = new LumberMill();
+		building = new LumberMill();
 		imageOver = building.getImg();
+		return building;
 	}
 
-	public void setMineImageOver() {
+	public void buildMine() {
 		building = new Mine();
 		imageOver = building.getImg();
 	}

@@ -145,7 +145,7 @@ public class Model {
 		GlobalListener [] listenerList = 
 				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
 		
-		m.setCityHallImageOver(coord[0], coord[1]);
+		m.buildCityHall(coord[0], coord[1]);
 		cityHall = true;
 		
 		for(GlobalListener listener : listenerList)
@@ -169,7 +169,7 @@ public class Model {
 		GlobalListener [] listenerList = 
 				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
 		
-		m.setFishingImageOver(coord[0], coord[1]);
+		m.buildHarbor(coord[0], coord[1]);
 		
 		building.add(m.getCase(coord[0], coord[1]));
 		
@@ -194,7 +194,7 @@ public class Model {
 		GlobalListener [] listenerList = 
 				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
 		
-		m.setMineImageOver(coord[0], coord[1]);
+		m.buildMine(coord[0], coord[1]);
 		
 		building.add(m.getCase(coord[0], coord[1]));
 		

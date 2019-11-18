@@ -138,25 +138,25 @@ public class Map {
 		return map[i][j].isPossessed();
 	}
 	
-	public void setCityHallImageOver(int i, int j) {
-		map[i][j].setCityHallImageOver();
+	public void buildCityHall(int i, int j) {
+		map[i][j].buildCityHall();
 	}
   
 	public Building buildHouse(int i, int j) {
-    map[i][j].setHouseImageOver();
+		map[i][j].buildHouse();
 		return map[i][j].buildHouse();
 	}
 	
-	public void setFishingImageOver(int i, int j) {
-		map[i][j].setFishingImageOver();
+	public void buildHarbor(int i, int j) {
+		map[i][j].buildHarbor();
 	}
 
 	public Building buildLumberMill(int i, int j) {
 		return map[i][j].buildLumberMill();
 	}
 
-	public void setMineImageOver(int i, int j) {
-		map[i][j].setMineImageOver();
+	public void buildMine(int i, int j) {
+		map[i][j].buildMine();
 	}
 	
 	public Case getCase(int i, int j) {
