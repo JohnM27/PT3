@@ -114,6 +114,7 @@ public class GameView extends View implements GlobalListener{
 	public void HouseOn(MapEvent event) {
 		int[] coord = event.getCoord();
 		HudCPanel.houseOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
+		HudWPanel.setPopulationMax(event.getPopulationMax());
 	}
 	
 	@Override
@@ -126,6 +127,7 @@ public class GameView extends View implements GlobalListener{
 	public void LoggingOn(MapEvent event) {
 		int[] coord = event.getCoord();
 		HudCPanel.loggingOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
+		HudWPanel.setPopulation(event.getPopulation());
 	}
 
 	@Override

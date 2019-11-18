@@ -16,6 +16,9 @@ public class MapEvent extends EventObject {
   
 	private String typeCase;
 	
+	private int populationMax;
+	private int population;
+	
 	public MapEvent(Object source) {
 		super(source);
 		
@@ -29,6 +32,9 @@ public class MapEvent extends EventObject {
 		adjacent = ((Model)source).getAdjacent();
 
 		typeCase = ((Model)source).getTypeCase();
+		
+		populationMax = ((Model)source).getPopulationMax();
+		population = ((Model)source).getPopulation();
 	}
 	
 	public int getNbJour() {
@@ -57,5 +63,13 @@ public class MapEvent extends EventObject {
   
 	public String getTypeCase() {
 		return typeCase;
+	}
+
+	public int getPopulationMax() {
+		return populationMax;
+	}
+	
+	public int getPopulation() {
+		return population;
 	}
 }

@@ -19,7 +19,7 @@ import controller.Controller;
 
 public class HudSCPanel extends JPanel {
 	private Controller controller;
-	int typeCase = 1000;
+	
 
 	private JButton buy, selected, test, buildH, buildF, buildL, buildM;
 	
@@ -41,17 +41,26 @@ public class HudSCPanel extends JPanel {
 		gbc.insets = new Insets(20,20,20,20);
 		gbc.gridx = 0;
  		gbc.gridy = 1;
- 		add(selected, gbc);
+ 		//add(selected, gbc);
 
+ 		gbc.insets = new Insets(5,5,5,5);
+ 		
+ 		test = new JButton("CE BOUTON EST A CHANGER");
+ 		test.setPreferredSize(new Dimension(922,148));
+ 		gbc.gridx = 1;
+ 		gbc.gridy = 0;
+ 		gbc.gridheight = 2;
+ 		add(test, gbc);
+ 		
  		buy = new JButton("BUY");
- 		buy.setPreferredSize(new Dimension(831,158));
+ 		buy.setPreferredSize(new Dimension(922,148));
  		buy.addActionListener(controller);
  		buy.setVisible(false);
- 		gbc.insets = new Insets(0,0,0,0);
  		gbc.gridx = 1;
  		gbc.gridy = 0;
  		gbc.gridheight = 2;
  		add(buy, gbc);
+ 		
  		
  		buildH = new JButton("BUILD House");
  		buildH.setPreferredSize(new Dimension(831,158));
@@ -92,13 +101,6 @@ public class HudSCPanel extends JPanel {
  		gbc.gridy = 0;
  		gbc.gridheight = 2;
  		add(buildM, gbc);
- 		
- 		test = new JButton("CE BOUTON EST A CHANGER");
- 		test.setPreferredSize(new Dimension(831,158));
- 		gbc.gridx = 1;
- 		gbc.gridy = 0;
- 		gbc.gridheight = 2;
- 		add(test, gbc);
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -110,7 +112,7 @@ public class HudSCPanel extends JPanel {
 			textTest = ImageIO.read(new File("Graphismes/textTest.png"));
 		} catch (Exception e) {}
 		g.drawImage(borderL, 0, 0, this);
-		g.drawImage(textTest, 10, 20, this);
+		//g.drawImage(textTest, 10, 20, this);
 	}
 		
 	public void display(Image img, boolean adjacent) {

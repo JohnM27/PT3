@@ -12,9 +12,10 @@ public class House extends Building {
 		
 		try {
 			setImg(ImageIO.read(new File("Graphismes/H.png")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		} catch (IOException e) {}
+		
+		setPopulation(5);
+		
 		
 		System.out.println(getLevel());
 	}

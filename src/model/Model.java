@@ -12,6 +12,8 @@ public class Model {
 	private int[] coord = new int[2];
 	private boolean adjacent;
 	private String typeCase;
+	private int populationMax = 0;
+	private int population = 0;
 
 	public Model() {
 		listenersList = new EventListenerList();
@@ -52,6 +54,14 @@ public class Model {
 	
 	public String getTypeCase() {
 		return typeCase;
+	}
+
+	public int getPopulationMax() {
+		return populationMax;
+	}
+
+	public int getPopulation() {
+		return population;
 	}
 	
 	public void addGlobalListener(GlobalListener listener) {
@@ -100,7 +110,8 @@ public class Model {
 		GlobalListener [] listenerList = 
 				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
 		
-		m.setHouseImageOver(coord[0], coord[1]);
+		Building b = m.buildHouse(coord[0], coord[1]);
+		populationMax += b.getPopulation();
 		
 		for(GlobalListener listener : listenerList)
 			listener.HouseOn(new MapEvent(this));
@@ -120,7 +131,8 @@ public class Model {
 		GlobalListener [] listenerList = 
 				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
 		
-		m.setLoggingImageOver(coord[0], coord[1]);
+		Building b = m.buildLumberMill(coord[0], coord[1]);
+		population += b.getPopulation();
 		
 		for(GlobalListener listener : listenerList)
 			listener.LoggingOn(new MapEvent(this));

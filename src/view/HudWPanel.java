@@ -18,24 +18,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class HudWPanel extends JPanel {
-	/*
-	private HudWUPanel HudWUPanel;
-	private HudWDPanel HudWDPanel;
-	
-	public HudWPanel() {
-		super(new BorderLayout());
-		
-		HudWUPanel = new HudWUPanel();
-		add(HudWUPanel, BorderLayout.NORTH);
-		
-		HudWDPanel = new HudWDPanel();
-		add(HudWDPanel, BorderLayout.CENTER);
-	}
-	*/
 	private int nbGold = 0, nbStone = 0, nbWood = 0, nbFood = 0;
 	
 	private Image selected, fill;
 	
+	private int moral = 50;
+	private int population = 0;
+	private int populationMax = 0;
 	
 	private static Font font = new Font("San Serif", Font.PLAIN, 35);
 	private static Color color = new Color(240,240,240);
@@ -53,25 +42,7 @@ public class HudWPanel extends JPanel {
 			selected = ImageIO.read(new File("Graphismes/Disabled.png"));
 		} catch (Exception e) {}
 		
-		/*
- 		selected = new JButton();
-		selected.setPreferredSize(new Dimension(61,61));
-		selected.setBorderPainted(false);
-		selected.setEnabled(false);
-		c.insets = new Insets(20,125,20,20);
-		c.gridx = 0;
- 		c.gridy = 0;
- 		//add(selected, c);
- 		
- 		
- 		fill = new JButton();
- 		fill.setPreferredSize(new Dimension(268,200));
- 		c.insets = new Insets(0,0,0,0);
-		c.gridx = 0;
-		c.gridy = 3;
-		c.gridwidth = 4;
- 		//add(fill, c);
- 		*/
+		
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -82,19 +53,30 @@ public class HudWPanel extends JPanel {
 			g.setColor(color);
 			
 			
-			g.drawImage(ImageIO.read(new File("Graphismes/Gold.png")), 5, 5, this);
-			g.drawImage(ImageIO.read(new File("Graphismes/Food.png")), 139, 5, this);
-			g.drawImage(ImageIO.read(new File("Graphismes/Wood.png")), 5, 76, this);
-			g.drawImage(ImageIO.read(new File("Graphismes/Stone.png")), 139, 76, this);
-			
-			g.drawString("" + nbGold, 71, 50);
-			g.drawString("" + nbFood, 205, 50);
-			g.drawString("" + nbWood, 71, 121);
-			g.drawString("" + nbStone, 205, 121);
+			g.drawImage(ImageIO.read(new File("Graphismes/textTest.png")), 100, 5, this);
 			
 			
-			g.drawImage(ImageIO.read(new File("Graphismes/textTest.png")), 25, 172, this);
-			g.drawImage(selected, 202, 152, this);
+			g.drawImage(ImageIO.read(new File("Graphismes/Gold.png")), 5, 29, this);
+			g.drawImage(ImageIO.read(new File("Graphismes/Food.png")), 139, 29, this);
+			g.drawImage(ImageIO.read(new File("Graphismes/Wood.png")), 5, 100, this);
+			g.drawImage(ImageIO.read(new File("Graphismes/Stone.png")), 139, 100, this);
+			
+			g.drawString("" + nbGold, 71, 74);
+			g.drawString("" + nbFood, 205, 74);
+			g.drawString("" + nbWood, 71, 145);
+			g.drawString("" + nbStone, 205, 145);
+			
+			
+			g.drawString("Moral", 10, 201);
+			g.drawRect(108, 171, 150, 35);
+			g.fillRect(108, 171, moral, 35);
+			
+			g.drawString("Pop.", 10, 246);
+			g.drawString( population + " / " + populationMax, 80, 246);
+			
+			
+			g.drawImage(ImageIO.read(new File("Graphismes/textTest.png")), 100, 256, this);
+			g.drawImage(selected, 100, 285, this);
 		} catch (Exception e) {}
 		
 	}
@@ -109,6 +91,16 @@ public class HudWPanel extends JPanel {
 	public void done() {
 		//selected.setIcon(null);
 		
+		repaint();
+	}
+
+	public void setPopulationMax(int populationMax) {
+		this.populationMax = populationMax;
+		repaint();
+	}
+
+	public void setPopulation(int population) {
+		this.population = population;
 		repaint();
 	}
 }

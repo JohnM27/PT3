@@ -138,16 +138,16 @@ public class Map {
 		return map[i][j].isPossessed();
 	}
 	
-	public void setHouseImageOver(int i, int j) {
-		map[i][j].setHouseImageOver();
+	public Building buildHouse(int i, int j) {
+		return map[i][j].buildHouse();
 	}
 	
 	public void setFishingImageOver(int i, int j) {
 		map[i][j].setFishingImageOver();
 	}
 
-	public void setLoggingImageOver(int i, int j) {
-		map[i][j].setLoggingImageOver();
+	public Building buildLumberMill(int i, int j) {
+		return map[i][j].buildLumberMill();
 	}
 
 	public void setMineImageOver(int i, int j) {
