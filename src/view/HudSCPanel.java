@@ -21,7 +21,7 @@ public class HudSCPanel extends JPanel {
 	private Controller controller;
 	
 
-	private JButton buy, selected, test, buildH, buildF, buildL, buildM, buildC;
+	private JButton buy, test, buildH, buildF, buildL, buildM, buildC;
 	
 	 
 	public HudSCPanel(Controller controller) {
@@ -33,15 +33,6 @@ public class HudSCPanel extends JPanel {
 		
 		setBackground(new Color(100,100,100));
 
- 		
- 		selected = new JButton();
-		selected.setPreferredSize(new Dimension(61,61));
-		selected.setBorderPainted(false);
-		selected.setEnabled(false);
-		gbc.insets = new Insets(20,20,20,20);
-		gbc.gridx = 0;
- 		gbc.gridy = 1;
- 		//add(selected, gbc);
 
  		gbc.insets = new Insets(5,5,5,5);
  		
@@ -143,10 +134,6 @@ public class HudSCPanel extends JPanel {
 		
 		buy.setVisible(true);
 		
-		selected.setEnabled(true);
-		
-		selected.setIcon(new ImageIcon(img));
-		
 		repaint();
 	}
 	//Pas utilisé mais plus peut-être oui
@@ -180,10 +167,6 @@ public class HudSCPanel extends JPanel {
 		
 		buildC.setVisible(true);
 		
-		selected.setEnabled(true);
-		
-		selected.setIcon(new ImageIcon(img));
-		
 		repaint();
 	}
 
@@ -198,10 +181,6 @@ public class HudSCPanel extends JPanel {
 		buildC.setVisible(false);
 		
 		buildH.setVisible(true);
-		
-		selected.setEnabled(true);
-		
-		selected.setIcon(new ImageIcon(img));
 		
 		repaint();
 	}
@@ -218,10 +197,6 @@ public class HudSCPanel extends JPanel {
 		
 		buildL.setVisible(true);
 		
-		selected.setEnabled(true);
-		
-		selected.setIcon(new ImageIcon(img));
-		
 		repaint();
 	}
 
@@ -237,10 +212,6 @@ public class HudSCPanel extends JPanel {
 		
 		buildM.setVisible(true);
 		
-		selected.setEnabled(true);
-		
-		selected.setIcon(new ImageIcon(img));
-		
 		repaint();
 	}
 
@@ -255,10 +226,6 @@ public class HudSCPanel extends JPanel {
 		buildC.setVisible(false);
 		
 		buildF.setVisible(true);
-		
-		selected.setEnabled(true);
-		
-		selected.setIcon(new ImageIcon(img));
 		
 		repaint();
 	}

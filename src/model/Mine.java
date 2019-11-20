@@ -11,7 +11,7 @@ public class Mine extends Building {
 		super();
 		
 		try {
-			setImg(ImageIO.read(new File("Graphismes/M.png")));
+			setImg(ImageIO.read(new File("Graphismes/Mine.png")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
