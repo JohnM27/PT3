@@ -20,8 +20,8 @@ import controller.Controller;
 public class HudSCPanel extends JPanel {
 	private Controller controller;
 	
-
-	private JButton buy, test, buildH, buildF, buildL, buildM, buildC;
+	//taille max = 922,148
+	private JButton buy, buildH, buildF, buildL, buildM, buildC;
 	
 	 
 	public HudSCPanel(Controller controller) {
@@ -35,13 +35,6 @@ public class HudSCPanel extends JPanel {
 
 
  		gbc.insets = new Insets(5,5,5,5);
- 		
- 		test = new JButton("CE BOUTON EST A CHANGER");
- 		test.setPreferredSize(new Dimension(922,148));
- 		gbc.gridx = 1;
- 		gbc.gridy = 0;
- 		gbc.gridheight = 2;
- 		add(test, gbc);
  		
  		buy = new JButton("BUY");
  		buy.setPreferredSize(new Dimension(922,148));
@@ -110,15 +103,11 @@ public class HudSCPanel extends JPanel {
 		Image borderL = null, textTest = null;
 		try {
 			borderL = ImageIO.read(new File("Graphismes/BorderSL.png"));
-			textTest = ImageIO.read(new File("Graphismes/textTest.png"));
 		} catch (Exception e) {}
 		g.drawImage(borderL, 0, 0, this);
-		//g.drawImage(textTest, 10, 20, this);
 	}
 		
-	public void display(Image img, boolean adjacent, String typeCase, boolean cityHall) {
-		test.setVisible(false);
-		
+	public void display(Image img, boolean adjacent, String typeCase, boolean cityHall) {		
 		buildH.setVisible(false);
 		buildF.setVisible(false);
 		buildL.setVisible(false);
@@ -156,8 +145,6 @@ public class HudSCPanel extends JPanel {
 	}*/
 	
 	public void displayPlainCityHall(Image img) {
-		test.setVisible(false);
-		
 		buy.setVisible(false);
 		
 		buildF.setVisible(false);
@@ -171,8 +158,6 @@ public class HudSCPanel extends JPanel {
 	}
 
 	public void displayPlain(Image img) {
-		test.setVisible(false);
-		
 		buy.setVisible(false);
 		
 		buildF.setVisible(false);
@@ -186,8 +171,6 @@ public class HudSCPanel extends JPanel {
 	}
 
 	public void displayForest(Image img) {
-		test.setVisible(false);
-		
 		buy.setVisible(false);
 		
 		buildH.setVisible(false);
@@ -201,8 +184,6 @@ public class HudSCPanel extends JPanel {
 	}
 
 	public void displayMountain(Image img) {
-		test.setVisible(false);
-		
 		buy.setVisible(false);
 		
 		buildH.setVisible(false);
@@ -216,8 +197,6 @@ public class HudSCPanel extends JPanel {
 	}
 
 	public void displayWater(Image img) {
-		test.setVisible(false);
-		
 		buy.setVisible(false);
 		
 		buildH.setVisible(false);
