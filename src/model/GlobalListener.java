@@ -31,4 +31,8 @@ public interface GlobalListener extends EventListener {
 	public void selected(MapEvent event);
 
 	public void ModifyPlainCHSCPanel(MapEvent event);
+
+	public void CityHallOn(MapEvent event);
+
+	public void FarmOn(MapEvent event);
 }

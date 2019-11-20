@@ -18,7 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class HudWPanel extends JPanel {
-	private int nbGold = 0, nbStone = 0, nbWood = 0, nbFood = 0;
+	private int nbGold = 75, nbStone = 0, nbWood = 50, nbFood = 20;
 	
 	private Image selected, fill;
 	
@@ -101,6 +101,14 @@ public class HudWPanel extends JPanel {
 
 	public void setPopulation(int population) {
 		this.population = population;
+		repaint();
+	}
+
+	public void setRessources(int[] ressources) {
+		nbGold = ressources[0];
+		nbStone = ressources[3]; 
+		nbWood = ressources[2];
+		nbFood = ressources[1];
 		repaint();
 	}
 }

@@ -63,8 +63,29 @@ public class HudCPanel extends JPanel {
 		this.imgOver[i][j] = null;
 		repaint();
 	}
+	
+	
+	/**
+	 * PARTIE A REFAIRE CAR TOUTES LES METHODES CE RESSEMBLE
+	 */
+	
+	public void buildingOn(int i, int j, Image image) {
+		this.imgOver[i][j] = image;
+		repaint();
+	}
+	
+	/*
+	public void cityHallOn(int i, int j, Image image) {
+		this.imgOver[i][j] = image;
+		repaint();
+	}
 
 	public void houseOn(int i, int j, Image image) {
+		this.imgOver[i][j] = image;
+		repaint();
+	}
+	
+	public void farmOn(int i, int j, Image image) {
 		this.imgOver[i][j] = image;
 		repaint();
 	}
@@ -83,6 +104,7 @@ public class HudCPanel extends JPanel {
 		this.imgOver[i][j] = image;
 		repaint();
 	}
+	*/
 
 	public void selected(int[] coord) {		
 		for(int i = 0; i < 10; i++)

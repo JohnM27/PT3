@@ -11,15 +11,9 @@ public class LumberMill extends Building {
 		super();
 		
 		try {
-			double r = Math.random();
-			if(r <= 0.5)
-				setImg(ImageIO.read(new File("Graphismes/LumberMill.png")));
-			else
-				setImg(ImageIO.read(new File("Graphismes/LumberMill2.png")));
+			setImg(ImageIO.read(new File("Graphismes/L.png")));
 		} catch (IOException e) {}
 		
 		setPopulation(2);
-		
-		System.out.println(getLevel());
 	}
 }

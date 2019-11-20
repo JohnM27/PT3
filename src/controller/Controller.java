@@ -111,6 +111,8 @@ public class Controller extends MouseAdapter implements ActionListener{
 		}
 		else if(e.getActionCommand().equals("BUILD House"))
 			model.fireHouseOn();
+		else if(e.getActionCommand().equals("BUILD Farm"))
+			model.fireFarmOn();
 		else if(e.getActionCommand().equals("BUILD Fishing"))
 			model.fireFishingOn();
 		else if(e.getActionCommand().equals("BUILD Logging"))

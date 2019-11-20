@@ -11,17 +11,9 @@ public class House extends Building {
 		super();
 		
 		try {
-			double r = Math.random();
-			if(r <= 0.5)
-				setImg(ImageIO.read(new File("Graphismes/House.png")));
-			else
-				setImg(ImageIO.read(new File("Graphismes/House2.png")));
+			setImg(ImageIO.read(new File("Graphismes/H.png")));
 		} catch (IOException e) {}
 		
 		setPopulation(5);
-		
-		System.out.println(getLevel());
 	}
-	
-	
 }
