@@ -18,7 +18,8 @@ public class Model {
 	private boolean cityHall;
 	
 	private List<Case> building;
-	private int nbGold , nbStone, nbWood, nbFood;
+	private boolean build = false;
+	private int[] ressources = {75, 20, 50, 0};
   
 	private int populationMax = 0;
 	private int population = 0;
@@ -27,10 +28,6 @@ public class Model {
 		listenersList = new EventListenerList();
 		nbJour = 0;
 		building = new ArrayList<Case>();
-		nbGold = 0;
-		nbStone = 0;
-		nbWood = 0;
-		nbFood = 0;
 	}
 	
 	/**
@@ -39,6 +36,10 @@ public class Model {
 	 */
 	public int getNbJour() {
 		return nbJour;
+	}
+	
+	public int[] getRessources() {
+		return ressources;
 	}
 	
 	public Image[][] getImg() {
@@ -81,10 +82,13 @@ public class Model {
 		return cityHall;
 	}
 	
+	public boolean isBuilding() {
+		return build;
+	}
+	
 	public void addGlobalListener(GlobalListener listener) {
 		listenersList.add(GlobalListener.class, listener);
 	}
-	
 	
 	public void removeGlobalListener(GlobalListener listener) {
 		listenersList.remove(GlobalListener.class, listener);
@@ -95,26 +99,27 @@ public class Model {
 				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
 		
 		nbJour++;
-		
+		/*
+		 * Faudra changer pour l'amélioration
+		 * 
+		 * Il suffira de faire un getRessource sur la case et on récupère la ressource facilement
+		 */
 		for(Case b : building) {
-			if(b.getBuildingType().equals("model.House")) {
-				
-			}
-			else if(b.getBuildingType().equals("model.LumberMill")) {
-				nbWood += 5;
+			System.out.println(b.getBuildingType());
+			if(b.getBuildingType().equals("model.LumberMill")) {
+				ressources[2] += 5; //wood
 			}
 			else if(b.getBuildingType().equals("model.Harbor")) {
-				nbFood += 5;
+				ressources[1] += 5; //food
+			}
+			else if(b.getBuildingType().equals("model.Farm")) {
+				ressources[1] += 5; //food
 			}
 			else if(b.getBuildingType().equals("model.Mine")) {
-				nbStone += 5;
-				nbGold += 1;
+				ressources[3] += 5; //stone
 			}
 		}
-		System.out.println("Wood:" + nbWood);
-		System.out.println("Food:" + nbFood);
-		System.out.println("Stone:" + nbStone);
-		System.out.println("Gold:" + nbGold);
+		
 		for(GlobalListener listener : listenerList)
 			listener.jourChanged(new MapEvent(this));
 	}
@@ -137,6 +142,10 @@ public class Model {
 		m.setImageOver(coord[0], coord[1]);
 		m.setPossessed(coord[0], coord[1]);
 		
+		ressources[0] -= 6; // achat d'une case pour 6 d'or
+		
+		build = m.isBuilding(coord[0], coord[1]);
+		
 		for(GlobalListener listener : listenerList)
 			listener.FogOff(new MapEvent(this));
 	}
@@ -146,23 +155,46 @@ public class Model {
 				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
 		
 		m.buildCityHall(coord[0], coord[1]);
+		build = m.isBuilding(coord[0], coord[1]);
+		populationMax += m.getPopulation(coord[0], coord[1]);
 		cityHall = true;
 		
+		ressources[0] -= 50;
+		ressources[2] -= 30;
+		
 		for(GlobalListener listener : listenerList)
-			listener.HouseOn(new MapEvent(this));
+			listener.CityHallOn(new MapEvent(this));
 	}
 
 	public void fireHouseOn() {
 		GlobalListener [] listenerList = 
 				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
 		
-		Building b = m.buildHouse(coord[0], coord[1]);
-		populationMax += b.getPopulation();
-		
-		building.add(m.getCase(coord[0], coord[1]));
+		m.buildHouse(coord[0], coord[1]);
+		build = m.isBuilding(coord[0], coord[1]);
+		populationMax += m.getPopulation(coord[0], coord[1]);
+		ressources[0] -= 3;
+		ressources[2] -= 5;
 		
 		for(GlobalListener listener : listenerList)
 			listener.HouseOn(new MapEvent(this));
+	}
+	
+	public void fireFarmOn() {
+		GlobalListener [] listenerList = 
+				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		
+		m.buildFarm(coord[0], coord[1]);
+		build = m.isBuilding(coord[0], coord[1]);
+		population += m.getPopulation(coord[0], coord[1]);
+		
+		building.add(m.getCase(coord[0], coord[1]));
+		
+		ressources[0] -= 3;
+		ressources[2] -= 5;
+		
+		for(GlobalListener listener : listenerList)
+			listener.FarmOn(new MapEvent(this));
 	}
 	
 	public void fireFishingOn() {
@@ -170,8 +202,13 @@ public class Model {
 				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
 		
 		m.buildHarbor(coord[0], coord[1]);
+		build = m.isBuilding(coord[0], coord[1]);
+		population += m.getPopulation(coord[0], coord[1]);
 		
 		building.add(m.getCase(coord[0], coord[1]));
+		
+		ressources[0] -= 5;
+		ressources[2] -= 7;
 		
 		for(GlobalListener listener : listenerList)
 			listener.FishingOn(new MapEvent(this));
@@ -181,10 +218,14 @@ public class Model {
 		GlobalListener [] listenerList = 
 				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
 		
-		Building b = m.buildLumberMill(coord[0], coord[1]);
-		population += b.getPopulation();
+		m.buildLumberMill(coord[0], coord[1]);
+		build = m.isBuilding(coord[0], coord[1]);
+		population += m.getPopulation(coord[0], coord[1]);
 		
 		building.add(m.getCase(coord[0], coord[1]));
+		
+		ressources[0] -= 5;
+		ressources[2] -= 5;
 		
 		for(GlobalListener listener : listenerList)
 			listener.LoggingOn(new MapEvent(this));
@@ -195,8 +236,13 @@ public class Model {
 				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
 		
 		m.buildMine(coord[0], coord[1]);
+		build = m.isBuilding(coord[0], coord[1]);
+		population += m.getPopulation(coord[0], coord[1]);
 		
 		building.add(m.getCase(coord[0], coord[1]));
+		
+		ressources[0] -= 20;
+		ressources[2] -= 10;
 		
 		for(GlobalListener listener : listenerList)
 			listener.MineOn(new MapEvent(this));
@@ -224,6 +270,8 @@ public class Model {
 		coord[0] = i;
 		coord[1] = j;
 		
+		build = m.isBuilding(coord[0], coord[1]);
+		
 		for(GlobalListener listener : listenerList)
 			listener.ModifyPlainCHSCPanel(new MapEvent(this));
 	}
@@ -234,6 +282,8 @@ public class Model {
 		
 		coord[0] = i;
 		coord[1] = j;
+		
+		build = m.isBuilding(coord[0], coord[1]);
 		
 		for(GlobalListener listener : listenerList)
 			listener.ModifyPlainSCPanel(new MapEvent(this));
@@ -246,6 +296,8 @@ public class Model {
 		coord[0] = i;
 		coord[1] = j;
 		
+		build = m.isBuilding(coord[0], coord[1]);
+		
 		for(GlobalListener listener : listenerList)
 			listener.ModifyForestSCPanel(new MapEvent(this));
 	}
@@ -257,6 +309,8 @@ public class Model {
 		coord[0] = i;
 		coord[1] = j;
 		
+		build = m.isBuilding(coord[0], coord[1]);
+		
 		for(GlobalListener listener : listenerList)
 			listener.ModifyMountainSCPanel(new MapEvent(this));
 	}
@@ -267,6 +321,8 @@ public class Model {
 		
 		coord[0] = i;
 		coord[1] = j;
+		
+		build = m.isBuilding(coord[0], coord[1]);
 		
 		for(GlobalListener listener : listenerList)
 			listener.ModifyWaterSCPanel(new MapEvent(this));

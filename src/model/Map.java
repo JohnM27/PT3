@@ -92,6 +92,10 @@ public class Map {
 		}
 	}
 	
+	public boolean isBuilding(int i, int j) {
+		return map[i][j].isBuilding();
+	}
+	
 	public String getTypeCase(int i, int j) {
 		return map[i][j].getClass().getName();
 	}
@@ -138,21 +142,28 @@ public class Map {
 		return map[i][j].isPossessed();
 	}
 	
+	public int getPopulation(int i, int j) {
+		return map[i][j].getPopulation();
+	}
+	
 	public void buildCityHall(int i, int j) {
 		map[i][j].buildCityHall();
 	}
   
-	public Building buildHouse(int i, int j) {
+	public void buildHouse(int i, int j) {
 		map[i][j].buildHouse();
-		return map[i][j].buildHouse();
+	}
+	
+	public void buildFarm(int i, int j) {
+		map[i][j].buildFarm();
 	}
 	
 	public void buildHarbor(int i, int j) {
 		map[i][j].buildHarbor();
 	}
 
-	public Building buildLumberMill(int i, int j) {
-		return map[i][j].buildLumberMill();
+	public void buildLumberMill(int i, int j) {
+		map[i][j].buildLumberMill();
 	}
 
 	public void buildMine(int i, int j) {

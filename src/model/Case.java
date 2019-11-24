@@ -13,12 +13,15 @@ public abstract class Case {
 	
 	private boolean possessed;
 	private Building building;
+	private boolean build;
 	private Image imageOver;
 	
 	public Case(int x, int y, Image img) {
 		this.x = x;
 		this.y = y;
 		this.img = img;
+		
+		build = false;
 		
 		possessed = false;
 		try {
@@ -60,35 +63,55 @@ public abstract class Case {
 		imageOver = null;
 	}
 	
+	public int getPopulation() {
+		return building.getPopulation();
+	}
+	
 	public void buildCityHall() {
+		setBuilding();
 		building = new CityHall();
 		imageOver = building.getImg();
 	}
 
-	public Building buildHouse() {
+	public void buildHouse() {
+		setBuilding();
 		building = new House();
 		imageOver = building.getImg();
-		return building;
+	}
+	
+	public void buildFarm() {
+		setBuilding();
+		building = new Farm();
+		imageOver = building.getImg();
 	}
 
 	public void buildHarbor() {
+		setBuilding();
 		building = new Harbor();
 		imageOver = building.getImg();
-		//return building;
 	}
   
-	public Building buildLumberMill() {
+	public void buildLumberMill() {
+		setBuilding();
 		building = new LumberMill();
 		imageOver = building.getImg();
-		return building;
 	}
 
 	public void buildMine() {
+		setBuilding();
 		building = new Mine();
 		imageOver = building.getImg();
 	}
 
 	public String getBuildingType() {
 		return building.getClass().getName();
+	}
+	
+	public void setBuilding() {
+		build = true;
+	}
+
+	public boolean isBuilding() {
+		return build;
 	}
 }

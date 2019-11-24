@@ -73,6 +73,7 @@ public class GameView extends View implements GlobalListener{
 	 */
 	@Override
 	public void jourChanged(MapEvent event) {
+		HudWPanel.setRessources(event.getRessources());
 		HudSPanel.getRight().setNbJour(event.getNbJour());
 	}
 
@@ -92,6 +93,7 @@ public class GameView extends View implements GlobalListener{
 		int[] coord = event.getCoord();
 		boolean cityHall = event.getCityHall();
 		HudCPanel.fogOff(coord[0], coord[1]);
+		HudWPanel.setRessources(event.getRessources());
 		switch(event.getTypeCase()) {
 			case "model.Plain":
 				if(cityHall) {
@@ -101,76 +103,103 @@ public class GameView extends View implements GlobalListener{
 					ModifyPlainCHSCPanel(event);
 				}
 				break;
-				
+	
 			case "model.Forest":
 				ModifyForestSCPanel(event);
 				break;
-			
+	
 			case "model.Mountain":
 				ModifyMountainSCPanel(event);
 				break;
-		
+	
 			case "model.Water":
 				ModifyWaterSCPanel(event);
 				break;
 		}
 	}
 	
+	public void CityHallOn(MapEvent event) {
+		int[] coord = event.getCoord();
+		HudCPanel.buildingOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
+		HudWPanel.setPopulationMax(event.getPopulationMax());
+		HudWPanel.setRessources(event.getRessources());
+		ModifyPlainCHSCPanel(event);
+	}
+	
 	@Override
 	public void HouseOn(MapEvent event) {
 		int[] coord = event.getCoord();
-		HudCPanel.houseOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
+		HudCPanel.buildingOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
 		HudWPanel.setPopulationMax(event.getPopulationMax());
+		HudWPanel.setRessources(event.getRessources());
+		ModifyPlainSCPanel(event);
+	}
+	
+	@Override
+	public void FarmOn(MapEvent event) {
+		int[] coord = event.getCoord();
+		HudCPanel.buildingOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
+		HudWPanel.setPopulation(event.getPopulation());
+		HudWPanel.setRessources(event.getRessources());
+		ModifyPlainSCPanel(event);
 	}
 	
 	@Override
 	public void FishingOn(MapEvent event) {
 		int[] coord = event.getCoord();
-		HudCPanel.fishingOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
+		HudCPanel.buildingOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
+		HudWPanel.setPopulation(event.getPopulation());
+		HudWPanel.setRessources(event.getRessources());
+		ModifyWaterSCPanel(event);
 	}
 
 	@Override
 	public void LoggingOn(MapEvent event) {
 		int[] coord = event.getCoord();
-		HudCPanel.loggingOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
+		HudCPanel.buildingOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
 		HudWPanel.setPopulation(event.getPopulation());
+		HudWPanel.setRessources(event.getRessources());
+		ModifyForestSCPanel(event);
 	}
 
 	@Override
 	public void MineOn(MapEvent event) {
 		int[] coord = event.getCoord();
-		HudCPanel.mineOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
+		HudCPanel.buildingOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
+		HudWPanel.setPopulation(event.getPopulation());
+		HudWPanel.setRessources(event.getRessources());
+		ModifyMountainSCPanel(event);
 	}
 
 	@Override
 	public void ModifySCPanel(MapEvent event) {
-		HudSPanel.getCenter().display(event.getCurrentImage(), event.getAdjacent(), event.getTypeCase(), event.getCityHall());
+		HudSPanel.getCenter().display(event.getCurrentImage(), event.getAdjacent(), event.getTypeCase(), event.getCityHall(), event.getRessources());
 		HudWPanel.display(event.getCurrentImage());
 	}
 
 	@Override
 	public void ModifyPlainCHSCPanel(MapEvent event) {
-		HudSPanel.getCenter().displayPlainCityHall(event.getCurrentImage());
+		HudSPanel.getCenter().displayPlainCityHall(event.getCurrentImage(), event.getRessources(), event.isBuilding());
 	}
 	
 	@Override
 	public void ModifyPlainSCPanel(MapEvent event) {
-		HudSPanel.getCenter().displayPlain(event.getCurrentImage());
+		HudSPanel.getCenter().displayPlain(event.getCurrentImage(), event.getRessources(), event.isBuilding());
 	}
 
 	@Override
 	public void ModifyForestSCPanel(MapEvent event) {
-		HudSPanel.getCenter().displayForest(event.getCurrentImage());
+		HudSPanel.getCenter().displayForest(event.getCurrentImage(), event.getRessources(), event.isBuilding());
 	}
 
 	@Override
 	public void ModifyMountainSCPanel(MapEvent event) {
-		HudSPanel.getCenter().displayMountain(event.getCurrentImage());
+		HudSPanel.getCenter().displayMountain(event.getCurrentImage(), event.getRessources(), event.isBuilding());
 	}
 
 	@Override
 	public void ModifyWaterSCPanel(MapEvent event) {
-		HudSPanel.getCenter().displayWater(event.getCurrentImage());
+		HudSPanel.getCenter().displayWater(event.getCurrentImage(), event.getRessources(), event.isBuilding());
 	}
 
 	@Override

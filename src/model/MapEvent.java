@@ -3,6 +3,7 @@ package model;
 import java.awt.Image;
 import java.util.EventObject;
 
+@SuppressWarnings("serial")
 public class MapEvent extends EventObject {
 
 	private int nbJour;
@@ -19,6 +20,9 @@ public class MapEvent extends EventObject {
 	
 	private int populationMax;
 	private int population;
+	
+	private int[] ressources;
+	private boolean building;
 	
 	public MapEvent(Object source) {
 		super(source);
@@ -38,6 +42,10 @@ public class MapEvent extends EventObject {
 		
 		populationMax = ((Model)source).getPopulationMax();
 		population = ((Model)source).getPopulation();
+		
+		ressources = ((Model)source).getRessources();
+		
+		building = ((Model)source).isBuilding();
 	}
 	
 	public int getNbJour() {
@@ -78,5 +86,13 @@ public class MapEvent extends EventObject {
 	
 	public int getPopulation() {
 		return population;
+	}
+
+	public int[] getRessources() {
+		return ressources;
+	}
+
+	public boolean isBuilding() {
+		return building;
 	}
 }

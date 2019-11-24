@@ -15,6 +15,8 @@ public class CityHall extends Building {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		setPopulation(10);
 	}
 
 }
