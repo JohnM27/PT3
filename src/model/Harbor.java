@@ -11,10 +11,12 @@ public class Harbor extends Building {
 		super();
 		
 		try {
-			setImg(ImageIO.read(new File("Graphismes/F.png")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+			double r = Math.random();
+			if(r <= 0.5)
+				setImg(ImageIO.read(new File("Graphismes/Harbor.png")));
+			else
+				setImg(ImageIO.read(new File("Graphismes/Harbor2.png")));
+		} catch (IOException e) {}
 		
 		setPopulation(3);
 	}
