@@ -11,7 +11,7 @@ public class Farm extends Building {
 		super();
 		
 		try {
-			setImg(ImageIO.read(new File("Graphismes/F.png")));
+			setImg(ImageIO.read(new File("Graphismes/H.png")));
 		} catch (IOException e) {}
 		
 		setPopulation(2);
