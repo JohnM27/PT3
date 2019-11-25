@@ -19,7 +19,10 @@ public class Model {
 	
 	private List<Case> building;
 	private boolean build = false;
-	private int[] ressources = {75, 20, 50, 0};
+	//Ressources de base
+	//private int[] ressources = {75, 20, 50, 0};
+	//Ressources test
+	private int[] ressources = {9999, 20, 50, 0};
   
 	private int populationMax = 0;
 	private int population = 0;

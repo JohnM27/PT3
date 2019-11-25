@@ -11,11 +11,7 @@ public class Mine extends Building {
 		super();
 		
 		try {
-			double r = Math.random();
-			if(r <= 0.5)
-				setImg(ImageIO.read(new File("Graphismes/Mine.png")));
-			else
-				setImg(ImageIO.read(new File("Graphismes/Mine2.png")));
+			setImg(ImageIO.read(new File("Graphismes/Mine.png")));
 		} catch (IOException e) {}
 		
 		setPopulation(5);
