@@ -180,26 +180,31 @@ public class GameView extends View implements GlobalListener{
 	@Override
 	public void ModifyPlainCHSCPanel(MapEvent event) {
 		HudSPanel.getCenter().displayPlainCityHall(event.getCurrentImage(), event.getRessources(), event.isBuilding());
+		HudWPanel.display(event.getCurrentImage());
 	}
 	
 	@Override
 	public void ModifyPlainSCPanel(MapEvent event) {
 		HudSPanel.getCenter().displayPlain(event.getCurrentImage(), event.getRessources(), event.isBuilding());
+		HudWPanel.display(event.getCurrentImage());
 	}
 
 	@Override
 	public void ModifyForestSCPanel(MapEvent event) {
 		HudSPanel.getCenter().displayForest(event.getCurrentImage(), event.getRessources(), event.isBuilding());
+		HudWPanel.display(event.getCurrentImage());
 	}
 
 	@Override
 	public void ModifyMountainSCPanel(MapEvent event) {
 		HudSPanel.getCenter().displayMountain(event.getCurrentImage(), event.getRessources(), event.isBuilding());
+		HudWPanel.display(event.getCurrentImage());
 	}
 
 	@Override
 	public void ModifyWaterSCPanel(MapEvent event) {
 		HudSPanel.getCenter().displayWater(event.getCurrentImage(), event.getRessources(), event.isBuilding());
+		HudWPanel.display(event.getCurrentImage());
 	}
 
 	@Override
