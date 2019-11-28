@@ -92,10 +92,6 @@ public class Map {
 		}
 	}
 	
-	public boolean isBuilding(int i, int j) {
-		return map[i][j].isBuilding();
-	}
-	
 	public String getTypeCase(int i, int j) {
 		return map[i][j].getClass().getName();
 	}
@@ -172,6 +168,10 @@ public class Map {
 	
 	public Case getCase(int i, int j) {
 		return map[i][j];
+	}
+	
+	public Building getBuilding(int i, int j) {
+		return map[i][j].getBuilding();
 	}
 	
 	public boolean isAdjacent(int[] coord) {

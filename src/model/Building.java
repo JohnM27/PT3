@@ -6,6 +6,7 @@ public abstract class Building {
 	private Image img;
 	private int level;
 	private int population;
+	private String type;
 	
 	public Building() {
 		level = 0;
