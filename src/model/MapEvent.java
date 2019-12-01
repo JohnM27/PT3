@@ -22,7 +22,10 @@ public class MapEvent extends EventObject {
 	private int population;
 	
 	private int[] ressources;
-	private boolean building;
+	
+	private Building build;
+	
+	private int moral;
 	
 	public MapEvent(Object source) {
 		super(source);
@@ -45,7 +48,9 @@ public class MapEvent extends EventObject {
 		
 		ressources = ((Model)source).getRessources();
 		
-		building = ((Model)source).isBuilding();
+		build = ((Model)source).getBuilding(coord[0], coord[1]);
+		
+		moral = ((Model)source).getMoral();
 	}
 	
 	public int getNbJour() {
@@ -66,6 +71,10 @@ public class MapEvent extends EventObject {
 	
 	public Image getCurrentImage() {
 		return img[coord[0]][coord[1]];
+	}
+	
+	public Image getCurrentImageOver() {
+		return imgOver[coord[0]][coord[1]];
 	}
 	
 	public boolean getAdjacent() {
@@ -92,7 +101,11 @@ public class MapEvent extends EventObject {
 		return ressources;
 	}
 
-	public boolean isBuilding() {
-		return building;
+	public Building getBuilding() {
+		return build;
+	}
+
+	public int getMoral() {
+		return moral;
 	}
 }

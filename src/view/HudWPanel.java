@@ -7,24 +7,26 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
-import java.awt.Insets;
 import java.io.File;
 
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import model.Building;
 
 public class HudWPanel extends JPanel {
 	private int nbGold = 75, nbStone = 0, nbWood = 50, nbFood = 20;
 	
-	private Image selected, fill;
+	private Image selected, selectedOver, fill;
 	
-	private int moral = 50;
+	private int moral = 130;
 	private int population = 0;
 	private int populationMax = 0;
+	
+	private String buildingLevel = "";
+	private String buildingPop = "";
+	private String buildingName = "";
+	
 	
 	private static Font font = new Font("San Serif", Font.PLAIN, 35);
 	private static Color color = new Color(240,240,240);
@@ -40,6 +42,7 @@ public class HudWPanel extends JPanel {
 		
 		try {
 			selected = ImageIO.read(new File("Graphismes/Disabled.png"));
+			selectedOver = ImageIO.read(new File("Graphismes/Disabled.png"));
 		} catch (Exception e) {}
 		
 		
@@ -77,13 +80,18 @@ public class HudWPanel extends JPanel {
 			
 			g.drawImage(ImageIO.read(new File("Graphismes/textTest.png")), 100, 256, this);
 			g.drawImage(selected, 100, 285, this);
+			g.drawImage(selectedOver, 100, 285, this);
+			
+			g.drawString("Name: " + buildingName, 10, 375);
+			g.drawString("Level: " + buildingLevel, 10, 404);
+			g.drawString("Population: " + buildingPop, 10, 433);
 		} catch (Exception e) {}
 		
 	}
 	
-	public void display(Image img) {
+	public void display(Image img, Image imgOver) {
 		selected = img;
-		
+		selectedOver = imgOver;
 		repaint();
 	}
 	
@@ -109,6 +117,26 @@ public class HudWPanel extends JPanel {
 		nbStone = ressources[3]; 
 		nbWood = ressources[2];
 		nbFood = ressources[1];
+		repaint();
+	}
+	
+	public void setBuilding(Building building) {
+		if(building != null) {
+			buildingLevel = ""+building.getLevel();
+			buildingPop = ""+building.getPopulation();
+			String name = (building.getClass().getName()).substring(6);
+			buildingName = ""+name;
+		}
+		else {
+			buildingLevel = "";
+			buildingPop = "";
+			buildingName = "";
+		}
+		repaint();
+	}
+
+	public void setMoral(int moral) {
+		this.moral = moral;
 		repaint();
 	}
 }

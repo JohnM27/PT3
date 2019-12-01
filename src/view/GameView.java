@@ -74,6 +74,7 @@ public class GameView extends View implements GlobalListener{
 	@Override
 	public void jourChanged(MapEvent event) {
 		HudWPanel.setRessources(event.getRessources());
+		HudWPanel.setMoral(event.getMoral());
 		HudSPanel.getRight().setNbJour(event.getNbJour());
 	}
 
@@ -173,38 +174,44 @@ public class GameView extends View implements GlobalListener{
 
 	@Override
 	public void ModifySCPanel(MapEvent event) {
-		HudSPanel.getCenter().display(event.getCurrentImage(), event.getAdjacent(), event.getTypeCase(), event.getCityHall(), event.getRessources());
-		HudWPanel.display(event.getCurrentImage());
+		HudSPanel.getCenter().display(event.getAdjacent(), event.getTypeCase(), event.getCityHall(), event.getRessources());
+		HudWPanel.display(event.getCurrentImage(), event.getCurrentImageOver());
+		HudWPanel.setBuilding(event.getBuilding());
 	}
 
 	@Override
 	public void ModifyPlainCHSCPanel(MapEvent event) {
-		HudSPanel.getCenter().displayPlainCityHall(event.getCurrentImage(), event.getRessources(), event.isBuilding());
-		HudWPanel.display(event.getCurrentImage());
+		HudSPanel.getCenter().displayPlainCityHall(event.getRessources(), event.getBuilding());
+		HudWPanel.display(event.getCurrentImage(), event.getCurrentImageOver());
+		HudWPanel.setBuilding(event.getBuilding());
 	}
 	
 	@Override
 	public void ModifyPlainSCPanel(MapEvent event) {
-		HudSPanel.getCenter().displayPlain(event.getCurrentImage(), event.getRessources(), event.isBuilding());
-		HudWPanel.display(event.getCurrentImage());
+		HudSPanel.getCenter().displayPlain(event.getRessources(), event.getBuilding());
+		HudWPanel.display(event.getCurrentImage(), event.getCurrentImageOver());
+		HudWPanel.setBuilding(event.getBuilding());
 	}
 
 	@Override
 	public void ModifyForestSCPanel(MapEvent event) {
-		HudSPanel.getCenter().displayForest(event.getCurrentImage(), event.getRessources(), event.isBuilding());
-		HudWPanel.display(event.getCurrentImage());
+		HudSPanel.getCenter().displayForest(event.getRessources(), event.getBuilding());
+		HudWPanel.display(event.getCurrentImage(), event.getCurrentImageOver());
+		HudWPanel.setBuilding(event.getBuilding());
 	}
 
 	@Override
 	public void ModifyMountainSCPanel(MapEvent event) {
-		HudSPanel.getCenter().displayMountain(event.getCurrentImage(), event.getRessources(), event.isBuilding());
-		HudWPanel.display(event.getCurrentImage());
+		HudSPanel.getCenter().displayMountain(event.getRessources(), event.getBuilding());
+		HudWPanel.display(event.getCurrentImage(), event.getCurrentImageOver());
+		HudWPanel.setBuilding(event.getBuilding());
 	}
 
 	@Override
 	public void ModifyWaterSCPanel(MapEvent event) {
-		HudSPanel.getCenter().displayWater(event.getCurrentImage(), event.getRessources(), event.isBuilding());
-		HudWPanel.display(event.getCurrentImage());
+		HudSPanel.getCenter().displayWater(event.getRessources(), event.getBuilding());
+		HudWPanel.display(event.getCurrentImage(), event.getCurrentImageOver());
+		HudWPanel.setBuilding(event.getBuilding());
 	}
 
 	@Override
