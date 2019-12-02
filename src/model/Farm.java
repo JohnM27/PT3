@@ -9,7 +9,7 @@ public class Farm extends Building {
 	
 	public Farm() {
 		super();
-		setImg("H.png");
+		setImg("FarmLvl1_1.png");
 		
 		setPopulation(2);
 	}
