@@ -144,7 +144,7 @@ public class HudSCPanel extends JPanel {
 		g.drawImage(borderL, 0, 0, this);
 	}
 		
-	public void display(boolean adjacent, String typeCase, boolean cityHall, int[] ressources) {
+	public void display(boolean adjacent, String typeCase, boolean firstBuy, boolean cityHall, int[] ressources) {
 		buildH.setVisible(false);
 		buildF.setVisible(false);
 		buildL.setVisible(false);
@@ -155,7 +155,7 @@ public class HudSCPanel extends JPanel {
 		build2.setVisible(false);
 		upgrade.setVisible(false);
 		
-		if(((controller.isFirstBuy() && typeCase.equals("model.Plain")) || (adjacent && cityHall)) && ressources[0] >= 6) {
+		if(((firstBuy && typeCase.equals("model.Plain")) || (adjacent && cityHall)) && ressources[0] >= 6) {
 			buy.setEnabled(true);
 		}
 		else {
@@ -195,6 +195,8 @@ public class HudSCPanel extends JPanel {
 		buildH.setVisible(false);
 		buildFarm.setVisible(false);
 		buildC.setVisible(false);
+		build1.setVisible(false);
+		build2.setVisible(false);
 		
 		upgrade.setVisible(true);
 		upgrade.setEnabled(true);

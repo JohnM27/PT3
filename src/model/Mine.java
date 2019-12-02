@@ -10,11 +10,7 @@ public class Mine extends Building {
 	public Mine() {
 		super();
 		
-			double r = Math.random();
-			if(r <= 0.5)
-				setImg("Mine.png");
-			else
-				setImg("Mine2.png");
+		setImg("Mine.png");
 		
 		setPopulation(5);
 	}
