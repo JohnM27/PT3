@@ -46,11 +46,11 @@ public class HudSCPanel extends JPanel {
  		
  		
 		upgrade = new JButton("UPGRADE");
- 		upgrade.setPreferredSize(new Dimension(922,148));
+ 		upgrade.setPreferredSize(new Dimension(892,118));
  		upgrade.addActionListener(controller);
  		upgrade.setVisible(false);
- 		gbc.gridx = 1;
-		gbc.gridheight = 2;
+ 		gbc.gridx = 0;
+ 		gbc.gridy = 0;
  		add(upgrade, gbc);
 		
 		
@@ -85,7 +85,7 @@ public class HudSCPanel extends JPanel {
  		
  		build1 = new JButton("BUILD");
  		build1.setPreferredSize(new Dimension(436,61));
- 		//buildFarm.addActionListener(controller);
+ 		build1.addActionListener(controller);
  		build1.setVisible(false);
  		gbc.insets = new Insets(10,10,8,20);
  		gbc.gridx = 1;
@@ -95,7 +95,7 @@ public class HudSCPanel extends JPanel {
  		
  		build2 = new JButton("BUILD");
  		build2.setPreferredSize(new Dimension(436,61));
- 		//buildFarm.addActionListener(controller);
+ 		build2.addActionListener(controller);
  		build2.setVisible(false);
  		gbc.insets = new Insets(8,10,10,20);
  		gbc.gridx = 1;
@@ -131,15 +131,6 @@ public class HudSCPanel extends JPanel {
  		gbc.gridx = 0;
  		gbc.gridy = 0;
  		add(buildM, gbc);
-		
-		
-		buildC = new JButton("BUILD City Hall");
- 		buildC.setPreferredSize(new Dimension(831,158));
- 		buildC.addActionListener(controller);
- 		buildC.setVisible(false);
- 		gbc.insets = new Insets(0,0,0,0);
-		gbc.gridheight = 2;
- 		add(buildC, gbc);
 	}
 	
 	
