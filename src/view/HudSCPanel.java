@@ -20,7 +20,7 @@ public class HudSCPanel extends JPanel {
 	private Controller controller;
 	
 
-	private JButton buy, test, buildH, buildF, buildL, buildM, buildC, buildFarm, upgrade;
+	private JButton buy, buildH, buildF, buildL, buildM, buildC, buildFarm, build1, build2, upgrade;
 	
 	 
 	public HudSCPanel(Controller controller) {
@@ -154,7 +154,7 @@ public class HudSCPanel extends JPanel {
 		
 		repaint();
 	}
-	//Pas utilisé mais plus peut-être oui
+	//Pas utilisÃ© mais plus peut-Ãªtre oui
 	/*
 	public void done() {
 		test.setVisible(true);
