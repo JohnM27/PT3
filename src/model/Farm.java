@@ -9,10 +9,7 @@ public class Farm extends Building {
 	
 	public Farm() {
 		super();
-		
-		try {
-			setImg(ImageIO.read(new File("Graphismes/FarmLvl1_1.png")));
-		} catch (IOException e) {}
+		setImg("H.png");
 		
 		setPopulation(2);
 	}

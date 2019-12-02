@@ -1,21 +1,17 @@
 package model;
 
-import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
+import java.io.Serializable;
 
-import javax.imageio.ImageIO;
+public abstract class Case implements Serializable {
 
-public abstract class Case {
-
-	private Image img;
+	private String img;
 	private int x, y;
 	
 	private boolean possessed;
 	private Building building;
-	private Image imageOver;
+	private String imageOver;
 	
-	public Case(int x, int y, Image img) {
+	public Case(int x, int y, String img) {
 		this.x = x;
 		this.y = y;
 		this.img = img;
@@ -23,18 +19,14 @@ public abstract class Case {
 		building = null;
 		
 		possessed = false;
-		try {
-			imageOver = ImageIO.read(new File("Graphismes/Territory.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		imageOver = "Territory.png";
 	}
-	
-	public Image getImage() {
+
+	public String getImage() {
 		return img;
 	}
 	
-	public void setImage(Image img) {
+	public void setImage(String img) {
 		this.img = img;
 	}
 	
@@ -54,12 +46,12 @@ public abstract class Case {
 		return y;
 	}
 
-	public Image getImageOver() {
+	public String getImageOver() {
 		return imageOver;
 	}
 	
 	public void setImageOver() {
-		imageOver = null;
+		imageOver = "null";
 	}
 	
 	public int getPopulation() {

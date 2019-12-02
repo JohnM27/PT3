@@ -4,6 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import model.Model;
 import view.GameView;
@@ -20,7 +26,6 @@ public class Controller extends MouseAdapter implements ActionListener{
 	private MenuView menuView;
 	private GameView gameView;
 	
-	private boolean firstBuy = true;
 	private boolean cityHall = false;
 	
 	private int[] mouseCoord = new int[2];
@@ -70,13 +75,69 @@ public class Controller extends MouseAdapter implements ActionListener{
 	}
 	
 	/**
+	 * Starts an old game by closing the {@link MenuView},
+	 * then launching a new instance of {@link GameView}
+	 * If he can't read he file, then execute new game method
+	 */
+	public void loadGame() {
+		gameView = new GameView(this);
+		
+		ObjectInputStream ois = null;
+		
+		try {
+			FileInputStream fichier = new FileInputStream("game.save");
+			ois = new ObjectInputStream(fichier);
+			
+			model = (Model) ois.readObject();
+		} catch (FileNotFoundException e) {
+			newGame();
+		} catch (IOException e) {
+			newGame();
+		} catch (ClassNotFoundException e) {
+			newGame();
+		} finally {
+			try { 
+				if (ois != null) {
+					ois.close();
+					if(menuView != null) {
+						closeMenuView();
+					}
+					addListenersToModel();
+					model.fireRefresh();
+					gameView.display();
+				}
+			} catch (IOException ex) {
+				newGame();
+			}
+		}
+		
+	}
+	
+	/**
 	 * Starts the menu by launching a new instance of
 	 * {@link MenuView}
 	 */
-	public void menu() {
-		closeGameView();
-		menuView = new MenuView(this);
-		menuView.display();
+	public void save() {
+		ObjectOutputStream oos = null;
+		
+		try {
+			final FileOutputStream fichier = new FileOutputStream("game.save");
+			oos = new ObjectOutputStream(fichier);
+			oos.writeObject(model);
+			
+			oos.flush();
+		} catch(IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(oos != null) {
+					oos.flush();
+					oos.close();
+				}
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}
 	}
 	
 	/**
@@ -91,18 +152,19 @@ public class Controller extends MouseAdapter implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("New Game"))
 			newGame();
+		else if(e.getActionCommand().equals("Load Game"))
+			loadGame();
 		else if(e.getActionCommand().equals("About"))
 			about();
 		else if(e.getActionCommand().equals("Exit") && menuView != null)
 			closeMenuView();
 		else if(e.getActionCommand().equals("Exit"))
 			closeGameView();
-		else if(e.getActionCommand().equals("Menu"))
-			menu();
+		else if(e.getActionCommand().equals("Save"))
+			save();
 		else if(e.getActionCommand().equals("Jour suivant"))
 			model.fireJourChanged();
 		else if(e.getActionCommand().equals("BUY")) {
-			firstBuy = false;
 			model.fireFogOff();
 		}
 		else if(e.getActionCommand().equals("BUILD City Hall")) {
@@ -151,13 +213,5 @@ public class Controller extends MouseAdapter implements ActionListener{
 				model.fireModifyPlainCHSCPanel(mouseCoord[1], mouseCoord[0]);
 			}
 		}
-	}
-	
-	public boolean isFirstBuy() {
-		return firstBuy;
-	}
-
-	public void setFirstBuy(boolean firstBuy) {
-		this.firstBuy = firstBuy;
 	}
 }

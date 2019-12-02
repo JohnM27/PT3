@@ -1,6 +1,8 @@
 package model;
 
-public class Noise {
+import java.io.Serializable;
+
+public class Noise implements Serializable{
 	
 	/*
 	 * Variable qui contient l'unité des vecteurs diagonaux

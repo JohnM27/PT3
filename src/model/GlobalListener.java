@@ -35,4 +35,6 @@ public interface GlobalListener extends EventListener {
 	public void CityHallOn(MapEvent event);
 
 	public void FarmOn(MapEvent event);
+
+	public void Refresh(MapEvent event);
 }

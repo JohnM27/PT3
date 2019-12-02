@@ -1,12 +1,12 @@
 package model;
 
-import java.awt.Image;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.event.EventListenerList;
 
-public class Model {
+public class Model implements Serializable {
 
 	private EventListenerList listenersList;
 	private int nbJour;
@@ -15,6 +15,8 @@ public class Model {
 	private boolean adjacent;
 	private String typeCase;
   
+	// enleve le du controller et c'est bon
+	private boolean firstBuy = true;
 	private boolean cityHall;
 	
 	private List<Case> listBuilding;
@@ -42,11 +44,11 @@ public class Model {
 		return ressources;
 	}
 	
-	public Image[][] getImg() {
+	public String[][] getImg() {
 		return m.getAllImages();
 	}
 
-	public Image[][] getImgOver() {
+	public String[][] getImgOver() {
 		return m.getAllImagesOver();
 	}
 	
@@ -80,6 +82,10 @@ public class Model {
 	
 	public boolean getCityHall() {
 		return cityHall;
+	}
+	
+	public boolean getFirstBuy() {
+		return firstBuy;
 	}
 	
 	public int getMoral() {
@@ -159,6 +165,14 @@ public class Model {
 		}
 	}
 	
+	public void fireRefresh() {
+		GlobalListener[] listenerList = 
+				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		
+		for(GlobalListener listener : listenerList)
+			listener.Refresh(new MapEvent(this));
+	}
+	
 	public void fireMapGenerated() {
 		GlobalListener[] listenerList = 
 				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
@@ -176,6 +190,8 @@ public class Model {
 		
 		m.setImageOver(coord[0], coord[1]);
 		m.setPossessed(coord[0], coord[1]);
+		
+		firstBuy = false;
 		
 		ressources[0] -= 6; // achat d'une case pour 6 d'or
 		
