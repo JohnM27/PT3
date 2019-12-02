@@ -10,19 +10,21 @@ import java.awt.Insets;
 import java.io.File;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.Controller;
 import model.Building;
 
 public class HudSCPanel extends JPanel {
+	
 	private Controller controller;
 	
-
 	private JButton buy, buildH, buildF, buildL, buildM, buildC, buildFarm, build1, build2, upgrade;
 	
-	 
+	
 	public HudSCPanel(Controller controller) {
 		super(new GridBagLayout());
 		
@@ -32,93 +34,105 @@ public class HudSCPanel extends JPanel {
 		
 		setBackground(new Color(100,100,100));
 
- 		gbc.insets = new Insets(5,5,5,5);
- 		
- 		test = new JButton("CE BOUTON EST A CHANGER");
- 		test.setPreferredSize(new Dimension(922,148));
- 		gbc.gridx = 1;
- 		gbc.gridy = 0;
- 		gbc.gridheight = 2;
- 		add(test, gbc);
- 		
+		
  		buy = new JButton("BUY");
- 		buy.setPreferredSize(new Dimension(922,148));
+ 		buy.setPreferredSize(new Dimension(892,118));
  		buy.addActionListener(controller);
  		buy.setVisible(false);
- 		gbc.gridx = 1;
+ 		gbc.insets = new Insets(20,20,20,20);
+ 		gbc.gridx = 0;
  		gbc.gridy = 0;
- 		gbc.gridheight = 2;
  		add(buy, gbc);
  		
- 		upgrade = new JButton("UPGRADE");
- 		upgrade.setPreferredSize(new Dimension(922,148));
+ 		
+		upgrade = new JButton("UPGRADE");
+ 		upgrade.setPreferredSize(new Dimension(892,118));
  		upgrade.addActionListener(controller);
  		upgrade.setVisible(false);
- 		gbc.gridx = 1;
+ 		gbc.gridx = 0;
  		gbc.gridy = 0;
- 		gbc.gridheight = 2;
  		add(upgrade, gbc);
- 		
- 		buildH = new JButton("BUILD House");
- 		buildH.setPreferredSize(new Dimension(415,158));
- 		buildH.addActionListener(controller);
- 		buildH.setVisible(false);
- 		gbc.insets = new Insets(0,0,0,0);
- 		gbc.gridx = 1;
- 		gbc.gridy = 0;
- 		gbc.gridheight = 1;
- 		add(buildH, gbc);
- 		
- 		buildFarm = new JButton("BUILD Farm");
- 		buildFarm.setPreferredSize(new Dimension(415,158));
- 		buildFarm.addActionListener(controller);
- 		buildFarm.setVisible(false);
- 		gbc.insets = new Insets(0,0,0,0);
- 		gbc.gridx = 2;
- 		gbc.gridy = 0;
- 		gbc.gridheight = 1;
- 		add(buildFarm, gbc);
- 		
+		
+		
  		buildC = new JButton("BUILD City Hall");
- 		buildC.setPreferredSize(new Dimension(831,158));
+ 		buildC.setPreferredSize(new Dimension(892,118));
  		buildC.addActionListener(controller);
  		buildC.setVisible(false);
- 		gbc.insets = new Insets(0,0,0,0);
- 		gbc.gridx = 1;
+ 		gbc.gridx = 0;
  		gbc.gridy = 0;
- 		gbc.gridheight = 2;
  		add(buildC, gbc);
  		
+ 		
+ 		buildH = new JButton("BUILD House");
+ 		buildH.setPreferredSize(new Dimension(436,61));
+ 		buildH.addActionListener(controller);
+ 		buildH.setVisible(false);
+ 		gbc.insets = new Insets(10,20,8,10);
+ 		gbc.gridx = 0;
+ 		gbc.gridy = 0;
+ 		add(buildH, gbc);
+ 		
+ 		
+ 		buildFarm = new JButton("BUILD Farm");
+ 		buildFarm.setPreferredSize(new Dimension(436,61));
+ 		buildFarm.addActionListener(controller);
+ 		buildFarm.setVisible(false);
+ 		gbc.insets = new Insets(8,20,10,10);
+ 		gbc.gridx = 0;
+ 		gbc.gridy = 1;
+ 		add(buildFarm, gbc);
+ 		
+ 		
+ 		build1 = new JButton("BUILD");
+ 		build1.setPreferredSize(new Dimension(436,61));
+ 		build1.addActionListener(controller);
+ 		build1.setVisible(false);
+ 		gbc.insets = new Insets(10,10,8,20);
+ 		gbc.gridx = 1;
+ 		gbc.gridy = 0;
+ 		add(build1, gbc);
+ 		
+ 		
+ 		build2 = new JButton("BUILD");
+ 		build2.setPreferredSize(new Dimension(436,61));
+ 		build2.addActionListener(controller);
+ 		build2.setVisible(false);
+ 		gbc.insets = new Insets(8,10,10,20);
+ 		gbc.gridx = 1;
+ 		gbc.gridy = 1;
+ 		add(build2, gbc);
+ 		
+ 		
  		buildF = new JButton("BUILD Fishing");
- 		buildF.setPreferredSize(new Dimension(831,158));
+ 		buildF.setPreferredSize(new Dimension(892,118));
  		buildF.addActionListener(controller);
  		buildF.setVisible(false);
- 		gbc.insets = new Insets(0,0,0,0);
- 		gbc.gridx = 1;
+ 		gbc.insets = new Insets(20,20,20,20);
+ 		gbc.gridx = 0;
  		gbc.gridy = 0;
- 		gbc.gridheight = 2;
  		add(buildF, gbc);
  		
+ 		
  		buildL = new JButton("BUILD Logging");
- 		buildL.setPreferredSize(new Dimension(831,158));
+ 		buildL.setPreferredSize(new Dimension(892,118));
  		buildL.addActionListener(controller);
  		buildL.setVisible(false);
- 		gbc.insets = new Insets(0,0,0,0);
- 		gbc.gridx = 1;
+ 		gbc.insets = new Insets(20,20,20,20);
+ 		gbc.gridx = 0;
  		gbc.gridy = 0;
- 		gbc.gridheight = 2;
  		add(buildL, gbc);
  		
+ 		
  		buildM = new JButton("BUILD Mine");
- 		buildM.setPreferredSize(new Dimension(831,158));
+ 		buildM.setPreferredSize(new Dimension(892,118));
  		buildM.addActionListener(controller);
  		buildM.setVisible(false);
- 		gbc.insets = new Insets(0,0,0,0);
- 		gbc.gridx = 1;
+ 		gbc.insets = new Insets(20,20,20,20);
+ 		gbc.gridx = 0;
  		gbc.gridy = 0;
- 		gbc.gridheight = 2;
  		add(buildM, gbc);
 	}
+	
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -126,24 +140,22 @@ public class HudSCPanel extends JPanel {
 		Image borderL = null, textTest = null;
 		try {
 			borderL = ImageIO.read(new File("Graphismes/BorderSL.png"));
-			textTest = ImageIO.read(new File("Graphismes/textTest.png"));
 		} catch (Exception e) {}
 		g.drawImage(borderL, 0, 0, this);
-		//g.drawImage(textTest, 10, 20, this);
 	}
 		
-	public void display(boolean adjacent, String typeCase, boolean firstBuy, boolean cityHall, int[] ressources) {
-		test.setVisible(false);
-		
+	public void display(boolean adjacent, String typeCase, boolean cityHall, int[] ressources) {
 		buildH.setVisible(false);
 		buildF.setVisible(false);
 		buildL.setVisible(false);
 		buildM.setVisible(false);
 		buildC.setVisible(false);
 		buildFarm.setVisible(false);
+		build1.setVisible(false);
+		build2.setVisible(false);
 		upgrade.setVisible(false);
 		
-		if(( (firstBuy && typeCase.equals("model.Plain")) || (adjacent && cityHall) ) && ressources[0] >= 6) {
+		if(((controller.isFirstBuy() && typeCase.equals("model.Plain")) || (adjacent && cityHall)) && ressources[0] >= 6) {
 			buy.setEnabled(true);
 		}
 		else {
@@ -154,7 +166,8 @@ public class HudSCPanel extends JPanel {
 		
 		repaint();
 	}
-	//Pas utilisé mais plus peut-être oui
+	
+	//Pas utilisÃƒÂ© mais plus peut-ÃƒÂªtre oui
 	/*
 	public void done() {
 		test.setVisible(true);
@@ -166,14 +179,16 @@ public class HudSCPanel extends JPanel {
 		buildL.setVisible(false);
 		buildM.setVisible(false);
 		
+		selected.setEnabled(false);
+		
+		selected.setIcon(null);
+		
 		repaint();
 	}*/
 	
 	private void displayUpgrade() {
-		test.setVisible(false);
-		
 		buy.setVisible(false);
-		
+
 		buildF.setVisible(false);
 		buildL.setVisible(false);
 		buildM.setVisible(false);
@@ -185,11 +200,9 @@ public class HudSCPanel extends JPanel {
 		upgrade.setEnabled(true);
 		
 		repaint();
-	}
+	}	
 	
 	public void displayPlainCityHall(int[] ressources, Building building) {
-		test.setVisible(false);
-		
 		buy.setVisible(false);
 		
 		buildF.setVisible(false);
@@ -197,6 +210,8 @@ public class HudSCPanel extends JPanel {
 		buildM.setVisible(false);
 		buildH.setVisible(false);
 		buildFarm.setVisible(false);
+		build1.setVisible(false);
+		build2.setVisible(false);
 		upgrade.setVisible(false);
 		
 		buildC.setVisible(true);
@@ -212,14 +227,12 @@ public class HudSCPanel extends JPanel {
 		else {
 			buildC.setVisible(false);
 			upgrade.setVisible(true);
+			//buildC.setEnabled(false);
 		}
-		
 		repaint();
 	}
 
 	public void displayPlain(int[] ressources, Building building) {
-		test.setVisible(false);
-		
 		buy.setVisible(false);
 		
 		buildF.setVisible(false);
@@ -230,6 +243,8 @@ public class HudSCPanel extends JPanel {
 		
 		buildH.setVisible(true);
 		buildFarm.setVisible(true);
+		build1.setVisible(true);
+		build2.setVisible(true);
 		
 		if(building == null) {
 			if(ressources[0] >= 3 && ressources[2] >= 5) {
@@ -243,20 +258,18 @@ public class HudSCPanel extends JPanel {
 			}
 			else {
 				buildFarm.setEnabled(false);
-			}	
+			}
 		}
 		else {
 			buildH.setVisible(false);
 			buildFarm.setVisible(false);
 			upgrade.setVisible(true);
+			buildH.setEnabled(false);
 		}
-		
 		repaint();
 	}
 
 	public void displayForest(int[] ressources, Building building) {
-		test.setVisible(false);
-		
 		buy.setVisible(false);
 		
 		buildH.setVisible(false);
@@ -264,6 +277,8 @@ public class HudSCPanel extends JPanel {
 		buildM.setVisible(false);
 		buildC.setVisible(false);
 		buildFarm.setVisible(false);
+		build1.setVisible(false);
+		build2.setVisible(false);
 		upgrade.setVisible(false);
 		
 		buildL.setVisible(true);
@@ -279,14 +294,12 @@ public class HudSCPanel extends JPanel {
 		else {
 			buildL.setVisible(false);
 			upgrade.setVisible(true);
+			buildL.setEnabled(false);
 		}
-		
 		repaint();
 	}
 
 	public void displayMountain(int[] ressources, Building building) {
-		test.setVisible(false);
-		
 		buy.setVisible(false);
 		
 		buildH.setVisible(false);
@@ -294,6 +307,8 @@ public class HudSCPanel extends JPanel {
 		buildL.setVisible(false);
 		buildC.setVisible(false);
 		buildFarm.setVisible(false);
+		build1.setVisible(false);
+		build2.setVisible(false);
 		upgrade.setVisible(false);
 		
 		buildM.setVisible(true);
@@ -309,13 +324,12 @@ public class HudSCPanel extends JPanel {
 		else {
 			buildM.setVisible(false);
 			upgrade.setVisible(true);
+			buildM.setEnabled(false);
 		}
 		repaint();
 	}
 
 	public void displayWater(int[] ressources, Building building) {
-		test.setVisible(false);
-		
 		buy.setVisible(false);
 		
 		buildH.setVisible(false);
@@ -323,6 +337,8 @@ public class HudSCPanel extends JPanel {
 		buildM.setVisible(false);
 		buildC.setVisible(false);
 		buildFarm.setVisible(false);
+		build1.setVisible(false);
+		build2.setVisible(false);
 		upgrade.setVisible(false);
 		
 		buildF.setVisible(true);
@@ -338,8 +354,8 @@ public class HudSCPanel extends JPanel {
 		else {
 			buildF.setVisible(false);
 			upgrade.setVisible(true);
+			buildF.setEnabled(false);
 		}
-		
 		repaint();
 	}
 }
