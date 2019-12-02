@@ -227,9 +227,7 @@ public class HudSCPanel extends JPanel {
 			}
 		}
 		else {
-			buildC.setVisible(false);
-			upgrade.setVisible(true);
-			//buildC.setEnabled(false);
+			displayUpgrade();
 		}
 		repaint();
 	}
@@ -263,10 +261,7 @@ public class HudSCPanel extends JPanel {
 			}
 		}
 		else {
-			buildH.setVisible(false);
-			buildFarm.setVisible(false);
-			upgrade.setVisible(true);
-			buildH.setEnabled(false);
+			displayUpgrade();
 		}
 		repaint();
 	}
@@ -294,9 +289,7 @@ public class HudSCPanel extends JPanel {
 			}
 		}
 		else {
-			buildL.setVisible(false);
-			upgrade.setVisible(true);
-			buildL.setEnabled(false);
+			displayUpgrade();
 		}
 		repaint();
 	}
@@ -324,9 +317,7 @@ public class HudSCPanel extends JPanel {
 			}
 		}
 		else {
-			buildM.setVisible(false);
-			upgrade.setVisible(true);
-			buildM.setEnabled(false);
+			displayUpgrade();
 		}
 		repaint();
 	}
@@ -354,9 +345,7 @@ public class HudSCPanel extends JPanel {
 			}
 		}
 		else {
-			buildF.setVisible(false);
-			upgrade.setVisible(true);
-			buildF.setEnabled(false);
+			displayUpgrade();
 		}
 		repaint();
 	}
