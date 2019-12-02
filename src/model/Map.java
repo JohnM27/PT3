@@ -1,107 +1,25 @@
 package model;
 
-import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
+import java.io.Serializable;
 
-import javax.imageio.ImageIO;
-
-import model.Noise;
-
-public class Map {
+public class Map implements Serializable {
 	private Case[][] map = new Case[10][18];
 	private Noise n;
 	
-	private Image grass_1, grass_2, grass_3, grass_4;
-	private Image forest_1, forest_2, forest_3, forest_4, forest_5;
-	private Image water, waterB, waterCornerAllExt, waterCornerBDExt, waterCornerBDExt_CornerHGInt, waterCornerBDExt_G, waterCornerBDExt_H,
-					waterCornerBDInt, waterCornerBGExt, waterCornerHGExt_B, waterCornerBGExt_CornerBDExt, waterCornerBGExt_CornerHDInt, waterCornerBGExt_D,
-					waterCornerBGInt, waterCornerBGExt_H, waterCornerHDExt, waterCornerHDExt_B, waterCornerHDExt_CornerBDExt, waterCornerHDExt_CornerBGExt,
-					waterCornerHDExt_CornerBGExt_CornerBDExt, waterCornerHDExt_CornerBGInt, waterCornerHDInt, waterCornerHGExt, waterCornerHGExt_CornerBDExt,
-					waterCornerHGExt_CornerBDInt, waterCornerHGExt_CornerBGExt, waterCornerHGExt_CornerBGExt_CornerBDExt, waterCornerHGExt_CornerHDExt,
-					waterCornerHGExt_CornerHDExt_CornerBDExt, waterCornerHGExt_CornerHDExt_CornerBGExt, waterCornerHGInt, waterD, waterG, waterGD, waterH,
-					waterHB, waterCornerHDExt_G, waterCornerHGExt_D, waterCornerBGInt_CornerBDInt, waterCornerHDInt_CornerBDInt, waterCornerAllInt,
-					waterCornerHGInt_CornerBGInt, waterCornerHGInt_CornerHDInt, waterCornerBGExt_CornerBDExt_H, waterCornerHGExt_CornerBGExt_D,
-					waterCornerHGExt_CornerHDExt_B, waterCornerHDExt_CornerBDExt_G;
-	private Image mountain_1, mountain_2;
-	
 	public Map() {
 		n = new Noise();
-		try {
-			water = ImageIO.read(new File("Graphismes/Water.png"));
-			waterB = ImageIO.read(new File("Graphismes/WaterB.png"));
-			waterCornerAllExt = ImageIO.read(new File("Graphismes/WaterCornerAllExt.png"));
-			waterCornerBDExt = ImageIO.read(new File("Graphismes/WaterCornerBDExt.png"));
-			waterCornerBDExt_CornerHGInt = ImageIO.read(new File("Graphismes/WaterCornerBDExt_CornerHGInt.png"));
-			waterCornerBDExt_G = ImageIO.read(new File("Graphismes/WaterCornerBDExt_G.png"));
-			waterCornerBDExt_H = ImageIO.read(new File("Graphismes/WaterCornerBDExt_H.png"));
-			waterCornerBDInt = ImageIO.read(new File("Graphismes/WaterCornerBDInt.png"));
-			waterCornerBGExt = ImageIO.read(new File("Graphismes/WaterCornerBGExt.png"));
-			waterCornerHGExt_B = ImageIO.read(new File("Graphismes/WaterCornerHGExt_B.png"));
-			waterCornerBGExt_CornerBDExt = ImageIO.read(new File("Graphismes/WaterCornerBGExt_CornerBDExt.png"));
-			waterCornerBGExt_CornerHDInt = ImageIO.read(new File("Graphismes/WaterCornerBGExt_CornerHDInt.png"));
-			waterCornerBGExt_D = ImageIO.read(new File("Graphismes/WaterCornerBGExt_D.png"));
-			waterCornerBGInt = ImageIO.read(new File("Graphismes/WaterCornerBGInt.png"));
-			waterCornerBGExt_H = ImageIO.read(new File("Graphismes/WaterCornerBGExt_H.png"));
-			waterCornerHDExt = ImageIO.read(new File("Graphismes/WaterCornerHDExt.png"));
-			waterCornerHDExt_B = ImageIO.read(new File("Graphismes/waterCornerHDExt_B.png"));
-			waterCornerHDExt_CornerBDExt = ImageIO.read(new File("Graphismes/WaterCornerHDExt_CornerBDExt.png"));
-			waterCornerHDExt_CornerBGExt = ImageIO.read(new File("Graphismes/WaterCornerHDExt_CornerBGExt.png"));
-			waterCornerHDExt_CornerBGExt_CornerBDExt = ImageIO.read(new File("Graphismes/WaterCornerHDExt_CornerBGExt_CornerBDExt.png"));
-			waterCornerHDExt_CornerBGInt = ImageIO.read(new File("Graphismes/WaterCornerHDExt_CornerBGInt.png"));
-			waterCornerHDInt = ImageIO.read(new File("Graphismes/WaterCornerHDInt.png"));
-			waterCornerHGExt = ImageIO.read(new File("Graphismes/WaterCornerHGExt.png"));
-			waterCornerHGExt_CornerBDExt = ImageIO.read(new File("Graphismes/WaterCornerHGExt_CornerBDExt.png"));
-			waterCornerHGExt_CornerBDInt = ImageIO.read(new File("Graphismes/WaterCornerHGExt_CornerBDInt.png"));
-			waterCornerHGExt_CornerBGExt = ImageIO.read(new File("Graphismes/WaterCornerHGExt_CornerBGExt.png"));
-			waterCornerHGExt_CornerBGExt_CornerBDExt = ImageIO.read(new File("Graphismes/WaterCornerHGExt_CornerBGExt_CornerBDExt.png"));
-			waterCornerHGExt_CornerHDExt = ImageIO.read(new File("Graphismes/WaterCornerHGExt_CornerHDExt.png"));
-			waterCornerHGExt_CornerHDExt_CornerBDExt = ImageIO.read(new File("Graphismes/WaterCornerHGExt_CornerHDExt_CornerBDExt.png"));
-			waterCornerHGExt_CornerHDExt_CornerBGExt = ImageIO.read(new File("Graphismes/WaterCornerHGExt_CornerHDExt_CornerBGExt.png"));
-			waterCornerHGInt = ImageIO.read(new File("Graphismes/WaterCornerHGInt.png"));
-			waterD = ImageIO.read(new File("Graphismes/WaterD.png"));
-			waterG = ImageIO.read(new File("Graphismes/WaterG.png"));
-			waterGD = ImageIO.read(new File("Graphismes/WaterGD.png"));
-			waterH = ImageIO.read(new File("Graphismes/WaterH.png"));
-			waterHB = ImageIO.read(new File("Graphismes/WaterHB.png"));
-			waterCornerHDExt_G = ImageIO.read(new File("Graphismes/WaterCornerHDExt_G.png"));
-			waterCornerHGExt_D = ImageIO.read(new File("Graphismes/WaterCornerHGExt_D.png"));
-			waterCornerBGInt_CornerBDInt = ImageIO.read(new File("Graphismes/WaterCornerBGInt_CornerBDInt.png"));
-			waterCornerHDInt_CornerBDInt = ImageIO.read(new File("Graphismes/WaterCornerHDInt_CornerBDInt.png"));
-			waterCornerAllInt = ImageIO.read(new File("Graphismes/WaterCornerAllInt.png"));
-			waterCornerHGInt_CornerBGInt = ImageIO.read(new File("Graphismes/WaterCornerHGInt_CornerBGInt.png"));
-			waterCornerHGInt_CornerHDInt = ImageIO.read(new File("Graphismes/WaterCornerHGInt_CornerHDInt.png"));
-			waterCornerBGExt_CornerBDExt_H = ImageIO.read(new File("Graphismes/WaterCornerBGExt_CornerBDExt_H.png"));
-			waterCornerHGExt_CornerBGExt_D = ImageIO.read(new File("Graphismes/WaterCornerHGExt_CornerBGExt_D.png"));
-			waterCornerHGExt_CornerHDExt_B = ImageIO.read(new File("Graphismes/WaterCornerHGExt_CornerHDExt_B.png"));
-			waterCornerHDExt_CornerBDExt_G = ImageIO.read(new File("Graphismes/WaterCornerHDExt_CornerBDExt_G.png"));
-			mountain_1 = ImageIO.read(new File("Graphismes/Mountain_1.png"));
-			mountain_2 = ImageIO.read(new File("Graphismes/Mountain_2.png"));
-			grass_1 = ImageIO.read(new File("Graphismes/Grass_1.png"));
-			grass_2 = ImageIO.read(new File("Graphismes/Grass_2.png"));
-			grass_3 = ImageIO.read(new File("Graphismes/Grass_3.png"));
-			grass_4 = ImageIO.read(new File("Graphismes/Grass_4.png"));
-			forest_1 = ImageIO.read(new File("Graphismes/Forest_1.png"));
-			forest_2 = ImageIO.read(new File("Graphismes/Forest_2.png"));
-			forest_3 = ImageIO.read(new File("Graphismes/Forest_3.png"));
-			forest_4 = ImageIO.read(new File("Graphismes/Forest_4.png"));
-			forest_5 = ImageIO.read(new File("Graphismes/Forest_5.png"));
-		}
-		catch(IOException e) {
-			System.out.println(e);
-		}
 	}
 	
 	public String getTypeCase(int i, int j) {
 		return map[i][j].getClass().getName();
 	}
 	
-	public Image getImage(int i, int j) {
+	public String getImage(int i, int j) {
 		return map[i][j].getImage();
 	}
 	
-	public Image[][] getAllImages() {
-		Image[][] img = new Image[10][18];
+	public String[][] getAllImages() {
+		String[][] img = new String[10][18];
 		
 		for(int i = 0; i < map.length; i++) {
 			for(int j = 0; j < map[0].length; j++) {
@@ -111,12 +29,12 @@ public class Map {
 		return img;
 	}
 	
-	public Image getImageOver(int i, int j) {
+	public String getImageOver(int i, int j) {
 		return map[i][j].getImageOver();
 	}
 	
-	public Image[][] getAllImagesOver() {
-		Image[][] imgOver = new Image[10][18];
+	public String[][] getAllImagesOver() {
+		String[][] imgOver = new String[10][18];
 		
 		for(int i = 0; i < map.length; i++) {
 			for(int j = 0; j < map[0].length; j++) {
@@ -242,48 +160,48 @@ public class Map {
 			for(int j = 0; j < map[0].length; j++) { 
 				valeur = (int) (n.creerNoise(i*61, j*61, 250)*40);
 				if(valeur <= -10) {
-					map[i][j] = new Water(i, j, water);
+					map[i][j] = new Water(i, j, "Water.png");
 				}
 				else if(valeur > -10 && valeur <= -1) {
 					double r = Math.random();
 					if(r <= 0.3) {
-						map[i][j] = new Plain(i, j, grass_1);
+						map[i][j] = new Plain(i, j, "Grass_1.png");
 					}
 					else if(r > 0.3 && r <= 0.6) {
-						map[i][j] = new Plain(i, j, grass_2);
+						map[i][j] = new Plain(i, j, "Grass_2.png");
 					}
 					else if(r > 0.6 && r <= 0.8) {
-						map[i][j] = new Plain(i, j, grass_3);
+						map[i][j] = new Plain(i, j, "Grass_3.png");
 					}
 					else {
-						map[i][j] = new Plain(i, j, grass_4);
+						map[i][j] = new Plain(i, j, "Grass_4.png");
 					}
 				}
 				else if(valeur > -1 && valeur <= 6) {
 					double r = Math.random();
 					if(r <= 0.2) {
-						map[i][j] = new Forest(i, j, forest_1);
+						map[i][j] = new Forest(i, j, "Forest_1.png");
 					}
 					else if(r <= 0.4) {
-						map[i][j] = new Forest(i, j, forest_2);
+						map[i][j] = new Forest(i, j, "Forest_2.png");
 					}
 					else if(r <= 0.6) {
-						map[i][j] = new Forest(i, j, forest_3);
+						map[i][j] = new Forest(i, j, "Forest_3.png");
 					}
 					else if(r <= 0.8) {
-						map[i][j] = new Forest(i, j, forest_4);
+						map[i][j] = new Forest(i, j, "Forest_4.png");
 					}
 					else {
-						map[i][j] = new Forest(i, j, forest_5);
+						map[i][j] = new Forest(i, j, "Forest_5.png");
 					}
 				}
 				else {
 					double r = Math.random();
 					if(r <= 0.5) {
-						map[i][j] = new Mountain(i, j, mountain_1);
+						map[i][j] = new Mountain(i, j, "Mountain_1.png");
 					}
 					else {
-						map[i][j] = new Mountain(i, j, mountain_2);
+						map[i][j] = new Mountain(i, j, "Mountain_2.png");
 					}
 				}
 			}
@@ -298,381 +216,381 @@ public class Map {
 				if(map[i][j] instanceof Water) {
 					if(i == 0 && j == 0) {
 						if(!(map[i][j+1] instanceof Water) && !(map[i+1][j] instanceof Water)){
-							map[i][j].setImage(waterCornerBDInt);
+							map[i][j].setImage("WaterCornerBDInt.png");
 						}
 						else if(!(map[i][j+1] instanceof Water)) {
-							map[i][j].setImage(waterD);
+							map[i][j].setImage("WaterD.png");
 						}
 						else if(!(map[i+1][j] instanceof Water)) {
-							map[i][j].setImage(waterB);
+							map[i][j].setImage("WaterB.png");
 						}
 						else if(!(map[i+1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBDExt);
+							map[i][j].setImage("WaterCornerBDExt.png");
 						}
 						else {
-							map[i][j].setImage(water);
+							map[i][j].setImage("Water.png");
 						}
 					}
 					else if(i == 0 && j == map[0].length-1) {
 						if(!(map[i][j-1] instanceof Water) && !(map[i+1][j] instanceof Water)){
-							map[i][j].setImage(waterCornerBGInt);
+							map[i][j].setImage("WaterCornerBGInt.png");
 						}
 						else if(!(map[i][j-1] instanceof Water)) {
-							map[i][j].setImage(waterG);
+							map[i][j].setImage("WaterG.png");
 						}
 						else if(!(map[i+1][j] instanceof Water)) {
-							map[i][j].setImage(waterB);
+							map[i][j].setImage("WaterB.png");
 						}
 						else if(!(map[i+1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBGExt);
+							map[i][j].setImage("WaterCornerBGExt.png");
 						}
 						else {
-							map[i][j].setImage(water);
+							map[i][j].setImage("Water.png");
 						}
 					}
 					else if(i == map.length-1 && j == 0) {
 						if(!(map[i][j+1] instanceof Water) && !(map[i-1][j] instanceof Water)){
-							map[i][j].setImage(waterCornerHDInt);
+							map[i][j].setImage("WaterCornerHDInt.png");
 						}
 						else if(!(map[i][j+1] instanceof Water)) {
-							map[i][j].setImage(waterD);
+							map[i][j].setImage("WaterD.png");
 						}
 						else if(!(map[i-1][j] instanceof Water)) {
-							map[i][j].setImage(waterH);
+							map[i][j].setImage("WaterH.png");
 						}
 						else if(!(map[i-1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHDExt);
+							map[i][j].setImage("WaterCornerHDExt.png");
 						}
 						else {
-							map[i][j].setImage(water);
+							map[i][j].setImage("Water.png");
 						}
 					}
 					else if(i == map.length-1 && j == map[0].length-1) {
 						if(!(map[i-1][j] instanceof Water) && !(map[i][j-1] instanceof Water)){
-							map[i][j].setImage(waterCornerHGInt);
+							map[i][j].setImage("WaterCornerHGInt.png");
 						}
 						else if(!(map[i][j-1] instanceof Water)) {
-							map[i][j].setImage(waterG);
+							map[i][j].setImage("WaterG.png");
 						}
 						else if(!(map[i-1][j] instanceof Water)) {
-							map[i][j].setImage(waterH);
+							map[i][j].setImage("WaterH.png");
 						}
 						else if(!(map[i-1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt);
+							map[i][j].setImage("WaterCornerHGExt.png");
 						}
 						else {
-							map[i][j].setImage(water);
+							map[i][j].setImage("Water.png");
 						}
 					}
 					else if(i == 0) {
 						if(!(map[i][j-1] instanceof Water) && !(map[i+1][j] instanceof Water) && !(map[i][j+1] instanceof Water)){
-							map[i][j].setImage(waterCornerBGInt_CornerBDInt);
+							map[i][j].setImage("WaterCornerBGInt_CornerBDInt.png");
 						}
 						else if(!(map[i][j-1] instanceof Water) && !(map[i+1][j] instanceof Water)) {
-							map[i][j].setImage(waterCornerBGInt);
+							map[i][j].setImage("WaterCornerBGInt.png");
 						}
 						else if(!(map[i][j+1] instanceof Water) && !(map[i+1][j] instanceof Water)) {
-							map[i][j].setImage(waterCornerBDInt);
+							map[i][j].setImage("WaterCornerBDInt.png");
 						}
 						else if(!(map[i][j-1] instanceof Water) && !(map[i][j+1] instanceof Water)) {
-							map[i][j].setImage(waterGD);
+							map[i][j].setImage("WaterGD.png");
 						}
 						else if(!(map[i][j-1] instanceof Water) && !(map[i+1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBDExt_G);
+							map[i][j].setImage("WaterCornerBDExt_G.png");
 						}
 						else if(!(map[i][j+1] instanceof Water) && !(map[i+1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBGExt_D);
+							map[i][j].setImage("WaterCornerBGExt_D.png");
 						}
 						else if(!(map[i][j-1] instanceof Water)) {
-							map[i][j].setImage(waterG);
+							map[i][j].setImage("WaterG.png");
 						}
 						else if(!(map[i][j+1] instanceof Water)) {
-							map[i][j].setImage(waterD);
+							map[i][j].setImage("WaterD.png");
 						}
 						else if(!(map[i+1][j] instanceof Water)) {
-							map[i][j].setImage(waterB);
+							map[i][j].setImage("WaterB.png");
 						}
 						else if(!(map[i+1][j+1] instanceof Water) && !(map[i+1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBGExt_CornerBDExt);
+							map[i][j].setImage("WaterCornerBGExt_CornerBDExt.png");
 						}
 						else if(!(map[i+1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBDExt);
+							map[i][j].setImage("WaterCornerBDExt.png");
 						}
 						else if(!(map[i+1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBGExt);
+							map[i][j].setImage("WaterCornerBGExt.png");
 						}
 						else {
-							map[i][j].setImage(water);
+							map[i][j].setImage("Water.png");
 						}
 					}
 					else if(i == map.length-1) {
 						if(!(map[i][j-1] instanceof Water) && !(map[i-1][j] instanceof Water) && !(map[i][j+1] instanceof Water)){
-							map[i][j].setImage(waterCornerHGInt_CornerHDInt);
+							map[i][j].setImage("WaterCornerHGInt_CornerHDInt.png");
 						}
 						else if(!(map[i][j-1] instanceof Water) && !(map[i-1][j] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGInt);
+							map[i][j].setImage("WaterCornerHGInt.png");
 						}
 						else if(!(map[i][j+1] instanceof Water) && !(map[i-1][j] instanceof Water)) {
-							map[i][j].setImage(waterCornerHDInt);
+							map[i][j].setImage("WaterCornerHDInt.png");
 						}
 						else if(!(map[i][j-1] instanceof Water) && !(map[i][j+1] instanceof Water)) {
-							map[i][j].setImage(waterGD);
+							map[i][j].setImage("WaterGD.png");
 						}
 						else if(!(map[i][j-1] instanceof Water) && !(map[i-1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHDExt_G);
+							map[i][j].setImage("WaterCornerHDExt_G.png");
 						}
 						else if(!(map[i][j+1] instanceof Water) && !(map[i-1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt_D);
+							map[i][j].setImage("WaterCornerHGExt_D.png");
 						}
 						else if(!(map[i][j-1] instanceof Water)) {
-							map[i][j].setImage(waterG);
+							map[i][j].setImage("WaterG.png");
 						}
 						else if(!(map[i][j+1] instanceof Water)) {
-							map[i][j].setImage(waterD);
+							map[i][j].setImage("WaterD.png");
 						}
 						else if(!(map[i-1][j] instanceof Water)) {
-							map[i][j].setImage(waterH);
+							map[i][j].setImage("WaterH.png");
 						}
 						else if(!(map[i-1][j+1] instanceof Water) && !(map[i-1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt_CornerHDExt);
+							map[i][j].setImage("WaterCornerHGExt_CornerHDExt.png");
 						}
 						else if(!(map[i-1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHDExt);
+							map[i][j].setImage("WaterCornerHDExt.png");
 						}
 						else if(!(map[i-1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt);
+							map[i][j].setImage("WaterCornerHGExt.png");
 						}
 						else {
-							map[i][j].setImage(water);
+							map[i][j].setImage("Water.png");
 						}
 					}
 					else if(j == 0) {
 						if(!(map[i][j+1] instanceof Water) && !(map[i-1][j] instanceof Water) && !(map[i+1][j] instanceof Water)){
-							map[i][j].setImage(waterCornerHDInt_CornerBDInt);
+							map[i][j].setImage("WaterCornerHDInt_CornerBDInt.png");
 						}
 						else if(!(map[i][j+1] instanceof Water) && !(map[i-1][j] instanceof Water)) {
-							map[i][j].setImage(waterCornerHDInt);
+							map[i][j].setImage("WaterCornerHDInt.png");
 						}
 						else if(!(map[i+1][j] instanceof Water) && !(map[i][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBDInt);
+							map[i][j].setImage("WaterCornerBDInt.png");
 						}
 						else if(!(map[i-1][j] instanceof Water) && !(map[i+1][j] instanceof Water)) {
-							map[i][j].setImage(waterHB);
+							map[i][j].setImage("WaterHB.png");
 						}
 						else if(!(map[i+1][j] instanceof Water) && !(map[i-1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHDExt_B);
+							map[i][j].setImage("WaterCornerHDExt_B.png");
 						}
 						else if(!(map[i-1][j] instanceof Water) && !(map[i+1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBDExt_H);
+							map[i][j].setImage("WaterCornerBDExt_H.png");
 						}
 						else if(!(map[i-1][j+1] instanceof Water) && !(map[i+1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt_CornerBDExt);
+							map[i][j].setImage("WaterCornerHGExt_CornerBDExt.png");
 						}
 						else if(!(map[i-1][j] instanceof Water)) {
-							map[i][j].setImage(waterH);
+							map[i][j].setImage("WaterH.png");
 						}
 						else if(!(map[i][j+1] instanceof Water)) {
-							map[i][j].setImage(waterD);
+							map[i][j].setImage("WaterD.png");
 						}
 						else if(!(map[i+1][j] instanceof Water)) {
-							map[i][j].setImage(waterB);
+							map[i][j].setImage("WaterB.png");
 						}
 						else if(!(map[i-1][j+1] instanceof Water) && !(map[i+1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHDExt_CornerBDExt);
+							map[i][j].setImage("WaterCornerHDExt_CornerBDExt.png");
 						}
 						else if(!(map[i-1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHDExt);
+							map[i][j].setImage("WaterCornerHDExt.png");
 						}
 						else if(!(map[i+1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBGExt);
+							map[i][j].setImage("WaterCornerBGExt.png");
 						}
 						else {
-							map[i][j].setImage(water);
+							map[i][j].setImage("Water.png");
 						}
 					}
 					else if(j == map[0].length-1) {
 						if(!(map[i][j-1] instanceof Water) && !(map[i-1][j] instanceof Water) && !(map[i+1][j] instanceof Water)){
-							map[i][j].setImage(waterCornerHGInt_CornerBGInt);
+							map[i][j].setImage("WaterCornerHGInt_CornerBGInt.png");
 						}
 						else if(!(map[i][j-1] instanceof Water) && !(map[i-1][j] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGInt);
+							map[i][j].setImage("WaterCornerHGInt.png");
 						}
 						else if(!(map[i+1][j] instanceof Water) && !(map[i][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBGInt);
+							map[i][j].setImage("WaterCornerBGInt.png");
 						}
 						else if(!(map[i-1][j] instanceof Water) && !(map[i+1][j] instanceof Water)) {
-							map[i][j].setImage(waterHB);
+							map[i][j].setImage("WaterHB.png");
 						}
 						else if(!(map[i-1][j] instanceof Water) && !(map[i+1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBGExt_H);
+							map[i][j].setImage("WaterCornerBGExt_H.png");
 						}
 						else if(!(map[i+1][j] instanceof Water) && !(map[i-1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt_B);
+							map[i][j].setImage("WaterCornerHGExt_B.png");
 						}
 						else if(!(map[i-1][j] instanceof Water)) {
-							map[i][j].setImage(waterH);
+							map[i][j].setImage("WaterH.png");
 						}
 						else if(!(map[i][j-1] instanceof Water)) {
-							map[i][j].setImage(waterG);
+							map[i][j].setImage("WaterG.png");
 						}
 						else if(!(map[i+1][j] instanceof Water)) {
-							map[i][j].setImage(waterB);
+							map[i][j].setImage("WaterB.png");
 						}
 						else if(!(map[i-1][j-1] instanceof Water) && !(map[i+1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt_CornerBGExt);
+							map[i][j].setImage("WaterCornerHGExt_CornerBGExt.png");
 						}
 						else if(!(map[i-1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt);
+							map[i][j].setImage("WaterCornerHGExt.png");
 						}
 						else if(!(map[i+1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBGExt);
+							map[i][j].setImage("WaterCornerBGExt.png");
 						}
 						else {
-							map[i][j].setImage(water);
+							map[i][j].setImage("Water.png");
 						}
 					}
 					else {
 						if(!(map[i][j-1] instanceof Water) && !(map[i-1][j] instanceof Water) && !(map[i+1][j] instanceof Water) && !(map[i][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerAllInt);
+							map[i][j].setImage("WaterCornerAllInt.png");
 						}
 						else if(!(map[i][j-1] instanceof Water) && !(map[i-1][j] instanceof Water) && !(map[i+1][j] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGInt_CornerBGInt);
+							map[i][j].setImage("WaterCornerHGInt_CornerBGInt.png");
 						}
 						else if(!(map[i-1][j] instanceof Water) && !(map[i+1][j] instanceof Water) && !(map[i][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHDInt_CornerBDInt);
+							map[i][j].setImage("WaterCornerHDInt_CornerBDInt.png");
 						}
 						else if(!(map[i][j-1] instanceof Water) && !(map[i+1][j] instanceof Water) && !(map[i][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBGInt_CornerBDInt);
+							map[i][j].setImage("WaterCornerBGInt_CornerBDInt.png");
 						}
 						else if(!(map[i][j-1] instanceof Water) && !(map[i-1][j] instanceof Water) && !(map[i][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGInt_CornerHDInt);
+							map[i][j].setImage("WaterCornerHGInt_CornerHDInt.png");
 						}
 						else if(!(map[i][j-1] instanceof Water) && !(map[i-1][j] instanceof Water) && !(map[i+1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBDExt_CornerHGInt);
+							map[i][j].setImage("WaterCornerBDExt_CornerHGInt.png");
 						}
 						else if(!(map[i][j-1] instanceof Water) && !(map[i+1][j] instanceof Water) && !(map[i-1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHDExt_CornerBGInt);
+							map[i][j].setImage("WaterCornerHDExt_CornerBGInt.png");
 						}
 						else if(!(map[i][j+1] instanceof Water) && !(map[i-1][j] instanceof Water) && !(map[i+1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBGExt_CornerHDInt);
+							map[i][j].setImage("WaterCornerBGExt_CornerHDInt.png");
 						}
 						else if(!(map[i][j+1] instanceof Water) && !(map[i+1][j] instanceof Water) && !(map[i-1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt_CornerBDInt);
+							map[i][j].setImage("WaterCornerHGExt_CornerBDInt.png");
 						}
 						else if(!(map[i][j-1] instanceof Water) && !(map[i-1][j] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGInt);
+							map[i][j].setImage("WaterCornerHGInt.png");
 						}
 						else if(!(map[i][j-1] instanceof Water) && !(map[i+1][j] instanceof Water)) {
-							map[i][j].setImage(waterCornerBGInt);
+							map[i][j].setImage("WaterCornerBGInt.png");
 						}
 						else if(!(map[i][j+1] instanceof Water) && !(map[i-1][j] instanceof Water)) {
-							map[i][j].setImage(waterCornerHDInt);
+							map[i][j].setImage("WaterCornerHDInt.png");
 						}
 						else if(!(map[i][j+1] instanceof Water) && !(map[i+1][j] instanceof Water)) {
-							map[i][j].setImage(waterCornerBDInt);
+							map[i][j].setImage("WaterCornerBDInt.png");
 						}
 						else if(!(map[i][j-1] instanceof Water) && !(map[i][j+1] instanceof Water)) {
-							map[i][j].setImage(waterGD);
+							map[i][j].setImage("WaterGD.png");
 						}
 						else if(!(map[i-1][j] instanceof Water) && !(map[i+1][j] instanceof Water)) {
-							map[i][j].setImage(waterHB);
+							map[i][j].setImage("WaterHB.png");
 						}
 						else if(!(map[i-1][j] instanceof Water) && !(map[i+1][j+1] instanceof Water) && !(map[i+1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBGExt_CornerBDExt_H);
+							map[i][j].setImage("WaterCornerBGExt_CornerBDExt_H.png");
 						}
 						else if(!(map[i][j-1] instanceof Water) && !(map[i+1][j+1] instanceof Water) && !(map[i-1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHDExt_CornerBDExt_G);
+							map[i][j].setImage("WaterCornerHDExt_CornerBDExt_G.png");
 						}
 						else if(!(map[i+1][j] instanceof Water) && !(map[i-1][j+1] instanceof Water) && !(map[i-1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt_CornerHDExt_B);
+							map[i][j].setImage("WaterCornerHGExt_CornerHDExt_B.png");
 						}
 						else if(!(map[i][j+1] instanceof Water) && !(map[i-1][j-1] instanceof Water) && !(map[i+1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt_CornerBGExt_D);
+							map[i][j].setImage("WaterCornerHGExt_CornerBGExt_D.png");
 						}
 						else if(!(map[i-1][j] instanceof Water) && !(map[i+1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBDExt_H);
+							map[i][j].setImage("WaterCornerBDExt_H.png");
 						}
 						else if(!(map[i-1][j] instanceof Water) && !(map[i+1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBGExt_H);
+							map[i][j].setImage("WaterCornerBGExt_H.png");
 						}
 						
 						else if(!(map[i][j-1] instanceof Water) && !(map[i+1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBDExt_G);
+							map[i][j].setImage("WaterCornerBDExt_G.png");
 						}
 						else if(!(map[i][j-1] instanceof Water) && !(map[i-1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHDExt_G);
+							map[i][j].setImage("WaterCornerHDExt_G.png");
 						}
 						else if(!(map[i+1][j] instanceof Water) && !(map[i-1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHDExt_B);
+							map[i][j].setImage("WaterCornerHDExt_B.png");
 						}
 						else if(!(map[i+1][j] instanceof Water) && !(map[i-1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt_B);
+							map[i][j].setImage("WaterCornerHGExt_B.png");
 						}
 						else if(!(map[i][j+1] instanceof Water) && !(map[i-1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt_D);
+							map[i][j].setImage("WaterCornerHGExt_D.png");
 						}
 						else if(!(map[i][j+1] instanceof Water) && !(map[i+1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBGExt_D);
+							map[i][j].setImage("WaterCornerBGExt_D.png");
 						}
 						else if(!(map[i-1][j] instanceof Water)) {
-							map[i][j].setImage(waterH);
+							map[i][j].setImage("WaterH.png");
 						}
 						else if(!(map[i][j-1] instanceof Water)) {
-							map[i][j].setImage(waterG);
+							map[i][j].setImage("WaterG.png");
 						}
 						else if(!(map[i+1][j] instanceof Water)) {
-							map[i][j].setImage(waterB);
+							map[i][j].setImage("WaterB.png");
 						}
 						else if(!(map[i][j+1] instanceof Water)) {
-							map[i][j].setImage(waterD);
+							map[i][j].setImage("WaterD.png");
 						}
 						else if(!(map[i-1][j-1] instanceof Water) && !(map[i-1][j+1] instanceof Water) && !(map[i+1][j-1] instanceof Water) && !(map[i+1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerAllExt);
+							map[i][j].setImage("WaterCornerAllExt.png");
 						}
 						else if(!(map[i-1][j-1] instanceof Water) && !(map[i-1][j+1] instanceof Water) && !(map[i+1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt_CornerHDExt_CornerBGExt);
+							map[i][j].setImage("WaterCornerHGExt_CornerHDExt_CornerBGExt.png");
 						}
 						else if(!(map[i-1][j-1] instanceof Water) && !(map[i-1][j+1] instanceof Water) && !(map[i+1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt_CornerHDExt_CornerBDExt);
+							map[i][j].setImage("WaterCornerHGExt_CornerHDExt_CornerBDExt.png");
 						}
 						else if(!(map[i-1][j-1] instanceof Water) && !(map[i+1][j-1] instanceof Water) && !(map[i+1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt_CornerBGExt_CornerBDExt);
+							map[i][j].setImage("WaterCornerHGExt_CornerBGExt_CornerBDExt.png");
 						}
 						else if(!(map[i-1][j+1] instanceof Water) && !(map[i+1][j-1] instanceof Water) && !(map[i+1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHDExt_CornerBGExt_CornerBDExt);
+							map[i][j].setImage("WaterCornerHDExt_CornerBGExt_CornerBDExt.png");
 						}
 						else if(!(map[i-1][j-1] instanceof Water) && !(map[i-1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt_CornerHDExt);
+							map[i][j].setImage("WaterCornerHGExt_CornerHDExt.png");
 						}
 						else if(!(map[i+1][j-1] instanceof Water) && !(map[i+1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBGExt_CornerBDExt);
+							map[i][j].setImage("WaterCornerBGExt_CornerBDExt.png");
 						}
 						else if(!(map[i-1][j+1] instanceof Water) && !(map[i+1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHDExt_CornerBDExt);
+							map[i][j].setImage("WaterCornerHDExt_CornerBDExt.png");
 						}
 						else if(!(map[i-1][j-1] instanceof Water) && !(map[i+1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt_CornerBGExt);
+							map[i][j].setImage("WaterCornerHGExt_CornerBGExt.png");
 						}
 						else if(!(map[i-1][j-1] instanceof Water) && !(map[i+1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt_CornerBDExt);
+							map[i][j].setImage("WaterCornerHGExt_CornerBDExt.png");
 						}
 						else if(!(map[i-1][j+1] instanceof Water) && !(map[i+1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHDExt_CornerBGExt);
+							map[i][j].setImage("WaterCornerHDExt_CornerBGExt.png");
 						}
 						else if(!(map[i-1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHGExt);
+							map[i][j].setImage("WaterCornerHGExt.png");
 						}
 						else if(!(map[i-1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerHDExt);
+							map[i][j].setImage("WaterCornerHDExt.png");
 						}
 						else if(!(map[i+1][j-1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBGExt);
+							map[i][j].setImage("WaterCornerBGExt.png");
 						}
 						else if(!(map[i+1][j+1] instanceof Water)) {
-							map[i][j].setImage(waterCornerBDExt);
+							map[i][j].setImage("WaterCornerBDExt.png");
 						}
 						else {
-							map[i][j].setImage(water);
+							map[i][j].setImage("Water.png");
 						}
 					}
 				}

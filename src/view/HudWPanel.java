@@ -8,6 +8,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -89,9 +90,18 @@ public class HudWPanel extends JPanel {
 		
 	}
 	
-	public void display(Image img, Image imgOver) {
-		selected = img;
-		selectedOver = imgOver;
+	public void display(String img, String imgOver) {
+		try {
+			selected = ImageIO.read(new File("Graphismes/"+img));
+			if(!imgOver.equals("null")) {
+				selectedOver = ImageIO.read(new File("Graphismes/"+imgOver));
+			}
+			else {
+				selectedOver = null;
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		repaint();
 	}
 	

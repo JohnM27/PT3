@@ -21,7 +21,7 @@ public class MenuPanel extends JPanel {
 	private Controller controller;
 	
 	private BufferedImage background;
-	private JButton game, about, exit;
+	private JButton newGame, game, about, exit;
 	private JLabel version;
 	
 	private static Font font;
@@ -40,9 +40,20 @@ public class MenuPanel extends JPanel {
 		
 		gbc.insets = new Insets(10,30,10,30);
 		
-		game = new JButton("New Game");
+		newGame = new JButton("New Game");
 		gbc.gridx = 0;
 		gbc.gridy = 0;
+		newGame.setFont(font);
+		newGame.setBackground(buttonColor);
+		newGame.setForeground(textColor);
+		newGame.setPreferredSize(buttonSize);
+		newGame.setFocusPainted(false);
+		newGame.addActionListener(controller);
+		add(newGame, gbc);
+		
+		game = new JButton("Load Game");
+		gbc.gridx = 0;
+		gbc.gridy = 1;
 		game.setFont(font);
 		game.setBackground(buttonColor);
 		game.setForeground(textColor);
@@ -53,7 +64,7 @@ public class MenuPanel extends JPanel {
 		
 		about = new JButton("About");
 		gbc.gridx = 0;
-		gbc.gridy = 1;
+		gbc.gridy = 2;
 		about.setFont(font);
 		about.setBackground(buttonColor);
 		about.setForeground(textColor);
@@ -64,7 +75,7 @@ public class MenuPanel extends JPanel {
 		
 		exit = new JButton("Exit");
 		gbc.gridx = 0;
-		gbc.gridy = 2;
+		gbc.gridy = 3;
 		exit.setFont(font);
 		exit.setBackground(buttonColor);
 		exit.setForeground(textColor);

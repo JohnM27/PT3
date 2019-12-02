@@ -1,9 +1,10 @@
 package model;
 
 import java.awt.Image;
+import java.io.Serializable;
 
-public abstract class Building {
-	private Image img;
+public abstract class Building implements Serializable {
+	private String img;
 	private int level;
 	private int population;
 	private String type;
@@ -12,11 +13,11 @@ public abstract class Building {
 		level = 0;
 	}
 
-	public Image getImg() {
+	public String getImg() {
 		return img;
 	}
 
-	public void setImg(Image img) {
+	public void setImg(String img) {
 		this.img = img;
 	}
 	

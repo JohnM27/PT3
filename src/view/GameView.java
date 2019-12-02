@@ -75,6 +75,8 @@ public class GameView extends View implements GlobalListener{
 	public void jourChanged(MapEvent event) {
 		HudWPanel.setRessources(event.getRessources());
 		HudWPanel.setMoral(event.getMoral());
+		HudWPanel.setPopulation(event.getPopulation());
+		HudWPanel.setPopulationMax(event.getPopulationMax());
 		HudSPanel.getRight().setNbJour(event.getNbJour());
 	}
 
@@ -84,6 +86,12 @@ public class GameView extends View implements GlobalListener{
 	@Override
 	public void MapGenerated(MapEvent event) {
 		HudCPanel.mapGenerated(event.getImg(), event.getImgOver());
+	}
+	
+	@Override
+	public void Refresh(MapEvent event) {
+		jourChanged(event);
+		MapGenerated(event);
 	}
 
 	/**
@@ -174,7 +182,7 @@ public class GameView extends View implements GlobalListener{
 
 	@Override
 	public void ModifySCPanel(MapEvent event) {
-		HudSPanel.getCenter().display(event.getAdjacent(), event.getTypeCase(), event.getCityHall(), event.getRessources());
+		HudSPanel.getCenter().display(event.getAdjacent(), event.getTypeCase(),event.getFirstBuy(), event.getCityHall(), event.getRessources());
 		HudWPanel.display(event.getCurrentImage(), event.getCurrentImageOver());
 		HudWPanel.setBuilding(event.getBuilding());
 	}

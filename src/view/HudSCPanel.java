@@ -167,7 +167,7 @@ public class HudSCPanel extends JPanel {
 		repaint();
 	}
 	
-	//Pas utilisÃ© mais plus peut-Ãªtre oui
+	//Pas utilisÃƒÂ© mais plus peut-ÃƒÂªtre oui
 	/*
 	public void done() {
 		test.setVisible(true);

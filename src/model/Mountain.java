@@ -4,7 +4,7 @@ import java.awt.Image;
 
 public class Mountain extends Case {
 	
-	public Mountain(int x, int y, Image im) {
-		super(x, y, im);
+	public Mountain(int x, int y, String img) {
+		super(x, y, img);
 	}
 }

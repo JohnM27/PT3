@@ -18,7 +18,7 @@ import controller.Controller;
 public class HudSRPanel extends JPanel {
 	private Controller controller;
 	
-	private JButton suivant, menu, quitter;
+	private JButton suivant, save, quitter;
 	private JLabel jour;
 		
 	private static Dimension buttonSize = new Dimension(83,40);
@@ -49,14 +49,14 @@ public class HudSRPanel extends JPanel {
 		c.gridy = 1;
 		add(suivant, c);
 		
-		menu = new JButton("Menu");
-		menu.setPreferredSize(buttonSize);
-		menu.setFont(new Font("Sans Serif", Font.PLAIN, 16));
-		menu.addActionListener(controller);
+		save = new JButton("Save");
+		save.setPreferredSize(buttonSize);
+		save.setFont(new Font("Sans Serif", Font.PLAIN, 16));
+		save.addActionListener(controller);
 		c.gridx = 0;
 		c.gridy = 2;
 		c.gridwidth = 1;
-		add(menu, c);
+		add(save, c);
 		
 		quitter = new JButton("Exit");
 		quitter.setPreferredSize(buttonSize);

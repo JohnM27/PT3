@@ -9,12 +9,7 @@ public class CityHall extends Building {
 	
 	public CityHall() {
 		super();
-		
-		try {
-			setImg(ImageIO.read(new File("Graphismes/H.png")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		setImg("H.png");
 		
 		setPopulation(10);
 	}

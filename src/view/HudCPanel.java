@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -13,8 +14,8 @@ import controller.Controller;
 public class HudCPanel extends JPanel {
 	private Controller controller;
 
-	private Image[][] img;
-	private Image[][] imgOver;
+	private Image[][] img = new Image[10][18];
+	private Image[][] imgOver = new Image[10][18];
 	private boolean[][] selected = new boolean[10][18];
 	private static Image imgSelected = null;
 	private int[] oldCoord = {0,0};
@@ -52,11 +53,21 @@ public class HudCPanel extends JPanel {
 				}
 			}
 		}
+		repaint();
 	}
 	
-	public void mapGenerated(Image[][] img, Image[][] imgOver) {
-		this.img = img;
-		this.imgOver = imgOver;
+	public void mapGenerated(String[][] img, String[][] imgOver) {
+		for(int i = 0; i < 10; i++) {
+			for(int j = 0; j < 18; j++) {
+				try {
+					this.img[i][j] = ImageIO.read(new File("Graphismes/"+img[i][j]));
+					this.imgOver[i][j] = ImageIO.read(new File("Graphismes/"+imgOver[i][j]));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		repaint();
 	}
 	
 	public void fogOff(int i, int j) {
@@ -64,47 +75,14 @@ public class HudCPanel extends JPanel {
 		repaint();
 	}
 	
-	
-	/**
-	 * PARTIE A REFAIRE CAR TOUTES LES METHODES CE RESSEMBLE
-	 */
-	
-	public void buildingOn(int i, int j, Image image) {
-		this.imgOver[i][j] = image;
+	public void buildingOn(int i, int j, String image) {
+		try {
+			this.imgOver[i][j] = ImageIO.read(new File("Graphismes/"+image));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		repaint();
 	}
-	
-	/*
-	public void cityHallOn(int i, int j, Image image) {
-		this.imgOver[i][j] = image;
-		repaint();
-	}
-
-	public void houseOn(int i, int j, Image image) {
-		this.imgOver[i][j] = image;
-		repaint();
-	}
-	
-	public void farmOn(int i, int j, Image image) {
-		this.imgOver[i][j] = image;
-		repaint();
-	}
-
-	public void fishingOn(int i, int j, Image image) {
-		this.imgOver[i][j] = image;
-		repaint();
-	}
-	
-	public void loggingOn(int i, int j, Image image) {
-		this.imgOver[i][j] = image;
-		repaint();
-	}
-	
-	public void mineOn(int i, int j, Image image) {
-		this.imgOver[i][j] = image;
-		repaint();
-	}
-	*/
 
 	public void selected(int[] coord) {		
 		for(int i = 0; i < 10; i++)
