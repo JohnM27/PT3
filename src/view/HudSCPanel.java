@@ -196,8 +196,6 @@ public class HudSCPanel extends JPanel {
 	}*/
 	
 	private void displayUpgrade() {
-		test.setVisible(false);
-
 		buy.setVisible(false);
 
 		buildF.setVisible(false);
@@ -206,16 +204,14 @@ public class HudSCPanel extends JPanel {
 		buildH.setVisible(false);
 		buildFarm.setVisible(false);
 		buildC.setVisible(false);
-		selected.setEnabled(false);
 		
 		upgrade.setVisible(true);
 		upgrade.setEnabled(true);
-		selected.setIcon(null);
 		
 		repaint();
 	}	
 	
-	public void displayPlainCityHall(Image img, int[] ressources, boolean build) {
+	public void displayPlainCityHall(int[] ressources, Building building) {
 		buy.setVisible(false);
 		
 		buildF.setVisible(false);
@@ -236,18 +232,16 @@ public class HudSCPanel extends JPanel {
 			else {
 				buildC.setEnabled(false);
 			}
-		if(!build && ressources[0] >= 50 && ressources[2] >= 30) {
-			buildC.setEnabled(true);
 		}
 		else {
 			buildC.setVisible(false);
 			upgrade.setVisible(true);
-			buildC.setEnabled(false);
+			//buildC.setEnabled(false);
 		}
 		repaint();
 	}
 
-	public void displayPlain(Image img, int[] ressources, boolean build) {
+	public void displayPlain(int[] ressources, Building building) {
 		buy.setVisible(false);
 		
 		buildF.setVisible(false);
@@ -273,7 +267,8 @@ public class HudSCPanel extends JPanel {
 			}
 			else {
 				buildFarm.setEnabled(false);
-			}	
+			}
+		}
 		else {
 			buildH.setVisible(false);
 			buildFarm.setVisible(false);
@@ -283,7 +278,7 @@ public class HudSCPanel extends JPanel {
 		repaint();
 	}
 
-	public void displayForest(Image img, int[] ressources, boolean build) {
+	public void displayForest(int[] ressources, Building building) {
 		buy.setVisible(false);
 		
 		buildH.setVisible(false);
@@ -304,6 +299,7 @@ public class HudSCPanel extends JPanel {
 			else {
 				buildL.setEnabled(false);
 			}
+		}
 		else {
 			buildL.setVisible(false);
 			upgrade.setVisible(true);
@@ -312,7 +308,7 @@ public class HudSCPanel extends JPanel {
 		repaint();
 	}
 
-	public void displayMountain(Image img, int[] ressources, boolean build) {
+	public void displayMountain(int[] ressources, Building building) {
 		buy.setVisible(false);
 		
 		buildH.setVisible(false);
@@ -333,6 +329,7 @@ public class HudSCPanel extends JPanel {
 			else {
 				buildM.setEnabled(false);
 			}
+		}
 		else {
 			buildM.setVisible(false);
 			upgrade.setVisible(true);
@@ -341,7 +338,7 @@ public class HudSCPanel extends JPanel {
 		repaint();
 	}
 
-	public void displayWater(Image img, int[] ressources, boolean build) {
+	public void displayWater(int[] ressources, Building building) {
 		buy.setVisible(false);
 		
 		buildH.setVisible(false);
@@ -362,6 +359,7 @@ public class HudSCPanel extends JPanel {
 			else {
 				buildF.setEnabled(false);
 			}
+		}
 		else {
 			buildF.setVisible(false);
 			upgrade.setVisible(true);
