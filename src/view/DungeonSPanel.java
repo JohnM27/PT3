@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 import controller.Controller;
 
-public class HudSLPanel extends JPanel {
+public class DungeonSPanel extends JPanel {
 	
 	private Controller controller;
 	
@@ -17,16 +17,12 @@ public class HudSLPanel extends JPanel {
 	
 	private JButton changeView;
 	private JButton help;
+	private JButton test;
 	
-	public HudSLPanel(Controller controller) {
+	public DungeonSPanel(Controller controller) {
 		super(new GridBagLayout());
 		
-		this.controller = controller;
-		
-		this.setPreferredSize(new Dimension(268, 158));
-		
-		
-		changeView = new JButton("Game Change");
+		changeView = new JButton("Dungeon Change");
 		changeView.addActionListener(controller);
 		changeView.setPreferredSize(new Dimension(268,100));
 		c.gridx = 0;
@@ -35,7 +31,15 @@ public class HudSLPanel extends JPanel {
 		
 		help = new JButton("Help");
 		help.setPreferredSize(new Dimension(268,58));
+		c.gridx = 0;
 		c.gridy = 1;
 		add(help, c);
+		
+		test = new JButton("TEST");
+		test.setPreferredSize(new Dimension(1098,158));
+		c.gridx = 1;
+		c.gridy = 0;
+		c.gridheight = 2;
+		add(test, c);
 	}
 }

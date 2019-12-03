@@ -18,7 +18,7 @@ public class HudSPanel extends JPanel{
 	public HudSPanel(Controller controller) {		
 		super(new BorderLayout());
 		
-		left = new HudSLPanel();
+		left = new HudSLPanel(controller);
 		add(left, BorderLayout.WEST);
 		
 		center = new HudSCPanel(controller);

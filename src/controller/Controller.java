@@ -12,6 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import model.Model;
+import view.DungeonView;
 import view.GameView;
 import view.MenuView;
 
@@ -25,6 +26,7 @@ public class Controller extends MouseAdapter implements ActionListener{
 	private Model model; 
 	private MenuView menuView;
 	private GameView gameView;
+	private DungeonView dungeonView;
 	
 	private boolean cityHall = false;
 	
@@ -45,6 +47,7 @@ public class Controller extends MouseAdapter implements ActionListener{
 	 */
 	private void addListenersToModel() {
 		model.addGlobalListener(gameView);
+		//model.addDungeonListener(dungeonView);
 	}
 	
 	/**
@@ -69,6 +72,7 @@ public class Controller extends MouseAdapter implements ActionListener{
 	public void newGame() {
 		closeMenuView();
 		gameView = new GameView(this);
+		dungeonView = new DungeonView(this, gameView.getFrame());
 		addListenersToModel();
 		model.fireMapGenerated();
 		gameView.display();
@@ -81,6 +85,7 @@ public class Controller extends MouseAdapter implements ActionListener{
 	 */
 	public void loadGame() {
 		gameView = new GameView(this);
+		dungeonView = new DungeonView(this, gameView.getFrame());
 		
 		ObjectInputStream ois = null;
 		
@@ -159,7 +164,15 @@ public class Controller extends MouseAdapter implements ActionListener{
 		else if(e.getActionCommand().equals("Exit") && menuView != null)
 			closeMenuView();
 		else if(e.getActionCommand().equals("Exit"))
-			closeGameView();
+			gameView.exit();
+		else if(e.getActionCommand().equals("Game Change")) {
+			gameView.close();
+			dungeonView.display();
+		}			
+		else if(e.getActionCommand().equals("Dungeon Change")) {
+			dungeonView.close();
+			gameView.display();
+		}
 		else if(e.getActionCommand().equals("Save"))
 			save();
 		else if(e.getActionCommand().equals("Jour suivant"))

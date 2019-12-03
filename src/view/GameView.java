@@ -40,16 +40,11 @@ public class GameView extends View implements GlobalListener{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		HudWPanel = new HudWPanel();
-		frame.add(HudWPanel, BorderLayout.WEST);
-		
 		HudSPanel = new HudSPanel(controller);
-		frame.add(HudSPanel, BorderLayout.SOUTH);
-		
 		HudCPanel = new HudCPanel(controller);
-		frame.add(HudCPanel, BorderLayout.CENTER);
 		
 		frame.setResizable(false);
-		frame.pack();
+		
 	}
 	
 	/**
@@ -57,7 +52,15 @@ public class GameView extends View implements GlobalListener{
 	 */
 	@Override
 	public void display() {
+		frame.add(HudWPanel, BorderLayout.WEST);
+		frame.add(HudSPanel, BorderLayout.SOUTH);
+		frame.add(HudCPanel, BorderLayout.CENTER);
+
+		frame.revalidate();
+		frame.repaint();
+		
 		frame.setVisible(true);
+		frame.pack();
 	}
 	
 	/**
@@ -65,7 +68,15 @@ public class GameView extends View implements GlobalListener{
 	 */
 	@Override
 	public void close() {
+		frame.getContentPane().removeAll();
+	}
+	
+	public void exit() {
 		frame.dispose();
+	}
+	
+	public JFrame getFrame() {
+		return frame;
 	}
 
 	/**
