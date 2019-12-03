@@ -6,8 +6,8 @@ import java.awt.Dimension;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 
 import controller.Controller;
 
@@ -32,8 +32,32 @@ public class DungeonView extends View /*implements DungeonListener*/ {
 		scroll = new JScrollPane(dungeonWPanel);
 		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		
-		
+		scroll.getVerticalScrollBar().setPreferredSize(new Dimension(10,0));
+		scroll.getVerticalScrollBar().setUI(new BasicScrollBarUI()
+	    {   
+	        @Override
+	        protected JButton createDecreaseButton(int orientation) {
+	            return createZeroButton();
+	        }
+
+	        @Override    
+	        protected JButton createIncreaseButton(int orientation) {
+	            return createZeroButton();
+	        }
+
+	        private JButton createZeroButton() {
+	            JButton jbutton = new JButton();
+	            jbutton.setPreferredSize(new Dimension(0, 0));
+	            jbutton.setMinimumSize(new Dimension(0, 0));
+	            jbutton.setMaximumSize(new Dimension(0, 0));
+	            return jbutton;
+	        }
+	        
+	        protected void configureScrollBarColors() {
+	            this.thumbColor = new Color(200,200,200);
+	            this.thumbHighlightColor = new Color(150,150,150);
+	        }
+	    });
 	}
 
 
