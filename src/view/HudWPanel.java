@@ -32,14 +32,11 @@ public class HudWPanel extends JPanel {
 	private static Font font = new Font("San Serif", Font.PLAIN, 35);
 	private static Color color = new Color(240,240,240);
 	
-	GridBagConstraints c = new GridBagConstraints();
-	
 	public HudWPanel() {
-		super(new GridBagLayout());
+		super();
 		
 		setBackground(new Color(100,100,100));
-		
-		this.setPreferredSize(new Dimension(268, 610));
+		setPreferredSize(new Dimension(268, 610));
 		
 		try {
 			selected = ImageIO.read(new File("Graphismes/Disabled.png"));

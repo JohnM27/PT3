@@ -1,78 +1,77 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.Graphics;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class AdventurerPanel extends JPanel {
-
-	private JLabel name, level, mission, health, moral, activity;
-	private JLabel xp;
 	
-	private static Font font = new Font("Sans Serif", Font.PLAIN, 15);
+	//private Adventurer adventurer;
+	
+	private JButton selected;
+	
+	private static Font font = new Font("Sans Serif", Font.PLAIN, 18);
+	private static Color color = new Color(240,240,240);
 	
 	public AdventurerPanel() {
-		super(new GridBagLayout());
+		super(new BorderLayout());
 		
-		GridBagConstraints gbc = new GridBagConstraints();
+		selected = new JButton("Select Adventurer");
+		selected.setFont(font);
+		selected.setPreferredSize(new Dimension(255,25));
+		add(selected, BorderLayout.SOUTH);
+				
+		setPreferredSize(new Dimension(255,165));
+		setBackground(new Color(100,100,100));
+	}
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
 		
-		this.setPreferredSize(new Dimension(255,79));
-		this.setBackground(new Color(255,200,200));
-		
-		gbc.insets = new Insets(3,5,2,5);
-		/*
-		JButton icon = new JButton("");
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		gbc.gridheight = 3;
-		icon.setMinimumSize(new Dimension(60,60));
-		icon.setBackground(new Color(255,100,100));
-		//add(icon, gbc);*/
-		
-		name = new JLabel("Mathéo FAIVRE");
-		name.setFont(font);
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		gbc.gridwidth = 1;
-		add(name, gbc);
-		
-		
-		activity = new JLabel("Disponible");
-		gbc.gridx = 0;
-		gbc.gridy = 1;
-		gbc.gridwidth = 1;
-		add(activity, gbc);
-		
-		gbc.insets = new Insets(2,5,2,5);
-		
-		
-		level = new JLabel("Level: " + 1);
-		level.setFont(font);
-		gbc.gridx = 0;
-		gbc.gridy = 1;
-		gbc.gridwidth = 1;
-		add(level, gbc);
-		
-		
-		xp = new JLabel("XP: " + 100);
-		gbc.gridx = 1;
-		gbc.gridy = 1;
-		add(xp, gbc);
-		
-		
-		health = new JLabel("HP: " + 100);
-		gbc.gridx = 0;
-		gbc.gridy = 2;
-		add(health, gbc);
-		
-		
-
+		//try {
+			g.setFont(font);
+			g.setColor(color);
+			
+			
+			//Name
+			g.drawString("Mathéo FAIVRE", 10, 23);
+			//Level
+			g.drawString("Lvl:" + 10, 174, 23);
+			//Xp
+			g.drawString("XP:", 10, 46);
+			//Xp rectangle
+			g.drawRect(48, 28, 200, 18);
+			g.fillRect(48, 28, 100, 18);
+			//Xp %
+			g.setColor(Color.black);
+			g.drawString(100 + "%", 134, 44);
+			g.setColor(color);
+			//Health
+			g.drawString("HP:", 10, 69);
+			//Health rectangle
+			g.drawRect(48, 51, 200, 18);
+			g.fillRect(48, 51, 100, 18);
+			//Health %
+			g.setColor(Color.black);
+			g.drawString(100 +"%", 134, 67);
+			g.setColor(color);
+			//Attack
+			g.drawString("ATK: " + 100, 10, 92);
+			//Defense
+			g.drawString("DEF: " + 100, 116, 92);
+			//Magic
+			g.drawString("MAG: " + 100, 10, 112);
+			//Magic type
+			g.drawString("MAG Type: " + "ATK", 116, 112);
+			//Status
+			g.drawString("Status: Available", 10, 135);
+			//g.drawImage(ImageIO.read(new File("Graphismes/Forest_1.png")), 0, 0, this);
+			
+		//} catch (IOException e) {}
 	}
 }

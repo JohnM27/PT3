@@ -19,6 +19,8 @@ public class DungeonCPanel extends JPanel {
 	}
 	
 	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		
 		try {
 			g.drawImage(ImageIO.read(new File("Graphismes/test.png")), 0, 0, this);
 			
