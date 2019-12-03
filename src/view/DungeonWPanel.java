@@ -1,9 +1,9 @@
 package view;
 
-import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import controller.Controller;
@@ -11,14 +11,55 @@ import controller.Controller;
 public class DungeonWPanel extends JPanel {
 
 	private Controller controller;
-	
-	private JButton test;
+	private List<AdventurerPanel> Adventurer = new ArrayList<AdventurerPanel>();
 	
 	public DungeonWPanel(Controller controller) {
-		super(new GridLayout(1,0));
+		super(new GridLayout(0,1));
 		
-		test = new JButton("TEST");
-		test.setPreferredSize(new Dimension(268, 610));
-		add(test);
+		// A REMPLACER PAR L'AJOUT D'AVENTURIER
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		Adventurer.add(new AdventurerPanel());
+		
+		for(int i = 0 ; i < Adventurer.size() ; i++) {
+			add(Adventurer.get(i));
+		}
 	}
 }
