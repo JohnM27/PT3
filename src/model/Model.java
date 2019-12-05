@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.swing.event.EventListenerList;
 
-import view.DungeonView;
-
 @SuppressWarnings("serial")
 public class Model implements Serializable {
 
@@ -30,11 +28,13 @@ public class Model implements Serializable {
 	private int populationMax = 0;
 	private int population = 0;
 	private int moral = 130;
+	private List<Adventurer> adventurers;
   
 	public Model() {
 		listenersList = new EventListenerList();
 		nbJour = 0;
 		listBuilding = new ArrayList<Case>();
+		adventurers = new ArrayList<Adventurer>();
 	}
 	
 	/**
@@ -97,6 +97,10 @@ public class Model implements Serializable {
 		return moral;
 	}
 	
+	public List<Adventurer> getAdventurers() {
+		return adventurers;
+	}
+	
 	public Building getBuilding(int i, int j) {
 		return m.getBuilding(i, j);
 	}
@@ -105,7 +109,7 @@ public class Model implements Serializable {
 		listenersList.add(GameListener.class, listener);
 	}
 	
-	public void addDungeonListener(DungeonView listener) {
+	public void addDungeonListener(DungeonListener listener) {
 		listenersList.add(DungeonListener.class, listener);
 	}
 	
@@ -113,7 +117,7 @@ public class Model implements Serializable {
 		listenersList.remove(GameListener.class, listener);
 	}
 	
-	public void removeDungeonListener(DungeonView listener) {
+	public void removeDungeonListener(DungeonListener listener) {
 		listenersList.remove(DungeonListener.class, listener);		
 	}
 	
@@ -123,9 +127,9 @@ public class Model implements Serializable {
 		
 		nbJour++;
 		/*
-		 * Faudra changer pour l'amélioration
+		 * Faudra changer pour l'amÃ©lioration
 		 * 
-		 * Il suffira de faire un getRessource sur la case et on récupère la ressource facilement
+		 * Il suffira de faire un getRessource sur la case et on rÃ©cupÃ¨re la ressource facilement
 		 */
 		for(Case b : listBuilding) {
 			if(b.getBuildingType().equals("model.LumberMill")) {
@@ -181,9 +185,13 @@ public class Model implements Serializable {
 	public void fireRefresh() {
 		GameListener[] listenerList = 
 				(GameListener[])listenersList.getListeners(GameListener.class);
+		DungeonListener[] dListenerList =
+				(DungeonListener[])listenersList.getListeners(DungeonListener.class); 
 		
 		for(GameListener listener : listenerList)
 			listener.Refresh(new MapEvent(this));
+		for(DungeonListener listener : dListenerList)
+			listener.Refresh(new DungeonEvent(this));
 	}
 	
 	public void fireMapGenerated() {
@@ -194,11 +202,13 @@ public class Model implements Serializable {
 	
 		m.generateMap();
 		
+		adventurers.add(new Adventurer());
+		population += 5; // On ajoute 5 de population
 		
 		for(GameListener listener : gListenerList)
 			listener.MapGenerated(new MapEvent(this));
-		//for(DungeonListener listener : dListenerList)
-			//listener.MapGenerated(new MapEvent(this));
+		for(DungeonListener listener : dListenerList)
+			listener.AddAdventurer(new DungeonEvent(this));
 	}
 	
 	//Enleve le brouillard d'une case
@@ -389,7 +399,5 @@ public class Model implements Serializable {
 		
 		for(GameListener listener : listenerList)
 			listener.selected(new MapEvent(this));
-	}
-
-	
+	}	
 }
