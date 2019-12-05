@@ -96,6 +96,7 @@ public class GameView extends View implements GameListener{
 	@Override
 	public void MapGenerated(MapEvent event) {
 		HudCPanel.mapGenerated(event.getImg(), event.getImgOver());
+		HudWPanel.setPopulation(event.getPopulation());
 	}
 	
 	@Override

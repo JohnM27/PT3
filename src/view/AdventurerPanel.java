@@ -9,6 +9,8 @@ import java.awt.Graphics;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import model.Adventurer;
+
 public class AdventurerPanel extends JPanel {
 	
 	//private Adventurer adventurer;
@@ -18,8 +20,41 @@ public class AdventurerPanel extends JPanel {
 	private static Font font = new Font("Sans Serif", Font.PLAIN, 18);
 	private static Color color = new Color(240,240,240);
 	
-	public AdventurerPanel() {
+	private String name;
+	private int level;
+	private int xp;
+	private int hp;
+	private int atk, def, mag;
+	private String magT;
+	private String available;
+	
+	public AdventurerPanel(Adventurer adventurer) {
 		super(new BorderLayout());
+		
+		name = adventurer.getName();
+		level = adventurer.getLvl();
+		xp = adventurer.getXp();
+		hp = adventurer.getHp();
+		atk = adventurer.getAttack();
+		def = adventurer.getDefense();
+		mag = adventurer.getMagic();
+		
+		if(adventurer.getTypeOfMagic() == 0) {
+			magT = "None";
+		}
+		else if (adventurer.getTypeOfMagic() == 1) {
+			magT = "Def";
+		}
+		else {
+			magT = "Atk";
+		}
+		
+		if(adventurer.isAvailable()) {
+			available = "Available";
+		}
+		else {
+			available = "Unavailable";
+		}
 		
 		selected = new JButton("Select Adventurer");
 		selected.setFont(font);
@@ -39,37 +74,37 @@ public class AdventurerPanel extends JPanel {
 			
 			
 			//Name
-			g.drawString("Mathéo FAIVRE", 10, 23);
+			g.drawString(name, 10, 23);
 			//Level
-			g.drawString("Lvl:" + 10, 174, 23);
+			g.drawString("Lvl:" + level, 174, 23);
 			//Xp
 			g.drawString("XP:", 10, 46);
 			//Xp rectangle
 			g.drawRect(48, 28, 200, 18);
-			g.fillRect(48, 28, 100, 18);
+			g.fillRect(48, 28, xp*2, 18); // x2 car xp sur 100
 			//Xp %
 			g.setColor(Color.black);
-			g.drawString(100 + "%", 134, 44);
+			g.drawString(xp + "%", 134, 44);
 			g.setColor(color);
 			//Health
 			g.drawString("HP:", 10, 69);
 			//Health rectangle
 			g.drawRect(48, 51, 200, 18);
-			g.fillRect(48, 51, 100, 18);
+			g.fillRect(48, 51, hp*2, 18); // x2 car les hp sont sur 100
 			//Health %
 			g.setColor(Color.black);
-			g.drawString(100 +"%", 134, 67);
+			g.drawString(hp +"%", 134, 67);
 			g.setColor(color);
 			//Attack
-			g.drawString("ATK: " + 100, 10, 92);
+			g.drawString("ATK: " + atk, 10, 92);
 			//Defense
-			g.drawString("DEF: " + 100, 116, 92);
+			g.drawString("DEF: " + def, 116, 92);
 			//Magic
-			g.drawString("MAG: " + 100, 10, 112);
+			g.drawString("MAG: " + mag, 10, 112);
 			//Magic type
-			g.drawString("MAG Type: " + "ATK", 116, 112);
+			g.drawString("MAG Type: " + magT, 116, 112);
 			//Status
-			g.drawString("Status: Available", 10, 135);
+			g.drawString("Status: " + available, 10, 135);
 			//g.drawImage(ImageIO.read(new File("Graphismes/Forest_1.png")), 0, 0, this);
 			
 		//} catch (IOException e) {}

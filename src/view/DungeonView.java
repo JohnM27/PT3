@@ -10,6 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 
 import controller.Controller;
+import model.DungeonEvent;
 import model.DungeonListener;
 
 public class DungeonView extends View implements DungeonListener {
@@ -77,5 +78,15 @@ public class DungeonView extends View implements DungeonListener {
 	@Override
 	public void close() {
 		frame.getContentPane().removeAll();
+	}
+
+	@Override
+	public void AddAdventurer(DungeonEvent event) {
+		dungeonWPanel.addAdventurer(event.getLastAdventurer());
+	}
+
+	@Override
+	public void Refresh(DungeonEvent event) {
+		dungeonWPanel.addAllAdventurer(event.getAdventurers());
 	}
 }
