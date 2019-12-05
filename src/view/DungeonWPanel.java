@@ -28,35 +28,6 @@ public class DungeonWPanel extends JPanel {
 		Adventurer.add(new AdventurerPanel());
 		Adventurer.add(new AdventurerPanel());
 		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		/*Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());
-		Adventurer.add(new AdventurerPanel());*/
 		
 		for(int i = 0 ; i < Adventurer.size() ; i++) {
 			add(Adventurer.get(i));

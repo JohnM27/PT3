@@ -3,14 +3,11 @@ aapeli
 aapo
 aaren
 aarne
-aarón
 aaron
 aatami
 aatto
 aatu
 abaddon
-abbán
-'abbas
 abbey
 abbie
 abby
@@ -26,7 +23,6 @@ abdul-rahman
 abe
 abednego
 abegail
-ábel
 abel
 abelone
 abena
@@ -47,7 +43,6 @@ abisai
 abishag
 abishai
 abital
-'abla
 abner
 abraham
 abram
@@ -71,21 +66,16 @@ adalbert
 adalberto
 adalheid
 adalia
-ádám
 adam
 adamina
 adamo
-adán
-adão
 adara
 addie
 addison
 addy
 adel
 adela
-adélaïde
 adelaide
-adèle
 adelheid
 adelia
 adelina
@@ -116,12 +106,10 @@ adonijah
 adonis
 adora
 adorinda
-adorján
 adrasteia
 adrastos
 adria
 adriaan
-adrián
 adrian
 adriana
 adrianna
@@ -132,27 +120,17 @@ adrienn
 adrienne
 adwoa
 aegle
-ælfwine
 aella
-ælred
 aemilia
 aeneas
 aengus
 aeolus
-aeron (1)
-aeron (2)
+aeron
 aeronwen
 aeronwy
-æsc
 aeschylus
 aeson
 aesop
-æðelbert
-æðelfrid
-æðelmær
-æðelred
-æðelstan
-æðelþryð
 afanasi
 afanasy
 afanen
@@ -175,12 +153,9 @@ agathon
 agaue
 aggie
 aghavni
-ági
 aglaia
 aglaya
 aglea
-ágnes
-agnès
 agnes
 agnese
 agnessa
@@ -190,15 +165,10 @@ agnieszka
 agostina
 agostinho
 agostino
-ágoston
-ágota
 agrafena
 agrippa
 agrippina
 agrona
-águeda
-agustín
-ah
 ahab
 aharon
 ahmad
@@ -208,37 +178,27 @@ ahriman
 ahtahkakoop
 ahura mazda
 ahuva
-ai (1)
-ai (2)
+ai
 aias
 aida
 aidan
 aiden
-aignéis
 aikaterine
 ailbhe
 aileas
 aileen
 ailill
-ailín
-ailís
 ailpein
 ailsa
-aimé
-aimée
 aimo
 aina
 aindrea
-aindréas
-aindriú
-áine
 aingeal
 aino
 ainsley
 ainslie
 aintzane
 aiolos
-'aisha
 aislin
 aisling
 aislinn
@@ -285,7 +245,6 @@ alaric
 alasdair
 alastair
 alastar
-alastríona
 alayna
 alba
 alban
@@ -352,8 +311,7 @@ alexei
 alexej
 alexia
 alexina
-alexis (1)
-alexis (2)
+alexis
 alexius
 alexus
 alf
@@ -362,7 +320,6 @@ alfhild
 alfons
 alfonsina
 alfonso
-alfréd
 alfred
 alfreda
 alfredo
@@ -378,8 +335,7 @@ alicia
 alida
 aliisa
 alin
-alina (1)
-alina (2)
+alina
 aline
 alis
 alisa
@@ -441,7 +397,6 @@ alun
 alva
 alvah
 alvar
-álvaro
 alvena
 alvilda
 alvin
@@ -465,12 +420,8 @@ amabel
 amada
 amadeo
 amadeus
-amadi (1)
-amadi (2)
-amal (1)
-amal (2)
+amadi
 amala
-amália
 amalia
 amalric
 amalthea
@@ -501,12 +452,9 @@ ambrosine
 ambrosio
 ambrus
 amedea
-amédée
 amedeo
 amedeus
-amélia
 amelia
-amélie
 amen
 amenhotep
 america
@@ -526,8 +474,6 @@ amin
 amina
 aminda
 aminta
-amir (1)
-amir (2)
 amira
 amita
 amittai
@@ -542,18 +488,15 @@ amrita
 amy
 amyas
 amynta
-an
 ana
 anacleto
 anacletus
 anahid
 anahita
-anaïs
 anaitis
 anakin
 anakoni
-anan (1)
-anan (2)
+anan
 anand
 ananda
 anani
@@ -572,11 +515,8 @@ anastasie
 anastasio
 anastasios
 anastasius
-anasztáz
-anasztázia
 anat
-anath (1)
-anath (2)
+anath
 anatole
 anatoli
 anatolius
@@ -591,20 +531,15 @@ anders
 anderson
 andor
 andra
-andrás
 andras
 andraste
-andré
-andrea (1)
-andrea (2)
+andrea
 andreas
-andrée
 andreea
 andrei
 andreia
 andrej
 andreja
-andrés
 andreu
 andrew
 andriana
@@ -627,9 +562,7 @@ anemone
 aneurin
 anfisa
 angel
-ángela
 angela
-angèle
 angelia
 angelica
 angelika
@@ -652,9 +585,7 @@ anicetus
 aniela
 anika
 aniketos
-anikó
-anima (1)
-anima (2)
+anima
 aniruddha
 anisa
 anise
@@ -698,7 +629,6 @@ anona
 anouk
 anoush
 anouska
-anraí
 ansel
 anselm
 anselma
@@ -720,11 +650,9 @@ antipater
 antje
 anto
 antoine
-antoinette
 anton
 antonella
 antonello
-antonette
 antoni
 antonia
 antonie
@@ -740,19 +668,12 @@ antti
 antun
 antwan
 anubis
-anunciación
 anupam
 anushka
 anwar
 anwen
 anwer
 anya
-aodh
-aodhán
-aoibheann
-aoibhín
-aoide
-aoife
 aonghas
 aonghus
 aphra
@@ -811,8 +732,7 @@ arevig
 argus
 argyris
 argyros
-ari (1)
-ari (2)
+ari
 aria
 ariadne
 ariana
@@ -865,21 +785,17 @@ arnau
 arnaud
 arnaude
 arndt
-arne (1)
-arne (2)
+arne
 arnie
 arnold
 aroha
 aroldo
-áron
 aron
-árpád
 arrigo
 arron
 arsen
 arseni
 arsenios
-art
 artair
 artemidoros
 artemis
@@ -888,7 +804,6 @@ artemisios
 arthur
 arttu
 artturi
-artúr
 artur
 arturo
 arundhati
@@ -898,14 +813,7 @@ arvo
 arwen
 aryana
 arzu
-åsa
 asa
-as'ad
-asad
-asaf
-asaph
-asbjörn
-ásdís
 asdrubal
 aseem
 asenath
@@ -932,12 +840,9 @@ asklepiades
 asklepios
 aslaug
 asli
-aslög
-asløg
 asma
 aspasia
 aspen
-assumpció
 assumpta
 assunta
 asta
@@ -949,7 +854,6 @@ astraea
 astrid
 astrithr
 astrophel
-asunción
 asya
 ata
 atalanta
@@ -966,7 +870,6 @@ athelstan
 athena
 athenias
 atieno
-atílio
 atilio
 atiya
 atlas
@@ -979,12 +882,9 @@ aubrey
 aude
 audie
 audley
-audra (1)
-audra (2)
+audra
 audrea
 audrey
-august (1)
-august (2)
 augusta
 auguste
 augustijn
@@ -1000,10 +900,8 @@ aune
 aura
 aurangzeb
 aurel
-aurèle
 aurelia
 aureliano
-aurélie
 aurelien
 aurelio
 aurelius
@@ -1014,9 +912,7 @@ ausra
 austen
 austin
 austyn
-autumn
-ava (1)
-ava (2)
+ava
 avalon
 avdotya
 avedis
@@ -1039,7 +935,6 @@ avner
 avra
 avraham
 avram
-avril
 avrum
 awotwi
 awstin
@@ -1050,11 +945,8 @@ ayala
 aydin
 ayelet
 ayesha
-aygül
 ayishah
-ayla (1)
-ayla (2)
-ayla (3)
+ayla
 aylmer
 ayn
 ayo
@@ -1067,8 +959,6 @@ azaria
 azariah
 azarias
 azeneth
-'aziz
-aziz
 azrael
 azubah
 azucena

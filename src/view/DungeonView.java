@@ -10,8 +10,9 @@ import javax.swing.JScrollPane;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 
 import controller.Controller;
+import model.DungeonListener;
 
-public class DungeonView extends View /*implements DungeonListener*/ {
+public class DungeonView extends View implements DungeonListener {
 	
 	private JFrame frame;
 	

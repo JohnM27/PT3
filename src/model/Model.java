@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.swing.event.EventListenerList;
 
+import view.DungeonView;
+
 public class Model implements Serializable {
 
 	private EventListenerList listenersList;
@@ -98,17 +100,25 @@ public class Model implements Serializable {
 		return m.getBuilding(i, j);
 	}
 	
-	public void addGlobalListener(GlobalListener listener) {
-		listenersList.add(GlobalListener.class, listener);
+	public void addGameListener(GameListener listener) {
+		listenersList.add(GameListener.class, listener);
 	}
 	
-	public void removeGlobalListener(GlobalListener listener) {
-		listenersList.remove(GlobalListener.class, listener);
+	public void addDungeonListener(DungeonView listener) {
+		listenersList.add(DungeonListener.class, listener);
+	}
+	
+	public void removeGameListener(GameListener listener) {
+		listenersList.remove(GameListener.class, listener);
+	}
+	
+	public void removeDungeonListener(DungeonView listener) {
+		listenersList.remove(DungeonListener.class, listener);		
 	}
 	
 	public void fireJourChanged() {
-		GlobalListener[] listenerList = 
-				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		GameListener[] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
 		
 		nbJour++;
 		/*
@@ -133,7 +143,7 @@ public class Model implements Serializable {
 		
 		moral();
 		
-		for(GlobalListener listener : listenerList)
+		for(GameListener listener : listenerList)
 			listener.jourChanged(new MapEvent(this));
 	}
 	
@@ -168,27 +178,32 @@ public class Model implements Serializable {
 	}
 	
 	public void fireRefresh() {
-		GlobalListener[] listenerList = 
-				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		GameListener[] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
 		
-		for(GlobalListener listener : listenerList)
+		for(GameListener listener : listenerList)
 			listener.Refresh(new MapEvent(this));
 	}
 	
 	public void fireMapGenerated() {
-		GlobalListener[] listenerList = 
-				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		GameListener[] gListenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
+		DungeonListener[] dListenerList =
+				(DungeonListener[])listenersList.getListeners(DungeonListener.class); 
 	
 		m.genererMap();
 		
-		for(GlobalListener listener : listenerList)
+		
+		for(GameListener listener : gListenerList)
 			listener.MapGenerated(new MapEvent(this));
+		//for(DungeonListener listener : dListenerList)
+			//listener.MapGenerated(new MapEvent(this));
 	}
 	
 	//Enleve le brouillard d'une case
 	public void fireFogOff() {
-		GlobalListener [] listenerList = 
-				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		GameListener [] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
 		
 		m.setImageOver(coord[0], coord[1]);
 		m.setPossessed(coord[0], coord[1]);
@@ -197,13 +212,13 @@ public class Model implements Serializable {
 		
 		ressources[0] -= 6; // achat d'une case pour 6 d'or
 		
-		for(GlobalListener listener : listenerList)
+		for(GameListener listener : listenerList)
 			listener.FogOff(new MapEvent(this));
 	}
 
 	public void fireCityHallOn() {
-		GlobalListener [] listenerList = 
-				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		GameListener [] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
 		
 		m.buildCityHall(coord[0], coord[1]);
 		populationMax += m.getPopulation(coord[0], coord[1]);
@@ -212,13 +227,13 @@ public class Model implements Serializable {
 		ressources[0] -= 50;
 		ressources[2] -= 30;
 		
-		for(GlobalListener listener : listenerList)
+		for(GameListener listener : listenerList)
 			listener.CityHallOn(new MapEvent(this));
 	}
 
 	public void fireHouseOn() {
-		GlobalListener [] listenerList = 
-				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		GameListener [] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
 		
 		m.buildHouse(coord[0], coord[1]);
 		
@@ -226,13 +241,13 @@ public class Model implements Serializable {
 		ressources[0] -= 3;
 		ressources[2] -= 5;
 		
-		for(GlobalListener listener : listenerList)
+		for(GameListener listener : listenerList)
 			listener.HouseOn(new MapEvent(this));
 	}
 	
 	public void fireFarmOn() {
-		GlobalListener [] listenerList = 
-				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		GameListener [] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
 		
 		m.buildFarm(coord[0], coord[1]);
 		population += m.getPopulation(coord[0], coord[1]);
@@ -242,13 +257,13 @@ public class Model implements Serializable {
 		ressources[0] -= 3;
 		ressources[2] -= 5;
 		
-		for(GlobalListener listener : listenerList)
+		for(GameListener listener : listenerList)
 			listener.FarmOn(new MapEvent(this));
 	}
 	
 	public void fireFishingOn() {
-		GlobalListener [] listenerList = 
-				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		GameListener [] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
 		
 		m.buildHarbor(coord[0], coord[1]);
 		population += m.getPopulation(coord[0], coord[1]);
@@ -258,13 +273,13 @@ public class Model implements Serializable {
 		ressources[0] -= 5;
 		ressources[2] -= 7;
 		
-		for(GlobalListener listener : listenerList)
+		for(GameListener listener : listenerList)
 			listener.FishingOn(new MapEvent(this));
 	}
 
 	public void fireLoggingOn() {
-		GlobalListener [] listenerList = 
-				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		GameListener [] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
 		
 		m.buildLumberMill(coord[0], coord[1]);
 		population += m.getPopulation(coord[0], coord[1]);
@@ -274,13 +289,13 @@ public class Model implements Serializable {
 		ressources[0] -= 5;
 		ressources[2] -= 5;
 		
-		for(GlobalListener listener : listenerList)
+		for(GameListener listener : listenerList)
 			listener.LoggingOn(new MapEvent(this));
 	}
 
 	public void fireMineOn() {
-		GlobalListener [] listenerList = 
-				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		GameListener [] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
 		
 		m.buildMine(coord[0], coord[1]);
 		population += m.getPopulation(coord[0], coord[1]);
@@ -290,13 +305,13 @@ public class Model implements Serializable {
 		ressources[0] -= 20;
 		ressources[2] -= 10;
 		
-		for(GlobalListener listener : listenerList)
+		for(GameListener listener : listenerList)
 			listener.MineOn(new MapEvent(this));
 	}
 	
 	public void fireModifySCPanel(int i, int j) {
-		GlobalListener[] listenerList = 
-				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		GameListener[] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
 		
 		coord[0] = i;
 		coord[1] = j;
@@ -304,74 +319,76 @@ public class Model implements Serializable {
 		
 		adjacent = m.isAdjacent(coord);
 		
-		for(GlobalListener listener : listenerList)
+		for(GameListener listener : listenerList)
 			listener.ModifySCPanel(new MapEvent(this));	
 	}
 	
 
 	public void fireModifyPlainCHSCPanel(int i, int j) {
-		GlobalListener[] listenerList = 
-				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		GameListener[] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
 		
 		coord[0] = i;
 		coord[1] = j;
 		
-		for(GlobalListener listener : listenerList)
+		for(GameListener listener : listenerList)
 			listener.ModifyPlainCHSCPanel(new MapEvent(this));
 	}
 
 	public void fireModifyPlainSCPanel(int i, int j) {
-		GlobalListener[] listenerList = 
-				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		GameListener[] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
 		
 		coord[0] = i;
 		coord[1] = j;
 		
-		for(GlobalListener listener : listenerList)
+		for(GameListener listener : listenerList)
 			listener.ModifyPlainSCPanel(new MapEvent(this));
 	}
 
 	public void fireModifyForestSCPanel(int i, int j) {
-		GlobalListener[] listenerList = 
-				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		GameListener[] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
 		
 		coord[0] = i;
 		coord[1] = j;
 		
-		for(GlobalListener listener : listenerList)
+		for(GameListener listener : listenerList)
 			listener.ModifyForestSCPanel(new MapEvent(this));
 	}
 
 	public void fireModifyMountainSCPanel(int i, int j) {
-		GlobalListener[] listenerList = 
-				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		GameListener[] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
 		
 		coord[0] = i;
 		coord[1] = j;
 		
-		for(GlobalListener listener : listenerList)
+		for(GameListener listener : listenerList)
 			listener.ModifyMountainSCPanel(new MapEvent(this));
 	}
 
 	public void fireModifyWaterSCPanel(int i, int j) {
-		GlobalListener[] listenerList = 
-				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		GameListener[] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
 		
 		coord[0] = i;
 		coord[1] = j;
 		
-		for(GlobalListener listener : listenerList)
+		for(GameListener listener : listenerList)
 			listener.ModifyWaterSCPanel(new MapEvent(this));
 	}
 
 	public void fireSelected(int i, int j) {
-		GlobalListener[] listenerList = 
-				(GlobalListener[])listenersList.getListeners(GlobalListener.class);
+		GameListener[] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
 		
 		coord[0] = i;
 		coord[1] = j;
 		
-		for(GlobalListener listener : listenerList)
+		for(GameListener listener : listenerList)
 			listener.selected(new MapEvent(this));
 	}
+
+	
 }

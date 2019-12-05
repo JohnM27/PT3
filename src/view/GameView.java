@@ -1,15 +1,14 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 
 import javax.swing.JFrame;
 
 import controller.Controller;
-import model.GlobalListener;
+import model.GameListener;
 import model.MapEvent;
 
-public class GameView extends View implements GlobalListener{
+public class GameView extends View implements GameListener{
 
 	private Controller controller;
 	

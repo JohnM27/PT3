@@ -2,7 +2,7 @@ package model;
 
 import java.util.EventListener;
 
-public interface GlobalListener extends EventListener {
+public interface GameListener extends EventListener {
 
 	public void jourChanged(MapEvent event);
 

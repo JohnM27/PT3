@@ -46,8 +46,8 @@ public class Controller extends MouseAdapter implements ActionListener{
 	 * Calls the method {@link addJourListener()} from the {@link Model}
 	 */
 	private void addListenersToModel() {
-		model.addGlobalListener(gameView);
-		//model.addDungeonListener(dungeonView);
+		model.addGameListener(gameView);
+		model.addDungeonListener(dungeonView);
 	}
 	
 	/**
