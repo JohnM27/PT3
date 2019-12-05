@@ -6,7 +6,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Adventurer implements Serializable {
+
 	private String name;
 	private int lvl;
 	private int xp;
@@ -44,6 +46,7 @@ public class Adventurer implements Serializable {
 			while(ligne >= 0 && (name = br.readLine()) != null) {
 				ligne--;
 			}
+			br.close();
 		} catch (IOException ex) {} 
 		
 		return name;

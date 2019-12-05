@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.swing.event.EventListenerList;
 
+@SuppressWarnings("serial")
 public class Model implements Serializable {
 
 	private EventListenerList listenersList;
@@ -126,9 +127,9 @@ public class Model implements Serializable {
 		
 		nbJour++;
 		/*
-		 * Faudra changer pour l'amélioration
+		 * Faudra changer pour l'amÃ©lioration
 		 * 
-		 * Il suffira de faire un getRessource sur la case et on récupère la ressource facilement
+		 * Il suffira de faire un getRessource sur la case et on rÃ©cupÃ¨re la ressource facilement
 		 */
 		for(Case b : listBuilding) {
 			if(b.getBuildingType().equals("model.LumberMill")) {
@@ -199,7 +200,7 @@ public class Model implements Serializable {
 		DungeonListener[] dListenerList =
 				(DungeonListener[])listenersList.getListeners(DungeonListener.class); 
 	
-		m.genererMap();
+		m.generateMap();
 		
 		adventurers.add(new Adventurer());
 		population += 5; // On ajoute 5 de population

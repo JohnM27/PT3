@@ -175,7 +175,7 @@ public class Controller extends MouseAdapter implements ActionListener{
 		}
 		else if(e.getActionCommand().equals("Save"))
 			save();
-		else if(e.getActionCommand().equals("Jour suivant"))
+		else if(e.getActionCommand().equals("Next day"))
 			model.fireJourChanged();
 		else if(e.getActionCommand().equals("BUY")) {
 			model.fireFogOff();

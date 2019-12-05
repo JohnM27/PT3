@@ -9,9 +9,9 @@ import javax.swing.JPanel;
 import controller.Controller;
 import model.Adventurer;
 
+@SuppressWarnings("serial")
 public class DungeonWPanel extends JPanel {
 
-	private Controller controller;
 	private List<AdventurerPanel> adventurers;
 	
 	public DungeonWPanel(Controller controller) {
