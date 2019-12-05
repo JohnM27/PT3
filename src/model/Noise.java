@@ -2,24 +2,25 @@ package model;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Noise implements Serializable{
 	
 	/*
-	 * Variable qui contient l'unité des vecteurs diagonaux
+	 * Variable qui contient l'unité des vectors diagonaux
 	 */
-	private double unite = 1.0/Math.sqrt(2);
+	private double unit = 1.0/Math.sqrt(2);
 	
 	/*
 	 * tableau contenant toutes les directions
 	 */
 	private double[][] gradient = 
 	{
-		{unite, unite}, {-unite, unite}, {unite, -unite}, {-unite, -unite},
+		{unit, unit}, {-unit, unit}, {unit, -unit}, {-unit, -unit},
 		{1, 0},			{-1, 0},		 {0, 1},		  {0, -1}
 	};
 	
 	/*
-	 * Table de permutation qui va permettre de générer les vecteurs
+	 * Table de permutation qui va permettre de générer les vectors
 	 */
 	private int[] perm = new int[256];
 	/*= 
@@ -53,9 +54,9 @@ public class Noise implements Serializable{
 	private int y0;
 	
 	/*
-	 * Coordonnées temporaire pour la génération des vecteurs
+	 * Coordonnées temporaire pour la génération des vectors
 	 */
-	private double tempX, tempY, tmp;
+	private double tmpX, tmpY, tmp;
 	
 	/*
 	 * Resolution qu'on a
@@ -65,8 +66,8 @@ public class Noise implements Serializable{
 	/*
 	 * variable contenant les coordonnées entre 0 et 255
 	 */
-	private int masquageX = 0;
-	private int masquageY = 0;
+	private int maskX = 0;
+	private int maskY = 0;
 	
 	/*
 	 * gradient aléatoire
@@ -74,9 +75,9 @@ public class Noise implements Serializable{
 	private int gradient0, gradient1, gradient2, gradient3;
 	
 	/*
-	 * Vecteurs aléatoire
+	 * vectors aléatoire
 	 */
-	private double vecteur0, vecteur1, vecteur2, vecteur3;
+	private double vector0, vector1, vector2, vector3;
 	
 	/*
 	 * Coefficient d'interpolation
@@ -84,14 +85,14 @@ public class Noise implements Serializable{
 	private double Cx, Cy;
 	
 	/*
-	 * Lissage des valeurs
+	 * attenuation des valeurs
 	 */
-	private double lissage1, lissage2;
+	private double attenuation1, attenuation2;
 	
 	public Noise() {
 		int r;
 		int i = 0;
-		boolean refaire = false;
+		boolean redo = false;
 		do {
 			r = (int) (Math.random() * 255);
 			if(i == 0) {
@@ -100,17 +101,17 @@ public class Noise implements Serializable{
 			else {
 				for(int j = 0; j <= i; j++) {
 					if(perm[j] == r) {
-						refaire = true;
+						redo = true;
 					}
 				}
 			}
 			
-			if(refaire == false) {
+			if(redo == false) {
 				i++;
 				perm[i] = r;
 			}
 			else {
-				refaire = false;
+				redo = false;
 			}
 			if(i == 255) {
 				i = 256;
@@ -118,9 +119,9 @@ public class Noise implements Serializable{
 		}while(i <= perm.length-1);
 	}
 	
-	private void masquage() {
-		masquageX = x0%256;
-		masquageY = y0%256;
+	private void masking() {
+		maskX = x0%256;
+		maskY = y0%256;
 	}
 	
 	private void coordRes() {
@@ -133,46 +134,46 @@ public class Noise implements Serializable{
 		y0 = (int) y;
 	}
 	
-	private void recupVecteur() {
+	private void recupVector() {
 		
-		gradient0 = perm[ (masquageX + perm[masquageY]) % 256 ] % 8;
-		gradient1 = perm[ (masquageX+1 + perm[masquageY]) % 256] % 8;
-		gradient2 = perm[ (masquageX + perm[ (masquageY+1) % 256]) % 256 ] % 8;
-		gradient3 = perm[ (masquageX+1 + perm[ (masquageY+1) % 256]) % 256 ] % 8;
+		gradient0 = perm[ (maskX + perm[maskY]) % 256 ] % 8;
+		gradient1 = perm[ (maskX+1 + perm[maskY]) % 256] % 8;
+		gradient2 = perm[ (maskX + perm[ (maskY+1) % 256]) % 256 ] % 8;
+		gradient3 = perm[ (maskX+1 + perm[ (maskY+1) % 256]) % 256 ] % 8;
 		
-		tempX = x-x0;
-		tempY = y-y0;
-		vecteur0 = gradient[gradient0][0]*tempX + gradient[gradient0][1]*tempY;
+		tmpX = x-x0;
+		tmpY = y-y0;
+		vector0 = gradient[gradient0][0]*tmpX + gradient[gradient0][1]*tmpY;
 		
-		tempX = x-(x0+1);
-		tempY = y-y0;
-		vecteur1 = gradient[gradient1][0]*tempX + gradient[gradient1][1]*tempY;
+		tmpX = x-(x0+1);
+		tmpY = y-y0;
+		vector1 = gradient[gradient1][0]*tmpX + gradient[gradient1][1]*tmpY;
 	
-		tempX = x-x0;
-		tempY = y-(y0+1);
-		vecteur2 = gradient[gradient2][0]*tempX + gradient[gradient2][1]*tempY;
+		tmpX = x-x0;
+		tmpY = y-(y0+1);
+		vector2 = gradient[gradient2][0]*tmpX + gradient[gradient2][1]*tmpY;
 		
-		tempX = x-(x0+1);
-		tempY = y-(y0+1);
-		vecteur3 = gradient[gradient3][0]*tempX + gradient[gradient3][1]*tempY;
+		tmpX = x-(x0+1);
+		tmpY = y-(y0+1);
+		vector3 = gradient[gradient3][0]*tmpX + gradient[gradient3][1]*tmpY;
 	}
 	
-	private double lissage() {
+	private double attenuation() {
 		tmp = x-x0;
 		Cx = 3*tmp*tmp-2*tmp*tmp*tmp;
 		//Cx = tmp;
 		
-		lissage1 = vecteur0 + Cx*(vecteur1-vecteur0);
-		lissage2 = vecteur2 + Cx*(vecteur3-vecteur2);
+		attenuation1 = vector0 + Cx*(vector1-vector0);
+		attenuation2 = vector2 + Cx*(vector3-vector2);
 		
 		tmp = y-y0;
 		Cy = 3*tmp*tmp-2*tmp*tmp*tmp;
 		//Cy = tmp;
 		
-		return lissage1 + Cy*(lissage2-lissage1);
+		return attenuation1 + Cy*(attenuation2-attenuation1);
 	}
 	
-	public double creerNoise(double x, double y, int resolution) {
+	public double createNoise(double x, double y, int resolution) {
 		this.x = x;
 		this.y = y;
 		this.resolution = resolution;
@@ -181,11 +182,11 @@ public class Noise implements Serializable{
 		
 		position();
 		
-		masquage();
+		masking();
 		
-		recupVecteur();
+		recupVector();
 		
-		return lissage();
+		return attenuation();
 	}
 }
 

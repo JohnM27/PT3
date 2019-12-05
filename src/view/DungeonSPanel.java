@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -10,9 +11,8 @@ import javax.swing.JPanel;
 
 import controller.Controller;
 
+@SuppressWarnings("serial")
 public class DungeonSPanel extends JPanel {
-	
-	private Controller controller;
 	
 	private GridBagConstraints gbc = new GridBagConstraints();
 	
@@ -20,7 +20,8 @@ public class DungeonSPanel extends JPanel {
 	
 	public DungeonSPanel(Controller controller) {
 		super(new GridBagLayout());
-		//this.setPreferredSize(new Dimension(1366,158));
+
+		setBackground(new Color(100,100,100));
 		
 		changeView = new JButton("Dungeon Change");
 		changeView.addActionListener(controller);
@@ -54,7 +55,7 @@ public class DungeonSPanel extends JPanel {
 		gbc.gridheight = 1;
 		add(upgrade, gbc);
 		
-		buy = new JButton("Buy Jean-Marc the Adventurer");
+		buy = new JButton("Buy Adventurer");
 		buy.setPreferredSize(new Dimension(519,59));
 		gbc.insets = new Insets(0,10,20,20);
 		gbc.gridx = 2;

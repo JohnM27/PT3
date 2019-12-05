@@ -8,9 +8,9 @@ import javax.swing.JPanel;
 
 import controller.Controller;
 
+@SuppressWarnings("serial")
 public class DungeonWPanel extends JPanel {
-
-	private Controller controller;
+	
 	private List<AdventurerPanel> Adventurer = new ArrayList<AdventurerPanel>();
 	
 	public DungeonWPanel(Controller controller) {

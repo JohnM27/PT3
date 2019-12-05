@@ -35,7 +35,7 @@ public class GameView extends View implements GameListener{
 	 * Builds the game's frame
 	 */
 	private void buildFrame() {
-		frame = new JFrame("Jeu");
+		frame = new JFrame("Namroth");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		HudWPanel = new HudWPanel();
@@ -87,7 +87,7 @@ public class GameView extends View implements GameListener{
 		HudWPanel.setMoral(event.getMoral());
 		HudWPanel.setPopulation(event.getPopulation());
 		HudWPanel.setPopulationMax(event.getPopulationMax());
-		HudSPanel.getRight().setNbJour(event.getNbJour());
+		HudSPanel.getRight().setNbDay(event.getNbJour());
 	}
 
 	/**

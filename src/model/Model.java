@@ -8,6 +8,7 @@ import javax.swing.event.EventListenerList;
 
 import view.DungeonView;
 
+@SuppressWarnings("serial")
 public class Model implements Serializable {
 
 	private EventListenerList listenersList;
@@ -191,7 +192,7 @@ public class Model implements Serializable {
 		DungeonListener[] dListenerList =
 				(DungeonListener[])listenersList.getListeners(DungeonListener.class); 
 	
-		m.genererMap();
+		m.generateMap();
 		
 		
 		for(GameListener listener : gListenerList)

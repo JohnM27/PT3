@@ -1,16 +1,14 @@
 package view;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class DungeonCPanel extends JPanel {
 	
 	

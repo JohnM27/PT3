@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class AdventurerPanel extends JPanel {
 	
 	//private Adventurer adventurer;

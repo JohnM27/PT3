@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -15,10 +13,12 @@ import javax.swing.JPanel;
 
 import model.Building;
 
+@SuppressWarnings("serial")
 public class HudWPanel extends JPanel {
+	
 	private int nbGold = 75, nbStone = 0, nbWood = 50, nbFood = 20;
 	
-	private Image selected, selectedOver, fill;
+	private Image selected, selectedOver;
 	
 	private int moral = 130;
 	private int population = 0;

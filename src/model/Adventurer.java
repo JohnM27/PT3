@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Adventurer {
+	
 	private String name;
 	private int lvl;
 	private int hp;
@@ -40,6 +41,7 @@ public class Adventurer {
 			while(ligne >= 0 && (name = br.readLine()) != null) {
 				ligne--;
 			}
+			br.close();
 		} catch (IOException ex) {} 
 		
 		return name;
