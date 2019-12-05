@@ -1,12 +1,14 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 import javax.swing.JPanel;
 
 import controller.Controller;
 
-@SuppressWarnings("serial")
 public class HudSPanel extends JPanel{
 	
 	private HudSLPanel left;

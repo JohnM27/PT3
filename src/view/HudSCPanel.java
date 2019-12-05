@@ -10,14 +10,17 @@ import java.awt.Insets;
 import java.io.File;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.Controller;
 import model.Building;
 
-@SuppressWarnings("serial")
 public class HudSCPanel extends JPanel {
+	
+	private Controller controller;
 	
 	private JButton buy, buildH, buildF, buildL, buildM, buildC, buildFarm, build1, build2, upgrade;
 	
@@ -26,6 +29,8 @@ public class HudSCPanel extends JPanel {
 		super(new GridBagLayout());
 		
 		GridBagConstraints gbc = new GridBagConstraints();
+		 
+		this.controller = controller;
 		
 		setBackground(new Color(100,100,100));
 
@@ -132,15 +137,14 @@ public class HudSCPanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		Image borderL = null;
+		Image borderL = null, textTest = null;
 		try {
 			borderL = ImageIO.read(new File("Graphismes/BorderSL.png"));
 		} catch (Exception e) {}
 		g.drawImage(borderL, 0, 0, this);
 	}
-	
-	public void setVisibleFalseAll() {
-		buy.setVisible(false);
+		
+	public void display(boolean adjacent, String typeCase, boolean firstBuy, boolean cityHall, int[] ressources) {
 		buildH.setVisible(false);
 		buildF.setVisible(false);
 		buildL.setVisible(false);
@@ -150,12 +154,6 @@ public class HudSCPanel extends JPanel {
 		build1.setVisible(false);
 		build2.setVisible(false);
 		upgrade.setVisible(false);
-	}
-	
-		
-	public void display(boolean adjacent, String typeCase, boolean firstBuy, boolean cityHall, int[] ressources) {
-		
-		setVisibleFalseAll();
 		
 		if(((firstBuy && typeCase.equals("model.Plain")) || (adjacent && cityHall)) && ressources[0] >= 6) {
 			buy.setEnabled(true);
@@ -189,8 +187,16 @@ public class HudSCPanel extends JPanel {
 	}*/
 	
 	private void displayUpgrade() {
-		
-		setVisibleFalseAll();
+		buy.setVisible(false);
+
+		buildF.setVisible(false);
+		buildL.setVisible(false);
+		buildM.setVisible(false);
+		buildH.setVisible(false);
+		buildFarm.setVisible(false);
+		buildC.setVisible(false);
+		build1.setVisible(false);
+		build2.setVisible(false);
 		
 		upgrade.setVisible(true);
 		upgrade.setEnabled(true);
@@ -199,8 +205,16 @@ public class HudSCPanel extends JPanel {
 	}	
 	
 	public void displayPlainCityHall(int[] ressources, Building building) {
+		buy.setVisible(false);
 		
-		setVisibleFalseAll();
+		buildF.setVisible(false);
+		buildL.setVisible(false);
+		buildM.setVisible(false);
+		buildH.setVisible(false);
+		buildFarm.setVisible(false);
+		build1.setVisible(false);
+		build2.setVisible(false);
+		upgrade.setVisible(false);
 		
 		buildC.setVisible(true);
 		
@@ -219,9 +233,13 @@ public class HudSCPanel extends JPanel {
 	}
 
 	public void displayPlain(int[] ressources, Building building) {
+		buy.setVisible(false);
 		
-		setVisibleFalseAll();
-		
+		buildF.setVisible(false);
+		buildL.setVisible(false);
+		buildM.setVisible(false);
+		buildC.setVisible(false);
+		upgrade.setVisible(false);
 		
 		buildH.setVisible(true);
 		buildFarm.setVisible(true);
@@ -249,8 +267,16 @@ public class HudSCPanel extends JPanel {
 	}
 
 	public void displayForest(int[] ressources, Building building) {
+		buy.setVisible(false);
 		
-		setVisibleFalseAll();
+		buildH.setVisible(false);
+		buildF.setVisible(false);
+		buildM.setVisible(false);
+		buildC.setVisible(false);
+		buildFarm.setVisible(false);
+		build1.setVisible(false);
+		build2.setVisible(false);
+		upgrade.setVisible(false);
 		
 		buildL.setVisible(true);
 		
@@ -269,8 +295,16 @@ public class HudSCPanel extends JPanel {
 	}
 
 	public void displayMountain(int[] ressources, Building building) {
+		buy.setVisible(false);
 		
-		setVisibleFalseAll();
+		buildH.setVisible(false);
+		buildF.setVisible(false);
+		buildL.setVisible(false);
+		buildC.setVisible(false);
+		buildFarm.setVisible(false);
+		build1.setVisible(false);
+		build2.setVisible(false);
+		upgrade.setVisible(false);
 		
 		buildM.setVisible(true);
 		
@@ -289,8 +323,16 @@ public class HudSCPanel extends JPanel {
 	}
 
 	public void displayWater(int[] ressources, Building building) {
+		buy.setVisible(false);
 		
-		setVisibleFalseAll();
+		buildH.setVisible(false);
+		buildL.setVisible(false);
+		buildM.setVisible(false);
+		buildC.setVisible(false);
+		buildFarm.setVisible(false);
+		build1.setVisible(false);
+		build2.setVisible(false);
+		upgrade.setVisible(false);
 		
 		buildF.setVisible(true);
 		

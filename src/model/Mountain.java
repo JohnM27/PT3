@@ -1,6 +1,7 @@
 package model;
 
-@SuppressWarnings("serial")
+import java.awt.Image;
+
 public class Mountain extends Case {
 	
 	public Mountain(int x, int y, String img) {
