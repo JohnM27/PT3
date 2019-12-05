@@ -4,25 +4,29 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Serializable;
 
-public class Adventurer {
+public class Adventurer implements Serializable {
 	private String name;
 	private int lvl;
+	private int xp;
 	private int hp;
 	private int attack;
 	private int defense;
 	private int magic;
 	private boolean available;
 	/**
-	 * true for attack
-	 * false for defense
+	 * 2 for attack
+	 * 1 for defense
+	 * 0 for none
 	 */
-	private boolean typeOfMagic = false;
+	private int typeOfMagic;
 	
 	public Adventurer() {
 		name = setName();
 		
 		lvl = 1;
+		xp = 0;
 		hp = 100;
 		attack = setStat();
 		defense = setStat();
@@ -77,6 +81,9 @@ public class Adventurer {
 	public int getLvl() {
 		return lvl;
 	}
+	public int getXp() {
+		return xp;
+	}
 	public int getHp() {
 		return hp;
 	}
@@ -92,7 +99,7 @@ public class Adventurer {
 	public boolean isAvailable() {
 		return available;
 	}
-	public boolean isTypeOfMagic() {
+	public int getTypeOfMagic() {
 		return typeOfMagic;
 	}
 
