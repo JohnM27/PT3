@@ -1,6 +1,7 @@
 package model;
 
-@SuppressWarnings("serial")
+import java.awt.Image;
+
 public class Plain extends Case {
 
 	public Plain(int x, int y, String img) {

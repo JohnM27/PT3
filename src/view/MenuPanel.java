@@ -6,6 +6,9 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -13,9 +16,11 @@ import javax.swing.JPanel;
 
 import controller.Controller;
 
-@SuppressWarnings("serial")
 public class MenuPanel extends JPanel {
+
+	private Controller controller;
 	
+	private BufferedImage background;
 	private JButton newGame, game, about, exit;
 	private JLabel version;
 	
@@ -26,6 +31,8 @@ public class MenuPanel extends JPanel {
 	
 	public MenuPanel(Controller controller) {
 		super(new GridBagLayout());
+		
+		this.controller = controller;
 		
 		this.setBackground(new Color(27,72,123));
 		

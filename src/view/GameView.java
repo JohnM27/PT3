@@ -35,7 +35,7 @@ public class GameView extends View implements GameListener{
 	 * Builds the game's frame
 	 */
 	private void buildFrame() {
-		frame = new JFrame("Namroth");
+		frame = new JFrame("Jeu");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		HudWPanel = new HudWPanel();
@@ -87,7 +87,7 @@ public class GameView extends View implements GameListener{
 		HudWPanel.setMoral(event.getMoral());
 		HudWPanel.setPopulation(event.getPopulation());
 		HudWPanel.setPopulationMax(event.getPopulationMax());
-		HudSPanel.getRight().setNbDay(event.getNbJour());
+		HudSPanel.getRight().setNbJour(event.getNbJour());
 	}
 
 	/**
@@ -96,7 +96,6 @@ public class GameView extends View implements GameListener{
 	@Override
 	public void MapGenerated(MapEvent event) {
 		HudCPanel.mapGenerated(event.getImg(), event.getImgOver());
-		HudWPanel.setPopulation(event.getPopulation());
 	}
 	
 	@Override
@@ -142,6 +141,7 @@ public class GameView extends View implements GameListener{
 		int[] coord = event.getCoord();
 		HudCPanel.buildingOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
 		HudWPanel.setPopulationMax(event.getPopulationMax());
+		HudWPanel.setPopulation(event.getPopulation());
 		HudWPanel.setRessources(event.getRessources());
 		ModifyPlainCHSCPanel(event);
 	}

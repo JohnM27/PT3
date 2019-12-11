@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.swing.event.EventListenerList;
 
-@SuppressWarnings("serial")
 public class Model implements Serializable {
 
 	private EventListenerList listenersList;
@@ -127,9 +126,9 @@ public class Model implements Serializable {
 		
 		nbJour++;
 		/*
-		 * Faudra changer pour l'amÃ©lioration
+		 * Faudra changer pour l'amélioration
 		 * 
-		 * Il suffira de faire un getRessource sur la case et on rÃ©cupÃ¨re la ressource facilement
+		 * Il suffira de faire un getRessource sur la case et on récupère la ressource facilement
 		 */
 		for(Case b : listBuilding) {
 			if(b.getBuildingType().equals("model.LumberMill")) {
@@ -182,6 +181,13 @@ public class Model implements Serializable {
 		}
 	}
 	
+	public void addAdventurer() {
+		if(adventurers.size() < 10) {
+			adventurers.add(new Adventurer());
+			population += 5; // On ajoute 5 de population
+		}
+	}
+	
 	public void fireRefresh() {
 		GameListener[] listenerList = 
 				(GameListener[])listenersList.getListeners(GameListener.class);
@@ -196,19 +202,12 @@ public class Model implements Serializable {
 	
 	public void fireMapGenerated() {
 		GameListener[] gListenerList = 
-				(GameListener[])listenersList.getListeners(GameListener.class);
-		DungeonListener[] dListenerList =
-				(DungeonListener[])listenersList.getListeners(DungeonListener.class); 
+				(GameListener[])listenersList.getListeners(GameListener.class); 
 	
-		m.generateMap();
-		
-		adventurers.add(new Adventurer());
-		population += 5; // On ajoute 5 de population
+		m.genererMap();
 		
 		for(GameListener listener : gListenerList)
 			listener.MapGenerated(new MapEvent(this));
-		for(DungeonListener listener : dListenerList)
-			listener.AddAdventurer(new DungeonEvent(this));
 	}
 	
 	//Enleve le brouillard d'une case
@@ -230,6 +229,8 @@ public class Model implements Serializable {
 	public void fireCityHallOn() {
 		GameListener [] listenerList = 
 				(GameListener[])listenersList.getListeners(GameListener.class);
+		DungeonListener[] dListenerList =
+				(DungeonListener[])listenersList.getListeners(DungeonListener.class);
 		
 		m.buildCityHall(coord[0], coord[1]);
 		populationMax += m.getPopulation(coord[0], coord[1]);
@@ -238,8 +239,12 @@ public class Model implements Serializable {
 		ressources[0] -= 50;
 		ressources[2] -= 30;
 		
+		addAdventurer();
+		
 		for(GameListener listener : listenerList)
 			listener.CityHallOn(new MapEvent(this));
+		for(DungeonListener listener : dListenerList)
+			listener.AddAdventurer(new DungeonEvent(this));
 	}
 
 	public void fireHouseOn() {

@@ -2,9 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-@SuppressWarnings("serial")
 public class Map implements Serializable {
-	
 	private Case[][] map = new Case[10][18];
 	private Noise n;
 	
@@ -156,15 +154,15 @@ public class Map implements Serializable {
 		return false;
 	}
 	
-	public void generateMap() {
-		int value;
+	public void genererMap() {
+		int valeur;
 		for(int i = 0; i < map.length; i++) {
 			for(int j = 0; j < map[0].length; j++) { 
-				value = (int) (n.createNoise(i*61, j*61, 250)*40);
-				if(value <= -10) {
+				valeur = (int) (n.creerNoise(i*61, j*61, 250)*40);
+				if(valeur <= -10) {
 					map[i][j] = new Water(i, j, "Water.png");
 				}
-				else if(value > -10 && value <= -1) {
+				else if(valeur > -10 && valeur <= -1) {
 					double r = Math.random();
 					if(r <= 0.3) {
 						map[i][j] = new Plain(i, j, "Grass_1.png");
@@ -179,7 +177,7 @@ public class Map implements Serializable {
 						map[i][j] = new Plain(i, j, "Grass_4.png");
 					}
 				}
-				else if(value > -1 && value <= 6) {
+				else if(valeur > -1 && valeur <= 6) {
 					double r = Math.random();
 					if(r <= 0.2) {
 						map[i][j] = new Forest(i, j, "Forest_1.png");
@@ -208,10 +206,10 @@ public class Map implements Serializable {
 				}
 			}
 		}
-		selectWater();
+		selectionWater();
 	}
 	
-	private void selectWater() {
+	private void selectionWater() {
 		
 		for(int i = 0; i < map.length; i++) {
 			for(int j = 0; j < map[0].length; j++) {
