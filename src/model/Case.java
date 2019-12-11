@@ -2,7 +2,6 @@ package model;
 
 import java.io.Serializable;
 
-@SuppressWarnings("serial")
 public abstract class Case implements Serializable {
 
 	private String img;
