@@ -1,7 +1,8 @@
 package view;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import controller.Controller;
 
@@ -43,9 +44,14 @@ public class MenuView extends View{
 	 * text about the game 
 	 */
 	public void about() {
-		JOptionPane.showMessageDialog(frame,
-				"Notre jeu blablabla",
-				"A propos",
-				JOptionPane.PLAIN_MESSAGE);
+		//JOptionPane.showMessageDialog(frame, "Notre jeu blablabla", "A propos", JOptionPane.PLAIN_MESSAGE);
+		JPanel panel = new EventPanel(getController());
+		JDialog event = new JDialog(frame, "Event", true);
+		
+		event.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		event.setResizable(false);
+		event.add(panel);
+		event.pack();
+		event.setVisible(true);
 	}
 }
