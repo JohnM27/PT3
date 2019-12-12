@@ -1,21 +1,19 @@
 package view;
 
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import controller.Controller;
 import model.Adventurer;
 
+@SuppressWarnings("serial")
 public class DungeonWPanel extends JPanel {
-
-	private Controller controller;
+	
 	private List<AdventurerPanel> adventurers;
-	private JButton empty;
+	//private JButton empty;
 	
 	private final static int NB_ADV = 10;
 	

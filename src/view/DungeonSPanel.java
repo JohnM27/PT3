@@ -10,9 +10,8 @@ import javax.swing.JPanel;
 
 import controller.Controller;
 
+@SuppressWarnings("serial")
 public class DungeonSPanel extends JPanel {
-	
-	private Controller controller;
 	
 	private GridBagConstraints gbc = new GridBagConstraints();
 	

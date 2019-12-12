@@ -11,19 +11,16 @@ import javax.swing.JPanel;
 
 import controller.Controller;
 
+@SuppressWarnings("serial")
 public class HudCPanel extends JPanel {
-	private Controller controller;
 
 	private Image[][] img = new Image[10][18];
 	private Image[][] imgOver = new Image[10][18];
 	private boolean[][] selected = new boolean[10][18];
 	private static Image imgSelected = null;
-	private int[] oldCoord = {0,0};
 	
 	public HudCPanel(Controller controller) {
 		super();
-		
-		this.controller = controller;
 		
 		this.addMouseListener(controller);
 		this.setPreferredSize(new Dimension(1098, 610));

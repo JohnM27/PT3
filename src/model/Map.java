@@ -2,7 +2,9 @@ package model;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Map implements Serializable {
+	
 	private Case[][] map = new Case[10][18];
 	private Noise n;
 	

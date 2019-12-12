@@ -1,13 +1,13 @@
 package model;
 
-import java.awt.Image;
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public abstract class Building implements Serializable {
+	
 	private String img;
 	private int level;
 	private int population;
-	private String type;
 	
 	public Building() {
 		level = 0;

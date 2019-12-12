@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 
 import controller.Controller;
 
+@SuppressWarnings("serial")
 public class EventPanel extends JPanel {
 
 	private GridBagConstraints gbc;

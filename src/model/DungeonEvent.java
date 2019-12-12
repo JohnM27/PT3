@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.EventObject;
 import java.util.List;
 
+@SuppressWarnings("serial")
 public class DungeonEvent extends EventObject implements Serializable {
 	
 	private List<Adventurer> adventurers;

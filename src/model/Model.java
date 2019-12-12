@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.swing.event.EventListenerList;
 
+@SuppressWarnings("serial")
 public class Model implements Serializable {
 
 	private EventListenerList listenersList;

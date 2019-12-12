@@ -10,17 +10,14 @@ import java.awt.Insets;
 import java.io.File;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.Controller;
 import model.Building;
 
+@SuppressWarnings("serial")
 public class HudSCPanel extends JPanel {
-	
-	private Controller controller;
 	
 	private JButton buy, buildH, buildF, buildL, buildM, buildC, buildFarm, build1, build2, upgrade;
 	
@@ -29,8 +26,6 @@ public class HudSCPanel extends JPanel {
 		super(new GridBagLayout());
 		
 		GridBagConstraints gbc = new GridBagConstraints();
-		 
-		this.controller = controller;
 		
 		setBackground(new Color(100,100,100));
 
@@ -137,7 +132,7 @@ public class HudSCPanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		Image borderL = null, textTest = null;
+		Image borderL = null;
 		try {
 			borderL = ImageIO.read(new File("Graphismes/BorderSL.png"));
 		} catch (Exception e) {}

@@ -5,8 +5,6 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -15,8 +13,8 @@ import javax.swing.SwingConstants;
 
 import controller.Controller;
 
+@SuppressWarnings("serial")
 public class HudSRPanel extends JPanel {
-	private Controller controller;
 	
 	private JButton suivant, save, quitter;
 	private JLabel jour;
@@ -27,8 +25,6 @@ public class HudSRPanel extends JPanel {
 	
 	public HudSRPanel(Controller controller) {
 		super(new GridBagLayout());
-		
-		this.controller = controller;
 		
 		
 		c.fill = GridBagConstraints.BOTH;

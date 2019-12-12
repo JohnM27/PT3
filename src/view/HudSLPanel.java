@@ -9,9 +9,8 @@ import javax.swing.JPanel;
 
 import controller.Controller;
 
+@SuppressWarnings("serial")
 public class HudSLPanel extends JPanel {
-	
-	private Controller controller;
 	
 	private GridBagConstraints c = new GridBagConstraints();
 	
@@ -20,8 +19,6 @@ public class HudSLPanel extends JPanel {
 	
 	public HudSLPanel(Controller controller) {
 		super(new GridBagLayout());
-		
-		this.controller = controller;
 		
 		this.setPreferredSize(new Dimension(268, 158));
 		

@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import model.Adventurer;
 
+@SuppressWarnings("serial")
 public class AdventurerPanel extends JPanel {
 	
 	//private Adventurer adventurer;
