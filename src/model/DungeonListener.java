@@ -8,4 +8,14 @@ public interface DungeonListener extends EventListener {
 
 	public void Refresh(DungeonEvent event);
 
+	public void DungeonGenerated(DungeonEvent event);
+
+	public void Expedition(DungeonEvent event);
+	
+	public void AddAdventurerToDungeon(DungeonEvent event);
+
+	public void NoExpedition(DungeonEvent event);
+
+	public void SendAdventurer(DungeonEvent dungeonEvent);
+
 }

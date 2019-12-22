@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import controller.Controller;
 import model.Adventurer;
 
 @SuppressWarnings("serial")
@@ -31,13 +32,31 @@ public class AdventurerPanel extends JPanel {
 	private String magT;
 	private String available;
 	
+	private Adventurer adv;
+	
 	public int getTypeOfAdv() {
 		return typeOfAdv;
 	}
 	
-	public AdventurerPanel(Adventurer adventurer) {
+	public void setButton(String string) {
+		selected.setActionCommand(string);
+	}
+	
+	public Adventurer getAdv() {
+		return adv;
+	}
+	
+	public void setButtonFalse() {
+		selected.setEnabled(false);
+	}
+
+	public void setButtonTrue() {
+		selected.setEnabled(true);
+	}
+	
+	public AdventurerPanel(Adventurer adventurer, Controller controller) {
 		super(new BorderLayout());
-		
+		adv = adventurer;
 		typeOfAdv = 0;
 		
 		name = adventurer.getName();
@@ -66,6 +85,7 @@ public class AdventurerPanel extends JPanel {
 		}
 		
 		selected = new JButton("Select Adventurer");
+		selected.addActionListener(controller);
 		selected.setFont(font);
 		selected.setPreferredSize(new Dimension(255,25));
 		add(selected, BorderLayout.SOUTH);
@@ -73,7 +93,7 @@ public class AdventurerPanel extends JPanel {
 		setBackground(new Color(100,100,100));
 	}
 	
-	public AdventurerPanel(int adv) {
+	public AdventurerPanel(int adv, Controller controller) {
 		super(new BorderLayout());
 		this.typeOfAdv = adv;
 		if(typeOfAdv == 1) {
@@ -82,6 +102,7 @@ public class AdventurerPanel extends JPanel {
 		else {
 			selected = new JButton("BLOCKED");
 		}
+		selected.addActionListener(controller);
 		selected.setFont(font);
 		selected.setPreferredSize(new Dimension(255,25));
 		add(selected, BorderLayout.SOUTH);

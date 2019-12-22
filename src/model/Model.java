@@ -22,19 +22,23 @@ public class Model implements Serializable {
 	
 	private List<Case> listBuilding;
 	//Bonnes ressources
-	//private int[] ressources = {75, 20, 50, 0};
-	private int[] ressources = {9999, 9999, 9999, 9999};
+	private int[] ressources = {115, 20, 50, 0};
+	//private int[] ressources = {9999, 9999, 9999, 9999};
   
 	private int populationMax = 0;
 	private int population = 0;
 	private int moral = 130;
+	
+	//ADVENTURER AND DONGEON
 	private List<Adventurer> adventurers;
+	private Dungeon dungeon;
   
 	public Model() {
 		listenersList = new EventListenerList();
 		nbJour = 0;
 		listBuilding = new ArrayList<Case>();
 		adventurers = new ArrayList<Adventurer>();
+		adventurersInDungeon = new ArrayList<Adventurer>();
 	}
 	
 	/**
@@ -179,13 +183,6 @@ public class Model implements Serializable {
 		}
 		if(moral > 150) {
 			moral = 150;
-		}
-	}
-	
-	public void addAdventurer() {
-		if(adventurers.size() < 10) {
-			adventurers.add(new Adventurer());
-			population += 5; // On ajoute 5 de population
 		}
 	}
 	
@@ -405,5 +402,109 @@ public class Model implements Serializable {
 		
 		for(GameListener listener : listenerList)
 			listener.selected(new MapEvent(this));
+	}
+	
+	//  DONGEON
+
+	private int advInDungeon;
+	private int nbAdventurerInDungeon = 0;
+	private List<Adventurer> adventurersInDungeon;
+	
+	public void addAdventurer() {
+		if(adventurers.size() < 10) {
+			adventurers.add(new Adventurer());
+			population += 5; // On ajoute 5 de population
+		}
+	}
+	
+	public List<Adventurer> getAdvInDungeon(){
+		return adventurersInDungeon;
+	}
+	
+	/**
+	 * Give the number of adventurer in the dungeon
+	 * @return
+	 */
+	public int getNbAdventurerInDungeon() {
+		return nbAdventurerInDungeon;
+	}
+	
+	/**
+	 * Give the "number" of the adventurer was clicked in the controller
+	 * @return
+	 */
+	public int getNbButtonAdvInDungeon() {
+		return advInDungeon;
+	}
+	
+	public void fireExpedition() {
+		DungeonListener[] gListenerList = 
+				(DungeonListener[])listenersList.getListeners(DungeonListener.class); 
+	
+		for(DungeonListener listener : gListenerList)
+			listener.Expedition(new DungeonEvent(this));
+	}
+
+	public void fireDungeonGenerated() {
+		DungeonListener[] gListenerList = 
+				(DungeonListener[])listenersList.getListeners(DungeonListener.class); 
+		
+		dungeon = new Dungeon();
+		
+		for(DungeonListener listener : gListenerList)
+			listener.DungeonGenerated(new DungeonEvent(this));
+	}
+
+	public void addAdventurerToDungeon(int i) {
+		DungeonListener[] gListenerList = 
+				(DungeonListener[])listenersList.getListeners(DungeonListener.class); 
+	
+		dungeon.addAdventurer(adventurers.get(i));
+		
+		adventurersInDungeon.add(adventurers.get(i));
+		
+		advInDungeon = i;
+		nbAdventurerInDungeon++;
+		
+		for(DungeonListener listener : gListenerList)
+			listener.AddAdventurerToDungeon(new DungeonEvent(this));
+	}
+
+	public void fireNoExpedition() {
+		DungeonListener[] gListenerList = 
+				(DungeonListener[])listenersList.getListeners(DungeonListener.class); 
+		
+		dungeon.removeAdventurer();
+		adventurersInDungeon.removeAll(adventurersInDungeon);
+		
+		advInDungeon = -1;
+		nbAdventurerInDungeon = 0;
+		
+		for(DungeonListener listener : gListenerList)
+			listener.NoExpedition(new DungeonEvent(this));
+	}
+
+	public void fireSendAdventurer() {
+		DungeonListener[] gListenerList = 
+				(DungeonListener[])listenersList.getListeners(DungeonListener.class); 
+		
+		for(DungeonListener listener : gListenerList)
+			listener.SendAdventurer(new DungeonEvent(this));
+	}
+
+	public void fireBuyAdventurer() {
+		DungeonListener[] gListenerList = 
+				(DungeonListener[])listenersList.getListeners(DungeonListener.class); 
+		GameListener[] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
+		
+		ressources[0] -= 30;
+		population += 5;
+		addAdventurer();
+		
+		for(DungeonListener listener : gListenerList)
+			listener.AddAdventurer(new DungeonEvent(this));
+		for(GameListener listener : listenerList)
+			listener.RefreshRessourcesAdv(new MapEvent(this));
 	}	
 }

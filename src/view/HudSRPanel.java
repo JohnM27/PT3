@@ -16,8 +16,8 @@ import controller.Controller;
 @SuppressWarnings("serial")
 public class HudSRPanel extends JPanel {
 	
-	private JButton suivant, save, quitter;
-	private JLabel jour;
+	private JButton next, save, quitter;
+	private JLabel day;
 		
 	private static Dimension buttonSize = new Dimension(83,40);
 	
@@ -28,22 +28,22 @@ public class HudSRPanel extends JPanel {
 		
 		
 		c.fill = GridBagConstraints.BOTH;
-		jour = new JLabel("Jour 0", SwingConstants.CENTER);
-		jour.setFont(new Font("Sans Serif", Font.PLAIN, 28));
+		day = new JLabel("Day 0", SwingConstants.CENTER);
+		day.setFont(new Font("Sans Serif", Font.PLAIN, 28));
 		c.insets = new Insets(13,5,13,5);
 		c.gridx = 0;
 		c.gridy = 0;
 		c.gridwidth = 2;
-		add(jour, c);
+		add(day, c);
 		
-		suivant = new JButton("Jour suivant");
-		suivant.setPreferredSize(new Dimension(166,55));
-		suivant.setFont(new Font("Sans Serif", Font.PLAIN, 24));
-		suivant.addActionListener(controller);
+		next = new JButton("Next Day");
+		next.setPreferredSize(new Dimension(166,55));
+		next.setFont(new Font("Sans Serif", Font.PLAIN, 24));
+		next.addActionListener(controller);
 		c.insets = new Insets(0,0,0,0);
 		c.gridx = 0;
 		c.gridy = 1;
-		add(suivant, c);
+		add(next, c);
 		
 		save = new JButton("Save");
 		save.setPreferredSize(buttonSize);
@@ -63,7 +63,7 @@ public class HudSRPanel extends JPanel {
 		add(quitter, c);
 	}
 	
-	public void setNbJour(int nbJour) {
-		jour.setText("Jour " + nbJour);
+	public void setNbDay(int nbDay) {
+		day.setText("Day " + nbDay);
 	}
 }

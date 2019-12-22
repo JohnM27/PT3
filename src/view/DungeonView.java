@@ -37,7 +37,6 @@ public class DungeonView extends View implements DungeonListener {
 		scroll.getVerticalScrollBar().setPreferredSize(new Dimension(10,0));
 		scroll.getVerticalScrollBar().setUI(new BasicScrollBarUI()
 	    {   
-	        @Override
 	        protected JButton createDecreaseButton(int orientation) {
 	            return createZeroButton();
 	        }
@@ -62,8 +61,6 @@ public class DungeonView extends View implements DungeonListener {
 	    });
 	}
 
-
-	@Override
 	public void display() {
 		
 		frame.add(dungeonCPanel, BorderLayout.CENTER);
@@ -74,8 +71,6 @@ public class DungeonView extends View implements DungeonListener {
 		frame.repaint();
 	}
 
-
-	@Override
 	public void close() {
 		frame.getContentPane().removeAll();
 	}
@@ -83,10 +78,35 @@ public class DungeonView extends View implements DungeonListener {
 	@Override
 	public void AddAdventurer(DungeonEvent event) {
 		dungeonWPanel.addAdventurer(event.getLastAdventurer());
+		dungeonSPanel.getCenter().display(event.getNbOr());
 	}
 
 	@Override
 	public void Refresh(DungeonEvent event) {
 		dungeonWPanel.addAllAdventurer(event.getAdventurers());
+	}
+
+	public void DungeonGenerated(DungeonEvent event) {
+		dungeonCPanel.displayDungeon();
+	}
+
+	public void Expedition(DungeonEvent event) {
+		dungeonSPanel.getCenter().displayExpedition();
+	}
+	
+	public void AddAdventurerToDungeon(DungeonEvent event) {
+		dungeonSPanel.getCenter().addAdventurer(event.getAdventurer(), event.getNbAdventurerInDungeon());
+		dungeonWPanel.disableButton(event.getAdventurerInDungeon());
+	}
+
+	public void NoExpedition(DungeonEvent event) {
+		dungeonSPanel.getCenter().display(event.getNbOr());
+		dungeonWPanel.enableButton();
+	}
+
+	@Override
+	public void SendAdventurer(DungeonEvent dungeonEvent) {
+		//je sais pas ce que tu modifier comme panneau ici donc à toi de me dire
+		System.out.println("Let's go for an adventurer !!!!!");
 	}
 }

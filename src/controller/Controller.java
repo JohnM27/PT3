@@ -29,6 +29,7 @@ public class Controller extends MouseAdapter implements ActionListener{
 	private DungeonView dungeonView;
 	
 	private boolean cityHall = false;
+	private boolean expedition = false;
 	
 	private int[] mouseCoord = new int[2];
 	
@@ -75,6 +76,7 @@ public class Controller extends MouseAdapter implements ActionListener{
 		dungeonView = new DungeonView(this, gameView.getFrame());
 		addListenersToModel();
 		model.fireMapGenerated();
+		model.fireDungeonGenerated();
 		gameView.display();
 	}
 	
@@ -194,6 +196,25 @@ public class Controller extends MouseAdapter implements ActionListener{
 			model.fireLoggingOn();
 		else if(e.getActionCommand().equals("BUILD Mine"))
 			model.fireMineOn();
+		else if(e.getActionCommand().equals("Buy Adventurer"))
+			model.fireBuyAdventurer();
+		else if(e.getActionCommand().equals("Expedition")) {
+			expedition = true;
+			model.fireExpedition();
+		}
+		else if(e.getActionCommand().equals("Back")) {
+			expedition = false;
+			model.fireNoExpedition();
+		}
+		else if(e.getActionCommand().equals("Go")) {
+			model.fireSendAdventurer();
+		}
+		for(int i = 0; i < 10; i++) {
+			String s = "Selected "+i;
+			if(expedition && e.getActionCommand().equals(s)) {
+				model.addAdventurerToDungeon(i);
+			}
+		}
 	}
 	
 	@Override
