@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class Adventurer implements Serializable {
-	
+
 	private String name;
 	private int lvl;
 	private int xp;
@@ -117,5 +117,53 @@ public class Adventurer implements Serializable {
 				+ defense + ", magic=" + magic + ", available=" + available + ", typeOfMagic=" + typeOfMagic + "]";
 	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + attack;
+		result = prime * result + (available ? 1231 : 1237);
+		result = prime * result + defense;
+		result = prime * result + hp;
+		result = prime * result + lvl;
+		result = prime * result + magic;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + typeOfMagic;
+		result = prime * result + xp;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Adventurer other = (Adventurer) obj;
+		if (attack != other.attack)
+			return false;
+		if (available != other.available)
+			return false;
+		if (defense != other.defense)
+			return false;
+		if (hp != other.hp)
+			return false;
+		if (lvl != other.lvl)
+			return false;
+		if (magic != other.magic)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (typeOfMagic != other.typeOfMagic)
+			return false;
+		if (xp != other.xp)
+			return false;
+		return true;
+	}
 	
 }

@@ -87,7 +87,7 @@ public class GameView extends View implements GameListener{
 		HudWPanel.setMoral(event.getMoral());
 		HudWPanel.setPopulation(event.getPopulation());
 		HudWPanel.setPopulationMax(event.getPopulationMax());
-		HudSPanel.getRight().setNbJour(event.getNbJour());
+		HudSPanel.getRight().setNbDay(event.getNbJour());
 	}
 
 	/**
@@ -143,6 +143,7 @@ public class GameView extends View implements GameListener{
 		HudWPanel.setPopulationMax(event.getPopulationMax());
 		HudWPanel.setPopulation(event.getPopulation());
 		HudWPanel.setRessources(event.getRessources());
+		HudSPanel.getLeft().setChangeViewOn();
 		ModifyPlainCHSCPanel(event);
 	}
 	
@@ -231,6 +232,11 @@ public class GameView extends View implements GameListener{
 		HudSPanel.getCenter().displayWater(event.getRessources(), event.getBuilding());
 		HudWPanel.display(event.getCurrentImage(), event.getCurrentImageOver());
 		HudWPanel.setBuilding(event.getBuilding());
+	}
+	
+	public void RefreshRessourcesAdv(MapEvent event) {
+		HudWPanel.setPopulation(event.getPopulation());
+		HudWPanel.setRessources(event.getRessources());
 	}
 
 	@Override

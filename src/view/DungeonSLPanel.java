@@ -10,23 +10,22 @@ import javax.swing.JPanel;
 import controller.Controller;
 
 @SuppressWarnings("serial")
-public class HudSLPanel extends JPanel {
+public class DungeonSLPanel extends JPanel {
 	
 	private GridBagConstraints c = new GridBagConstraints();
 	
 	private JButton changeView;
 	private JButton help;
 	
-	public HudSLPanel(Controller controller) {
+	public DungeonSLPanel(Controller controller) {
 		super(new GridBagLayout());
 		
 		this.setPreferredSize(new Dimension(268, 158));
 		
 		
-		changeView = new JButton("Game Change");
+		changeView = new JButton("Dungeon Change");
 		changeView.addActionListener(controller);
 		changeView.setPreferredSize(new Dimension(268,100));
-		changeView.setEnabled(false);
 		c.gridx = 0;
 		c.gridy = 0;
 		add(changeView, c);
@@ -35,9 +34,5 @@ public class HudSLPanel extends JPanel {
 		help.setPreferredSize(new Dimension(268,58));
 		c.gridy = 1;
 		add(help, c);
-	}
-	
-	public void setChangeViewOn() {
-		changeView.setEnabled(true);
 	}
 }

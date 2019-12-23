@@ -37,4 +37,6 @@ public interface GameListener extends EventListener {
 	public void FarmOn(MapEvent event);
 
 	public void Refresh(MapEvent event);
+
+	public void RefreshRessourcesAdv(MapEvent event);
 }

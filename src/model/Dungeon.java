@@ -1,9 +1,11 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dungeon {
+@SuppressWarnings("serial")
+public class Dungeon implements Serializable {
 	
 	private final static int NB_ROOM = 5;
 	private final static int NB_FLOOR = 5;
@@ -49,7 +51,7 @@ public class Dungeon {
 		}
 	}
 	
-	/**
+	/*
 	 * Generate the fight in the donjon
 	 */
 	public void generateFight() {
@@ -93,5 +95,9 @@ public class Dungeon {
 	 */
 	public void addAllAdventurer(List<Adventurer> adv) {
 		adventurer = adv;
+	}
+
+	public void removeAdventurer() {
+		adventurer.removeAll(adventurer);
 	}
 }
