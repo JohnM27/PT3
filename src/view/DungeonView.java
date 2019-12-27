@@ -78,7 +78,7 @@ public class DungeonView extends View implements DungeonListener {
 	@Override
 	public void AddAdventurer(DungeonEvent event) {
 		dungeonWPanel.addAdventurer(event.getLastAdventurer());
-		dungeonSPanel.getCenter().display(event.getNbOr());
+		dungeonSPanel.getCenter().display(event.getNbGold());
 	}
 
 	@Override
@@ -92,21 +92,33 @@ public class DungeonView extends View implements DungeonListener {
 
 	public void Expedition(DungeonEvent event) {
 		dungeonSPanel.getCenter().displayExpedition();
+		ChangeFoodExpedition(event);
 	}
 	
 	public void AddAdventurerToDungeon(DungeonEvent event) {
 		dungeonSPanel.getCenter().addAdventurer(event.getAdventurer(), event.getNbAdventurerInDungeon());
+		ChangeFoodExpedition(event);
 		dungeonWPanel.disableButton(event.getAdventurerInDungeon());
 	}
 
 	public void NoExpedition(DungeonEvent event) {
-		dungeonSPanel.getCenter().display(event.getNbOr());
-		dungeonWPanel.enableButton();
+		dungeonSPanel.getCenter().display(event.getNbGold());
+		dungeonWPanel.enableAllButton();
 	}
 
 	@Override
 	public void SendAdventurer(DungeonEvent dungeonEvent) {
 		//je sais pas ce que tu modifier comme panneau ici donc à toi de me dire
 		System.out.println("Let's go for an adventurer !!!!!");
+	}
+
+	@Override
+	public void DeleteAdventurer(DungeonEvent event) {
+		dungeonSPanel.getCenter().removeAdventurer(event.getDigitAdvRemove(), event.getNbAdventurerInDungeon());
+		dungeonWPanel.enableButton(event.getAdvRemove());
+	}
+	
+	public void ChangeFoodExpedition(DungeonEvent event) {
+		dungeonSPanel.getCenter().changeFood(event.getNbFood(), event.getNbFoodInDg());
 	}
 }

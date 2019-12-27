@@ -92,9 +92,18 @@ public class DungeonWPanel extends JPanel {
 		repaint();
 	}
 	
-	public void enableButton() {
+	public void enableAllButton() {
 		for(int j = 0; j < adventurers.size(); j++) {
 			if(adventurers.get(j).getTypeOfAdv() == 0) {
+				adventurers.get(j).setButtonTrue();
+			}
+		}
+		repaint();
+	}
+	
+	public void enableButton(Adventurer adventurerRemove) {
+		for(int j = 0; j < adventurers.size(); j++) {
+			if(adventurerRemove.equals(adventurers.get(j).getAdv())) {
 				adventurers.get(j).setButtonTrue();
 			}
 		}
