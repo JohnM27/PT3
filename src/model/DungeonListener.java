@@ -18,4 +18,8 @@ public interface DungeonListener extends EventListener {
 
 	public void SendAdventurer(DungeonEvent dungeonEvent);
 
+	public void DeleteAdventurer(DungeonEvent event);
+
+	public void ChangeFoodExpedition(DungeonEvent event);
+
 }

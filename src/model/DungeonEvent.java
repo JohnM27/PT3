@@ -9,24 +9,35 @@ public class DungeonEvent extends EventObject implements Serializable {
 	
 	private List<Adventurer> adventurers;
 	private List<Adventurer> adventurersInDungeon;
+	private Adventurer advRemove;
 	
-	private int advInDungeon;
+	private int digitOfAdvInDungeon;
+	private int digitOfAdvRemove;
 	private int nbAdventurerInDungeon;
 	
-	private int nbOr;
+	private int nbGold;
+	private int nbFood;
+	private int nbFoodInDg;
 
 	public DungeonEvent(Object source) {
 		super(source);
 		
 		adventurers = ((Model)source).getAdventurers();
 		
-		advInDungeon = ((Model)source).getNbButtonAdvInDungeon();
+		digitOfAdvInDungeon = ((Model)source).getNbButtonAdv();
 		
 		nbAdventurerInDungeon = ((Model)source).getNbAdventurerInDungeon();
 		
 		adventurersInDungeon = ((Model)source).getAdvInDungeon();
 		
-		nbOr = ((Model)source).getRessources()[0];
+		nbGold = ((Model)source).getRessources()[0];
+		nbFood = ((Model)source).getRessources()[1];
+		
+		digitOfAdvRemove = ((Model)source).getNbButtonAdvRemove();
+		
+		advRemove = ((Model)source).getAdvRemove();
+		
+		nbFoodInDg = ((Model)source).getNbFoodInDg();
 		
 	}
 	
@@ -39,7 +50,7 @@ public class DungeonEvent extends EventObject implements Serializable {
 	}
 
 	public Adventurer getAdventurer() {
-		return adventurers.get(advInDungeon);
+		return adventurers.get(digitOfAdvInDungeon);
 	}
 
 	public int getNbAdventurerInDungeon() {
@@ -50,7 +61,23 @@ public class DungeonEvent extends EventObject implements Serializable {
 		return adventurersInDungeon;
 	}
 
-	public int getNbOr() {
-		return nbOr;
+	public int getNbGold() {
+		return nbGold;
+	}
+
+	public Adventurer getAdvRemove() {
+		return advRemove;
+	}
+
+	public int getDigitAdvRemove() {
+		return digitOfAdvRemove;
+	}
+
+	public int getNbFood() {
+		return nbFood;
+	}
+	
+	public int getNbFoodInDg() {
+		return nbFoodInDg;
 	}
 }

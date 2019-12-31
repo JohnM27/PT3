@@ -209,10 +209,22 @@ public class Controller extends MouseAdapter implements ActionListener{
 		else if(e.getActionCommand().equals("Go")) {
 			model.fireSendAdventurer();
 		}
+		else if(e.getActionCommand().equals("moreFood")) {
+			model.fireFoodForExpedition(true);
+		}
+		else if(e.getActionCommand().equals("lessFood")) {
+			model.fireFoodForExpedition(false);
+		}
 		for(int i = 0; i < 10; i++) {
 			String s = "Selected "+i;
 			if(expedition && e.getActionCommand().equals(s)) {
 				model.addAdventurerToDungeon(i);
+			}
+		}
+		for(int i = 0; i < 4; i++) {
+			String s = "Button "+i;
+			if(e.getActionCommand().equals(s)) {
+				model.deleteAdventurerInDungeon(i);
 			}
 		}
 	}

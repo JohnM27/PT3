@@ -24,8 +24,11 @@ public class Dungeon implements Serializable {
 	 */
 	private boolean[][] validate;
 	
+	private int foodForAdv;
+	
 	public Dungeon() {
 		adventurer = new ArrayList<Adventurer>();
+		foodForAdv = 1;
 		
 		floor = new int[NB_FLOOR][];
 		floor[0] = new int[(int) (Math.random()*(5-2+1))];
@@ -99,5 +102,33 @@ public class Dungeon implements Serializable {
 
 	public void removeAdventurer() {
 		adventurer.removeAll(adventurer);
+	}
+
+	public void removeAdventurer(int i) {
+		adventurer.remove(i);
+	}
+
+	public List<Adventurer> getAdventurer() {
+		return adventurer;
+	}
+	
+	public int getNbFood() {
+		return foodForAdv;
+	}
+
+	public void setFood(boolean ml) {
+		if(ml) {
+			foodForAdv++;
+		}
+		else {
+			foodForAdv--;
+		}
+		
+		if(foodForAdv == 11) {
+			foodForAdv = 1;
+		}
+		if(foodForAdv == 0) {
+			foodForAdv = 10;
+		}
 	}
 }
