@@ -20,7 +20,7 @@ public class DungeonCPanel extends JPanel {
 		super.paintComponent(g);
 		
 		try {
-			g.drawImage(ImageIO.read(new File("Graphismes/test.png")), 0, 0, this);
+			g.drawImage(ImageIO.read(new File("Graphismes/dungeonMap.png")), 0, 0, this);
 			
 		} catch (IOException e) {}
 		
@@ -28,6 +28,6 @@ public class DungeonCPanel extends JPanel {
 	}
 
 	public void displayDungeon() {
-		System.out.println("On a générer le donjon");
+		System.out.println("On a gÃ©nÃ©rer le donjon");
 	}
 }
