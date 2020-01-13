@@ -29,10 +29,9 @@ private GridBagConstraints gbc = new GridBagConstraints();
 	
 	public DungeonSCPanel(Controller controller) {
 		super(new GridBagLayout());
+		nbAdventurer = 0;
 		
 		setBackground(new Color(100,100,100));
-		
-		nbAdventurer = 0;
 		
 		expedition = new JButton("Expedition");
 		expedition.addActionListener(controller);

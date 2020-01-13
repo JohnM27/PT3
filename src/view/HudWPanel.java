@@ -72,7 +72,6 @@ public class HudWPanel extends JPanel {
 			g.drawString( population + " / " + populationMax, 80, 246);
 			
 			
-			//g.drawImage(ImageIO.read(new File("Graphismes/textTest.png")), 100, 256, this);
 			g.drawImage(selected, 100, 285, this);
 			g.drawImage(selectedOver, 100, 285, this);
 			
@@ -84,7 +83,7 @@ public class HudWPanel extends JPanel {
 			g.setFont(new Font("San Serif", Font.PLAIN, 22));
 			g.drawRect(0,2,267,23);
 			g.drawString("CITY", 112, 23);
-			
+
 			g.drawRect(0,256,267,23);
 			g.drawString("SQUARE", 90, 276);
 		} catch (Exception e) {}
@@ -106,7 +105,7 @@ public class HudWPanel extends JPanel {
 		repaint();
 	}
 	
-	//Pas utilisé mais plus tard oui normalement
+	//Pas utilisÃ© mais plus tard oui normalement
 	public void done() {
 		//selected.setIcon(null);
 		

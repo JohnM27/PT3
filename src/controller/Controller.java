@@ -177,7 +177,7 @@ public class Controller extends MouseAdapter implements ActionListener{
 		}
 		else if(e.getActionCommand().equals("Save"))
 			save();
-		else if(e.getActionCommand().equals("Jour suivant"))
+		else if(e.getActionCommand().equals("Next Day"))
 			model.fireJourChanged();
 		else if(e.getActionCommand().equals("BUY")) {
 			model.fireFogOff();
@@ -214,6 +214,15 @@ public class Controller extends MouseAdapter implements ActionListener{
 		}
 		else if(e.getActionCommand().equals("lessFood")) {
 			model.fireFoodForExpedition(false);
+		}
+		else if(e.getActionCommand().equals("ExitEvent")) {
+			model.fireExitEvent();
+		}
+		else if(e.getActionCommand().equals("StopBandits")){
+			model.fireStopBandits();
+		}
+		else if(e.getActionCommand().equals("LetBandits")){
+			model.fireLetBandits();
 		}
 		for(int i = 0; i < 10; i++) {
 			String s = "Selected "+i;

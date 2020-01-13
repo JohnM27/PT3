@@ -27,6 +27,9 @@ public class MapEvent extends EventObject implements Serializable {
 	private Building build;
 
 	private int moral;
+	private int nbEvent;
+	private int foodLoose;
+	private int GoldLoose;
 
 	public MapEvent(Object source) {
 		super(source);
@@ -53,6 +56,9 @@ public class MapEvent extends EventObject implements Serializable {
 		build = ((Model)source).getBuilding(coord[0], coord[1]);
 
 		moral = ((Model)source).getMoral();
+		nbEvent = ((Model)source).getNbEvent();
+		foodLoose = ((Model)source).getFoodLoose();
+		GoldLoose = ((Model)source).getGoldLoose();
 	}
 
 	public int getNbJour() {
@@ -113,5 +119,17 @@ public class MapEvent extends EventObject implements Serializable {
 
 	public int getMoral() {
 		return moral;
+	}
+
+	public int getNbEvent() {
+		return nbEvent;
+	}
+	
+	public int getFoodLoose() {
+		return foodLoose;
+	}
+	
+	public int getGoldLoose() {
+		return GoldLoose;
 	}
 }

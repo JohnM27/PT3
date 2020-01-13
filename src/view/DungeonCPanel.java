@@ -28,6 +28,6 @@ public class DungeonCPanel extends JPanel {
 	}
 
 	public void displayDungeon() {
-		System.out.println("On a générer le donjon");
+		System.out.println("On a gÃ©nÃ©rer le donjon");
 	}
 }

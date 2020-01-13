@@ -23,12 +23,13 @@ public class Model implements Serializable {
 	private List<Case> listBuilding;
 	//Bonnes ressources
 	//							gold, food, wood, stone
-	//private int[] ressources = {75, 20, 50, 0};
-	private int[] ressources = {9999, 9999, 9999, 9999};
+	private int[] ressources = {75, 20, 50, 0};
+	//private int[] ressources = {9999, 9999, 9999, 9999};
   
 	private int populationMax = 0;
 	private int population = 0;
 	private int moral = 130;
+	private int nbEvent;
 	
 	//ADVENTURER AND DONGEON
 	private List<Adventurer> adventurers;
@@ -102,6 +103,10 @@ public class Model implements Serializable {
 		return moral;
 	}
 	
+	public int getNbEvent() {
+		return nbEvent;
+	}
+	
 	public List<Adventurer> getAdventurers() {
 		return adventurers;
 	}
@@ -151,12 +156,86 @@ public class Model implements Serializable {
 			}
 		}
 		
-		moral();
+		EventChoosen();
 		
 		for(GameListener listener : listenerList)
 			listener.jourChanged(new MapEvent(this));
 	}
 	
+	private int foodLoose;
+	private int goldLoose;
+	
+	public int getFoodLoose() {
+		return foodLoose;
+	}
+	
+	public int getGoldLoose() {
+		return goldLoose;
+	}
+	
+	private void EventChoosen() {
+		double r = Math.random();
+		if(moral <= 100) {
+			if(r < 0.5) {
+				nbEvent = 0;
+				goldLoose = (int) (Math.random()*20+2);
+				if(goldLoose > ressources[0]) {
+					goldLoose = ressources[0];
+				}
+			}
+			else {
+				nbEvent = 1;
+				foodLoose = (int) (Math.random()*10+2);
+				if(foodLoose <= ressources[1]) {
+					ressources[1] -= foodLoose;
+				}
+				else {
+					foodLoose = ressources[1];
+					ressources[1] -= foodLoose;
+				}
+			}
+		}
+		else {
+			nbEvent = 2;
+			ressources[0] += 10;
+		}
+	}
+	
+	public void fireExitEvent() {
+		GameListener[] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
+		
+		for(GameListener listener : listenerList)
+			listener.ExitEvent(new MapEvent(this));
+	}
+	
+	public void fireStopBandits() {
+		GameListener[] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
+		
+		goldLoose = (int) (Math.random()*10+2);
+		if(goldLoose > ressources[0]) {
+			goldLoose = ressources[0];
+			ressources[0] -= goldLoose;
+		}
+		else {
+			ressources[0] -= goldLoose;
+		}
+		
+		for(GameListener listener : listenerList)
+			listener.ExitStopBanditsEvent(new MapEvent(this));
+	}
+	
+	public void fireLetBandits() {
+		GameListener[] listenerList = 
+				(GameListener[])listenersList.getListeners(GameListener.class);
+		
+		ressources[0] -= goldLoose;
+		
+		for(GameListener listener : listenerList)
+			listener.ExitEvent(new MapEvent(this));
+	}
+
 	private void moral() {
 		int dif = populationMax - population;
 		if(dif >= 0) {
@@ -240,6 +319,8 @@ public class Model implements Serializable {
 		
 		addAdventurer();
 		
+		moral();
+		
 		for(GameListener listener : listenerList)
 			listener.CityHallOn(new MapEvent(this));
 		for(DungeonListener listener : dListenerList)
@@ -255,6 +336,8 @@ public class Model implements Serializable {
 		populationMax += m.getPopulation(coord[0], coord[1]);
 		ressources[0] -= 3;
 		ressources[2] -= 5;
+		
+		moral();
 		
 		for(GameListener listener : listenerList)
 			listener.HouseOn(new MapEvent(this));
@@ -272,6 +355,8 @@ public class Model implements Serializable {
 		ressources[0] -= 3;
 		ressources[2] -= 5;
 		
+		moral();
+		
 		for(GameListener listener : listenerList)
 			listener.FarmOn(new MapEvent(this));
 	}
@@ -287,6 +372,8 @@ public class Model implements Serializable {
 		
 		ressources[0] -= 5;
 		ressources[2] -= 7;
+		
+		moral();
 		
 		for(GameListener listener : listenerList)
 			listener.FishingOn(new MapEvent(this));
@@ -304,6 +391,8 @@ public class Model implements Serializable {
 		ressources[0] -= 5;
 		ressources[2] -= 5;
 		
+		moral();
+		
 		for(GameListener listener : listenerList)
 			listener.LoggingOn(new MapEvent(this));
 	}
@@ -319,6 +408,8 @@ public class Model implements Serializable {
 		
 		ressources[0] -= 20;
 		ressources[2] -= 10;
+		
+		moral();
 		
 		for(GameListener listener : listenerList)
 			listener.MineOn(new MapEvent(this));
