@@ -39,4 +39,8 @@ public interface GameListener extends EventListener {
 	public void Refresh(MapEvent event);
 
 	public void RefreshRessourcesAdv(MapEvent event);
+
+	public void ExitEvent(MapEvent event);
+
+	public void ExitStopBanditsEvent(MapEvent event);
 }

@@ -2,7 +2,9 @@ package view;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import controller.Controller;
 import model.GameListener;
@@ -17,6 +19,7 @@ public class GameView extends View implements GameListener{
 	private HudWPanel HudWPanel;
 	private HudSPanel HudSPanel;
 	private HudCPanel HudCPanel;
+	private JDialog eventPanel;
 	
 	/**
 	 * Constructs a GameView with the specified controller and by
@@ -88,6 +91,30 @@ public class GameView extends View implements GameListener{
 		HudWPanel.setPopulation(event.getPopulation());
 		HudWPanel.setPopulationMax(event.getPopulationMax());
 		HudSPanel.getRight().setNbDay(event.getNbJour());
+		
+		EventPanel panel = new EventPanel(getController());
+		panel.event(event.getNbEvent(), event.getFoodLoose(), event.getGoldLoose());
+		eventPanel = new JDialog(frame, "Event", true);
+		
+		eventPanel.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		eventPanel.setResizable(false);
+		eventPanel.add(panel);
+		eventPanel.pack();
+		eventPanel.setVisible(true);
+	}
+	
+	@Override
+	public void ExitEvent(MapEvent event) {
+		HudWPanel.setRessources(event.getRessources());
+		eventPanel.dispose();
+	}
+	
+	@Override
+	public void ExitStopBanditsEvent(MapEvent event) {
+		HudWPanel.setRessources(event.getRessources());
+		eventPanel.dispose();
+		JOptionPane.showMessageDialog(frame, "You loose "+event.getGoldLoose()+" gold for trying to stop bandits",
+				"Event", JOptionPane.PLAIN_MESSAGE);
 	}
 
 	/**
@@ -142,6 +169,7 @@ public class GameView extends View implements GameListener{
 		HudCPanel.buildingOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
 		HudWPanel.setPopulationMax(event.getPopulationMax());
 		HudWPanel.setPopulation(event.getPopulation());
+		HudWPanel.setMoral(event.getMoral());
 		HudWPanel.setRessources(event.getRessources());
 		HudSPanel.getLeft().setChangeViewOn();
 		ModifyPlainCHSCPanel(event);
@@ -152,6 +180,7 @@ public class GameView extends View implements GameListener{
 		int[] coord = event.getCoord();
 		HudCPanel.buildingOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
 		HudWPanel.setPopulationMax(event.getPopulationMax());
+		HudWPanel.setMoral(event.getMoral());
 		HudWPanel.setRessources(event.getRessources());
 		ModifyPlainSCPanel(event);
 	}
@@ -161,6 +190,7 @@ public class GameView extends View implements GameListener{
 		int[] coord = event.getCoord();
 		HudCPanel.buildingOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
 		HudWPanel.setPopulation(event.getPopulation());
+		HudWPanel.setMoral(event.getMoral());
 		HudWPanel.setRessources(event.getRessources());
 		ModifyPlainSCPanel(event);
 	}
@@ -179,6 +209,7 @@ public class GameView extends View implements GameListener{
 		int[] coord = event.getCoord();
 		HudCPanel.buildingOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
 		HudWPanel.setPopulation(event.getPopulation());
+		HudWPanel.setMoral(event.getMoral());
 		HudWPanel.setRessources(event.getRessources());
 		ModifyForestSCPanel(event);
 	}
@@ -188,6 +219,7 @@ public class GameView extends View implements GameListener{
 		int[] coord = event.getCoord();
 		HudCPanel.buildingOn(coord[0], coord[1], event.getImgOver()[coord[0]][coord[1]]);
 		HudWPanel.setPopulation(event.getPopulation());
+		HudWPanel.setMoral(event.getMoral());
 		HudWPanel.setRessources(event.getRessources());
 		ModifyMountainSCPanel(event);
 	}

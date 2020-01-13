@@ -53,6 +53,9 @@ public class HudWPanel extends JPanel {
 			g.setColor(color);
 			
 			
+			g.drawImage(ImageIO.read(new File("Graphismes/textTest.png")), 100, 5, this);
+			
+			
 			g.drawImage(ImageIO.read(new File("Graphismes/Gold.png")), 5, 29, this);
 			g.drawImage(ImageIO.read(new File("Graphismes/Food.png")), 139, 29, this);
 			g.drawImage(ImageIO.read(new File("Graphismes/Wood.png")), 5, 100, this);
@@ -72,21 +75,13 @@ public class HudWPanel extends JPanel {
 			g.drawString( population + " / " + populationMax, 80, 246);
 			
 			
-			//g.drawImage(ImageIO.read(new File("Graphismes/textTest.png")), 100, 256, this);
+			g.drawImage(ImageIO.read(new File("Graphismes/textTest.png")), 100, 256, this);
 			g.drawImage(selected, 100, 285, this);
 			g.drawImage(selectedOver, 100, 285, this);
 			
 			g.drawString("Name: " + buildingName, 10, 375);
 			g.drawString("Level: " + buildingLevel, 10, 404);
 			g.drawString("Population: " + buildingPop, 10, 433);
-			
-			
-			g.setFont(new Font("San Serif", Font.PLAIN, 22));
-			g.drawRect(0,2,267,23);
-			g.drawString("CITY", 112, 23);
-			
-			g.drawRect(0,256,267,23);
-			g.drawString("SQUARE", 90, 276);
 		} catch (Exception e) {}
 		
 	}
