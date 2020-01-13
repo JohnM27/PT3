@@ -5,7 +5,7 @@ public class CityHall extends Building {
 	
 	public CityHall() {
 		super();
-		setImg("H.png");
+		setImg("CityHall.png");
 		
 		setPopulation(10);
 	}

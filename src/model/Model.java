@@ -23,8 +23,8 @@ public class Model implements Serializable {
 	private List<Case> listBuilding;
 	//Bonnes ressources
 	//							gold, food, wood, stone
-	private int[] ressources = {75, 20, 50, 0};
-	//private int[] ressources = {9999, 9999, 9999, 9999};
+	//private int[] ressources = {75, 20, 50, 0};
+	private int[] ressources = {9999, 9999, 9999, 9999};
   
 	private int populationMax = 0;
 	private int population = 0;

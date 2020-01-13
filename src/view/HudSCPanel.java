@@ -128,16 +128,6 @@ public class HudSCPanel extends JPanel {
  		add(buildM, gbc);
 	}
 	
-	
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		
-		Image borderL = null;
-		try {
-			borderL = ImageIO.read(new File("Graphismes/BorderSL.png"));
-		} catch (Exception e) {}
-		g.drawImage(borderL, 0, 0, this);
-	}
 		
 	public void display(boolean adjacent, String typeCase, boolean firstBuy, boolean cityHall, int[] ressources) {
 		buildH.setVisible(false);
