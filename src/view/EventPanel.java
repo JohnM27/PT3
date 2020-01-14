@@ -72,11 +72,6 @@ public class EventPanel extends JPanel {
 		button4.addActionListener(controller);
 		button4.setPreferredSize(new Dimension(380, 50));
 		this.add(button4, gbc);
-		
-		try {                
-			image = ImageIO.read(new File("Graphismes/Event.png"));
-		} catch (IOException ex) {}
-		
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -87,31 +82,43 @@ public class EventPanel extends JPanel {
 	public void event(int nbEvent, int foodLoose, int goldLoose) {
 		if(nbEvent == 0) {
 			text1.setText("Attack of bandits");
-			text2.setText("You can try to stop here or not !");
+			text2.setText("You can try to stop them or not !");
 			button1.setText("Stop them");
 			button1.setActionCommand("StopBandits");
 			button2.setText("Let them ("+goldLoose+" gold loose)");
 			button2.setActionCommand("LetBandits");
 			button3.setEnabled(false);
 			button4.setEnabled(false);
+			
+			try {                
+				image = ImageIO.read(new File("Graphismes/EventGm.png"));
+			} catch (IOException ex) {}
 		}
 		else if(nbEvent == 1){
-			text1.setText("Flesh food !");
+			text1.setText("Rotten food !");
 			text2.setText("You can do nothing for that ! You loose "+foodLoose+" food");
 			button1.setText("Exit");
 			button1.setActionCommand("ExitEvent");
 			button2.setEnabled(false);
 			button3.setEnabled(false);
 			button4.setEnabled(false);
+			
+			try {                
+				image = ImageIO.read(new File("Graphismes/EventFm.png"));
+			} catch (IOException ex) {}
 		}
 		else {
 			text1.setText("Congratulations !");
-			text2.setText("You gain 10 golds ! Because your inhabitance works hard !");
+			text2.setText("You gain 10 golds ! Because your inhabitants works hard !");
 			button1.setText("Exit");
 			button1.setActionCommand("ExitEvent");
 			button2.setEnabled(false);
 			button3.setEnabled(false);
 			button4.setEnabled(false);
+			
+			try {                
+				image = ImageIO.read(new File("Graphismes/EventGp.png"));
+			} catch (IOException ex) {}
 		}
 	}
 

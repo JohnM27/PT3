@@ -46,7 +46,6 @@ public class GameView extends View implements GameListener{
 		HudCPanel = new HudCPanel(controller);
 		
 		frame.setResizable(false);
-		
 	}
 	
 	/**
@@ -113,7 +112,7 @@ public class GameView extends View implements GameListener{
 	public void ExitStopBanditsEvent(MapEvent event) {
 		HudWPanel.setRessources(event.getRessources());
 		eventPanel.dispose();
-		JOptionPane.showMessageDialog(frame, "You loose "+event.getGoldLoose()+" gold for trying to stop bandits",
+		JOptionPane.showMessageDialog(frame, "You loose "+event.getGoldLoose()+" gold for trying to stop the bandits",
 				"Event", JOptionPane.PLAIN_MESSAGE);
 	}
 

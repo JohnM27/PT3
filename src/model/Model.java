@@ -23,8 +23,8 @@ public class Model implements Serializable {
 	private List<Case> listBuilding;
 	//Bonnes ressources
 	//							gold, food, wood, stone
-	private int[] ressources = {75, 20, 50, 0};
-	//private int[] ressources = {9999, 9999, 9999, 9999};
+	//private int[] ressources = {75, 20, 50, 0};
+	private int[] ressources = {9999, 9999, 9999, 9999};
   
 	private int populationMax = 0;
 	private int population = 0;
@@ -136,11 +136,7 @@ public class Model implements Serializable {
 				(GameListener[])listenersList.getListeners(GameListener.class);
 		
 		nbJour++;
-		/*
-		 * Faudra changer pour l'amélioration
-		 * 
-		 * Il suffira de faire un getRessource sur la case et on récupère la ressource facilement
-		 */
+		
 		for(Case b : listBuilding) {
 			if(b.getBuildingType().equals("model.LumberMill")) {
 				ressources[2] += 5; //wood

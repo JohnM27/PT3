@@ -43,7 +43,8 @@ public class MenuView extends View{
 	 * text about the game 
 	 */
 	public void about() {
-		JOptionPane.showMessageDialog(frame, "Notre jeu s'appelle Namroth car le joueur dois tuer un dragon pour gagner.",
-									"A propos", JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showMessageDialog(frame, "This is a management/stategy game where the player have to build a city and send adventurers in a dungeon."
+				+ "\nThe game ends when the player kills Namroth, the dragon crawling at the bottom end of the dungeon.",
+									"About", JOptionPane.PLAIN_MESSAGE);
 	}
 }

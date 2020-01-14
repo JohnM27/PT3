@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import javax.swing.JOptionPane;
+
 import model.Model;
 import view.DungeonView;
 import view.GameView;
@@ -78,6 +80,10 @@ public class Controller extends MouseAdapter implements ActionListener{
 		model.fireMapGenerated();
 		model.fireDungeonGenerated();
 		gameView.display();
+		
+		//Temporary
+		JOptionPane.showMessageDialog(gameView.getFrame(), "To begin, buy a plain by clicking on the map. Then, click on the square you just bought to build a City Hall.",
+				"Help", JOptionPane.PLAIN_MESSAGE);
 	}
 	
 	/**
